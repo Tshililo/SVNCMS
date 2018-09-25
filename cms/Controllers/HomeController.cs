@@ -65,7 +65,9 @@ namespace cms.Controllers
 
             try
             {
-                string localDirectoryToCopyFiles = "C:/DropBox/ImportApplications";  // this is the actual folder we will store the files
+
+                string localDirectoryToCopyFiles = @"~\Content\ImportApplications";
+//"C:/DropBox/ImportApplications";  // this is the actual folder we will store the files
 
                 sw.WriteLine(DateTime.Now.ToString() + " " + "SaveAttachmentToServerCreateBurial." + localDirectoryToCopyFiles);
 
@@ -403,7 +405,9 @@ namespace cms.Controllers
 			if (reportParams == null)
 			{
 				RootFolder = @"C:\DropBox\";
-				return PartialView("_FileManagerPartial", RootFolder);
+
+                RootFolder = @"~\Content\ImportApplications";
+                return PartialView("_FileManagerPartial", RootFolder);
 			}
 
 			if (reportParams.Contains("C:"))
@@ -413,7 +417,8 @@ namespace cms.Controllers
 			var model = db.Applications.Where(c => c.ObjId.ToString() == reportParams).FirstOrDefault();
 			//RootFolder = @"~\Content\" + model.IdNo;
 
-			RootFolder = @"C:\DropBox\" + model.IdNo;
+			RootFolder = @"~\Content\ImportApplications" + model.IdNo;
+         //   @"C:\DropBox\"
 			// Determine whether the directory exists.
 			if (Directory.Exists(RootFolder))
 			{

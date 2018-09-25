@@ -36,5 +36,6 @@ namespace cms
         public virtual DbSet<SiteVisitAudit> SiteVisitAudits { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
+        public virtual DbSet<PublicUser> PublicUsers { get; set; }
     }
 }

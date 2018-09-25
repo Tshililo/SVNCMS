@@ -104,6 +104,13 @@
     <Property Name="ObjId" Type="uniqueidentifier" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="PublicUsers">
+    <Key>
+      <PropertyRef Name="ObjId" />
+    </Key>
+    <Property Name="ObjId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Cell_No" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="ReportHeader">
     <Key>
       <PropertyRef Name="ObjId" />
@@ -161,6 +168,7 @@
     <EntitySet Name="Grave" EntityType="Self.Grave" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GraveOwner" EntityType="Self.GraveOwner" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Mortuary" EntityType="Self.Mortuary" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PublicUsers" EntityType="Self.PublicUsers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ReportHeader" EntityType="Self.ReportHeader" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SiteVisitAudit" EntityType="Self.SiteVisitAudit" Schema="dbo" store:Type="Tables" />

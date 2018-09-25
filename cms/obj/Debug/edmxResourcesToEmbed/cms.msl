@@ -166,5 +166,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="PublicUsers">
+      <EntityTypeMapping TypeName="cmsModel.PublicUser">
+        <MappingFragment StoreEntitySet="PublicUsers">
+          <ScalarProperty Name="Cell_No" ColumnName="Cell_No" />
+          <ScalarProperty Name="ObjId" ColumnName="ObjId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="cmsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="cmsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Application">
           <Key>
             <PropertyRef Name="ObjId" />
@@ -109,6 +109,13 @@
           <Property Name="ObjId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="PublicUsers">
+          <Key>
+            <PropertyRef Name="ObjId" />
+          </Key>
+          <Property Name="ObjId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Cell_No" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="ReportHeader">
           <Key>
             <PropertyRef Name="ObjId" />
@@ -166,14 +173,14 @@
           <EntitySet Name="Grave" EntityType="Self.Grave" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GraveOwner" EntityType="Self.GraveOwner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mortuary" EntityType="Self.Mortuary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PublicUsers" EntityType="Self.PublicUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ReportHeader" EntityType="Self.ReportHeader" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SiteVisitAudit" EntityType="Self.SiteVisitAudit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="cmsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -343,7 +350,15 @@
           <EntitySet Name="SiteVisitAudits" EntityType="Self.SiteVisitAudit" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <EntitySet Name="PublicUsers" EntityType="cmsModel.PublicUser" />
         </EntityContainer>
+        <EntityType Name="PublicUser">
+          <Key>
+            <PropertyRef Name="ObjId" />
+          </Key>
+          <Property Name="ObjId" Type="Guid" Nullable="false" />
+          <Property Name="Cell_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -512,6 +527,14 @@
                 <ScalarProperty Name="ObjId" ColumnName="ObjId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PublicUsers">
+            <EntityTypeMapping TypeName="cmsModel.PublicUser">
+              <MappingFragment StoreEntitySet="PublicUsers">
+                <ScalarProperty Name="Cell_No" ColumnName="Cell_No" />
+                <ScalarProperty Name="ObjId" ColumnName="ObjId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

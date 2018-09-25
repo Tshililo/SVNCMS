@@ -13,10 +13,13 @@
   <parameter name="cms.Models.NorthwindContext-Web.config Connection String" description="" value="cms.Models.NorthwindContext_ConnectionString" tags="">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\Tshililo\\Documents\\Visual\ Studio\ 2015\\Projects\\cms\\cms\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='cms.Models.NorthwindContext']/@connectionString" />
   </parameter>
-  <parameter name="cmsEntities1-Web.config Connection String" description="" value="metadata=res://*/CMSEntityModel.csdl|res://*/CMSEntityModel.ssdl|res://*/CMSEntityModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=BEST-DELL\PALTRACK;initial catalog=cms;persist security info=True;user id=sa;password=P@ltr@ck;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="">
+  <parameter name="cmsEntities-Web.config Connection String" description="" value="metadata=res://*/cms.csdl|res://*/cms.ssdl|res://*/cms.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=BEST-DELL\PALTRACK;initial catalog=cms;user id=sa;password=P@ltr@ck;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Tshililo\\Documents\\Visual\ Studio\ 2015\\Projects\\cms\\cms\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='cmsEntities']/@connectionString" />
+  </parameter>
+  <parameter name="cmsEntities1-Web.config Connection String" description="" value="cmsEntities1_ConnectionString" tags="">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\Tshililo\\Documents\\Visual\ Studio\ 2015\\Projects\\cms\\cms\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='cmsEntities1']/@connectionString" />
   </parameter>
-  <parameter name="NWindConnectionString-Web.config Connection String" description="" value="data source=(localdb)\mssqllocaldb;attachdbfilename=|DataDirectory|\NWind.mdf;integrated security=True;connect timeout=120" tags="">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Tshililo\\Documents\\Visual\ Studio\ 2015\\Projects\\cms\\cms\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='NWindConnectionString']/@connectionString" />
+  <parameter name="cmsEntityOnline-Web.config Connection String" description="" value="metadata=res://*/CMSOnline.csdl|res://*/CMSOnline.ssdl|res://*/CMSOnline.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=prsolution.database.windows.net;initial catalog=cms;user id=prs;password=Mutheiwana27;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Tshililo\\Documents\\Visual\ Studio\ 2015\\Projects\\cms\\cms\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='cmsEntityOnline']/@connectionString" />
   </parameter>
 </parameters>

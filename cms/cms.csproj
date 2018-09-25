@@ -45,8 +45,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Charts.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Dashboard.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dashboard.v17.2.Web, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dashboard.v17.2.Web.Mvc5, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.DataAccess.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Map.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Pdf.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.TreeMap.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.Resources.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Xpf.Printing.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -55,16 +61,20 @@
     <Reference Include="DevExpress.PivotGrid.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Sparkline.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.CodeParser.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v17.2.Web, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="DevExpress.XtraGauges.v17.2.Core, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v17.2.Presets, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v17.2.Win, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraGrid.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="DevExpress.XtraLayout.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="DevExpress.XtraMap.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPivotGrid.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -78,6 +88,7 @@
     <Reference Include="DevExpress.XtraReports.v17.2.Service, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="DevExpress.XtraTreeMap.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -269,6 +280,16 @@
       <DependentUpon>cms.edmx</DependentUpon>
       <LastGenOutput>cms.cs</LastGenOutput>
     </Content>
+    <Content Include="CMSOnline.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CMSOnline.edmx</DependentUpon>
+      <LastGenOutput>CMSOnline.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CMSOnline.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CMSOnline.edmx</DependentUpon>
+      <LastGenOutput>CMSOnline.cs</LastGenOutput>
+    </Content>
     <Content Include="Content\Images\AquaHeader.jpg" />
     <Content Include="Content\Images\BlackGlassHeader.jpg" />
     <Content Include="Content\Images\Cemetery.jpg" />
@@ -318,6 +339,14 @@
     <Content Include="cms.edmx.diagram">
       <DependentUpon>cms.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="CMSOnline.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CMSOnline.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="CMSOnline.edmx.diagram">
+      <DependentUpon>CMSOnline.edmx</DependentUpon>
+    </Content>
+    <Content Include="Content\Downloads\ApplicationForm.pdf" />
     <None Include="Properties\PublishProfiles\CMS.pubxml" />
     <None Include="Properties\PublishProfiles\cmsmakhkado - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\cmsmakhkado - Web Deploy.pubxml" />
@@ -435,8 +464,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application.cs">
-      <DependentUpon>cms.tt</DependentUpon>
+      <DependentUpon>CMSOnline.tt</DependentUpon>
     </Compile>
+    <Compile Include="App_Start\DashboardConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RootRouteConstraint.cs" />
@@ -444,7 +474,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Cemetery.cs">
-      <DependentUpon>cms.tt</DependentUpon>
+      <DependentUpon>CMSOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="cms.Context.cs">
       <AutoGen>True</AutoGen>
@@ -461,8 +491,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>cms.edmx</DependentUpon>
     </Compile>
+    <Compile Include="CMSOnline.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CMSOnline.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CMSOnline.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CMSOnline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CMSOnline.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CMSOnline.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\SiteVisitAuditController.cs" />
     <Compile Include="Controllers\MortuaryController.cs" />
     <Compile Include="Controllers\ReportHeadersController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -473,20 +517,22 @@
     <Compile Include="Controllers\CemeteriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SiteVisitAuditController.cs" />
     <Compile Include="DualApplication.cs">
-      <DependentUpon>cms.tt</DependentUpon>
+      <DependentUpon>CMSOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Grave.cs">
-      <DependentUpon>cms.tt</DependentUpon>
+      <DependentUpon>CMSOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="GraveOwner.cs">
-      <DependentUpon>cms.tt</DependentUpon>
+      <DependentUpon>CMSOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\CemeteryOwnerDTO.cs" />
+    <Compile Include="Models\ChartSeriesOptions.cs" />
     <Compile Include="Models\ReportOptionDTO.cs" />
     <Compile Include="Models\EmailSender.cs" />
     <Compile Include="Models\SummaryDto.cs" />
@@ -507,24 +553,27 @@
     <Compile Include="Models\UserRolesDto.cs" />
     <Compile Include="Controllers\usersController.cs" />
     <Compile Include="Mortuary.cs">
-      <DependentUpon>cms.tt</DependentUpon>
+      <DependentUpon>CMSOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReportHeader.cs">
+    <Compile Include="PublicUser.cs">
       <DependentUpon>cms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReportHeader.cs">
+      <DependentUpon>CMSOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Role.cs">
-      <DependentUpon>cms.tt</DependentUpon>
+      <DependentUpon>CMSOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="SiteVisitAudit.cs">
-      <DependentUpon>cms.tt</DependentUpon>
+      <DependentUpon>CMSOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="User.cs">
-      <DependentUpon>cms.tt</DependentUpon>
+      <DependentUpon>CMSOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="UserRole.cs">
-      <DependentUpon>cms.tt</DependentUpon>
+      <DependentUpon>CMSOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Views\Reports\AppReportXrMvc.cs">
       <SubType>Component</SubType>
@@ -537,11 +586,13 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\Dashboards\" />
     <Folder Include="Content\Downloads\Thumbnails\" />
     <Folder Include="Content\DropBox\" />
     <Folder Include="Content\FileManager\Thumbnails\" />
     <Folder Include="Content\ImportApplications\" />
     <Folder Include="System\" />
+    <Folder Include="Views\PublicViews\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />

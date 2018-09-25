@@ -166,5 +166,13 @@
     <EntitySet Name="SiteVisitAudits" EntityType="Self.SiteVisitAudit" />
     <EntitySet Name="Users" EntityType="Self.User" />
     <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+    <EntitySet Name="PublicUsers" EntityType="cmsModel.PublicUser" />
   </EntityContainer>
+  <EntityType Name="PublicUser">
+    <Key>
+      <PropertyRef Name="ObjId" />
+    </Key>
+    <Property Name="ObjId" Type="Guid" Nullable="false" />
+    <Property Name="Cell_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

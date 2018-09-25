@@ -16,35 +16,37 @@ namespace cms
     {
         protected void Application_Start()
         {
+            DashboardConfig.RegisterService(RouteTable.Routes);
+            DashboardConfig.RegisterService(RouteTable.Routes);
             AreaRegistration.RegisterAllAreas();
 
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            
+
             ModelBinders.Binders.DefaultBinder = new DevExpress.Web.Mvc.DevExpressEditorsBinder();
 
             DevExpress.Web.ASPxWebControl.CallbackError += Application_Error;
         }
 
-        protected void Application_Error(object sender, EventArgs e) 
+        protected void Application_Error(object sender, EventArgs e)
         {
             Exception exception = System.Web.HttpContext.Current.Server.GetLastError();
             //TODO: Handle Exception
         }
 
-		protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)
-		{
-			var authCookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
-			if (authCookie != null)
-			{
-				FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
-				if (authTicket != null && !authTicket.Expired)
-				{
-					var roles = authTicket.UserData.Split(',');
-					HttpContext.Current.User = new System.Security.Principal.GenericPrincipal(new FormsIdentity(authTicket), roles);
-				}
-			}
-		}
-	}
+        protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)
+        {
+            var authCookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
+            if (authCookie != null)
+            {
+                FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+                if (authTicket != null && !authTicket.Expired)
+                {
+                    var roles = authTicket.UserData.Split(',');
+                    HttpContext.Current.User = new System.Security.Principal.GenericPrincipal(new FormsIdentity(authTicket), roles);
+                }
+            }
+        }
+    }
 }
