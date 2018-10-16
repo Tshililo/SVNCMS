@@ -769,3 +769,5 @@ C:\Users\Tshililo\Documents\Visual Studio 2015\Projects\cms\cms\bin\de\DevExpres
 C:\Users\Tshililo\Documents\Visual Studio 2015\Projects\cms\cms\bin\es\DevExpress.XtraGauges.v17.2.Presets.resources.dll
 C:\Users\Tshililo\Documents\Visual Studio 2015\Projects\cms\cms\bin\ja\DevExpress.XtraGauges.v17.2.Presets.resources.dll
 C:\Users\Tshililo\Documents\Visual Studio 2015\Projects\cms\cms\bin\ru\DevExpress.XtraGauges.v17.2.Presets.resources.dll
+C:\Users\Tshililo\Documents\Visual Studio 2015\Projects\cms\cms\bin\RestSharp.dll
+C:\Users\Tshililo\Documents\Visual Studio 2015\Projects\cms\cms\bin\WebMatrix.WebData.dll

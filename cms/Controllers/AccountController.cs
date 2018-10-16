@@ -92,14 +92,13 @@ namespace cms.Controllers {
                         return RedirectToAction("Index", "Home");
 
                 }
-
-                ViewBag.ErrorMessage = "Username or Password Incorrect.";
-                return View(model);
+                ViewData["EditError"] = "Username or Password Incorrect.";
+                return PartialView("Login");
             }
-       
 
-            ViewBag.ErrorMessage ="User Not Found";
-            return View(model);
+
+            ViewData["EditError"] = "User Not Found";
+            return PartialView("Login");
         }
 
 		private string GetUserRolesDto(string userName)

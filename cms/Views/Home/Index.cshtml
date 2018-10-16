@@ -43,6 +43,7 @@
 
             //get id of grave  table
             var GraveId = GravesGridViewPartial.GetRowKey(GravesGridViewPartial.GetFocusedRowIndex());
+
             $.ajax({
                 url: '@Url.Action("LinkToGraveAdd", "Home")',
                 type: "POST",
@@ -52,8 +53,8 @@
                 async: false,
                 data: { ApplicantObjId: ApplicantObjId, GraveId: GraveId },
                 success: function (data) {
-                    GVGraveOwner.PerformCallback();
-                    LinkToGravePopUp.Hide();
+                  //  GVGraveOwner.PerformCallback();
+                 //   LinkToGravePopUp.Hide();
 
                 },
                 error: function (xhr, textStatus, errorThrown) {
