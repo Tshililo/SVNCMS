@@ -35,6 +35,7 @@ namespace cms.Controllers
                         {
                             ObjId = Gr.ObjId,
                             Name = Gr.Name,
+                            CemeteryId = Gr.CemeteryId,
                             Longitude = Gr.Longitude,
                             Latitude = Gr.Latitude,
                             Status = Gr.Status,
@@ -80,24 +81,23 @@ namespace cms.Controllers
 
         public ActionResult GravesEdit(CemeteryOwnerDTO item)
         {
-            var model = db.Graves;
-            var exists = model.Where(c => c.Name == item.Name).SingleOrDefault();
-
-            Grave newItem = new Grave();
-            if (exists == null)
-            {
-                CopyProperties(item, newItem);
-                model.Add(newItem);
-                db.SaveChanges();
-            }
-            if (exists != null)
-            {
-                CopyProperties(item, exists);
-                this.UpdateModel(exists);
-                // model.Attach(userRole);
-                db.SaveChanges();
-
-            }
+                var modelRepo = db.Graves;
+                var exists = modelRepo.Where(c => c.ObjId == item.ObjId).SingleOrDefault();
+                Grave Tosave = new Grave();
+                if (exists == null)
+                {
+                    CopyProperties(item, Tosave);
+                    modelRepo.Add(Tosave);
+                    db.SaveChanges();
+                }
+                if (exists != null)
+                {
+                    CopyProperties(item, exists);
+                    this.UpdateModel(exists);
+                    // modelRepo.Attach(exists);
+                    db.SaveChanges();
+                }
+         
             var GravesRecords = GetCemeteries();
             // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter
             return PartialView("GridViewPartialView", GravesRecords);

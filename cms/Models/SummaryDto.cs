@@ -56,6 +56,7 @@ namespace cms.Models
             public string duDeathAge { get;  set; }
             public decimal? duAmount { get;  set; }
             public bool? duBurial_Status { get; set; }
+            public Guid ObjId { get;set; }
         }
 
         public List<SummaryLineDto> Lines

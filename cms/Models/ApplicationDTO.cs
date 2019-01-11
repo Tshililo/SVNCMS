@@ -11,8 +11,11 @@ namespace cms.Models
 	public class ApplicationsDTO
 	{
 		public System.Guid ObjId { get; set; }
-		public string IdNo { get; set; }
-		public string DeedName { get; set; }
+
+        [MaxLength(13)]
+        public string IdNo { get; set; }
+        [MaxLength(100)]
+        public string DeedName { get; set; }
 		public Nullable<System.DateTime> DateOfBirth { get; set; }
 		public Nullable<System.DateTime> DateOfBurial { get; set; }
 		public string PlaceOfIssue { get; set; }
@@ -24,7 +27,8 @@ namespace cms.Models
 		public Nullable<decimal> WideningOfGrave { get; set; }
 		public Nullable<decimal> UseOfANiche { get; set; }
 		public Nullable<decimal> BurialOfPauper { get; set; }
-		public Nullable<decimal> Amount { get; set; }
+        [MaxLength(10)]
+        public Nullable<decimal> Amount { get; set; }
 		public Nullable<System.DateTime> AmountPaidDate { get; set; }
 		public string ReceiptNo { get; set; }
 		public string PlaceOfBurial { get; set; }

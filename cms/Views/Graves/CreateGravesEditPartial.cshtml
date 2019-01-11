@@ -5,6 +5,7 @@
 @using DevExpress.Web.Mvc;
 
 @Html.HiddenFor(e => e.ObjId)
+@Html.HiddenFor(e => e.CemeteryId)
 
 @Html.DevExpress().FormLayout(formSettings =>
 {
@@ -23,26 +24,25 @@
 
     });
 
-    infoGroupItem1.Items.Add(e => e.CemeteryId, itemSettings =>
-    {
-        //  itemSettings.FieldName = "DeedGenderDropDown";
-        itemSettings.Caption = "Cemetery";
-        itemSettings.SetNestedContent(() =>
-        {
-            @Html.DevExpress().ComboBox(ComboBoxsettings =>
-            {
-                //  Gsettings.Name = "Id";
-                ComboBoxsettings.Name = "CemeteryId";
-                // ComboBoxsettings.Width = 500;
-                // ComboBoxsettings.SelectedIndex = 1;
-                ComboBoxsettings.Properties.TextField = "Name";
-                ComboBoxsettings.Properties.ValueField = "ObjId";
-                ComboBoxsettings.Properties.DropDownStyle = DropDownStyle.DropDown;
-                ComboBoxsettings.ShowModelErrors = true;
-            }
-            ).BindList(Model.CemeteryId != null? Model.CemeteryId : ViewData["GetCemeteries"]).Render();
-        });
-    });
+    //    infoGroupItem1.Items.Add(e => e.CemeteryName, itemSettings =>
+    //    {
+    //        //  itemSettings.FieldName = "DeedGenderDropDown";
+    //        itemSettings.Caption = "Cemetery";
+    //        itemSettings.SetNestedContent(() =>
+    //        {
+    //            @Html.DevExpress().ComboBox(ComboBoxsettings =>
+    //            {
+    //                //  Gsettings.Name = "Id";
+    //                ComboBoxsettings.Name = "CemeteryId";
+    //                // ComboBoxsettings.Width = 500;
+    //                // ComboBoxsettings.SelectedIndex = 1;
+    //                ComboBoxsettings.Properties.TextField = "Name";
+    //                ComboBoxsettings.Properties.ValueField = "ObjId";
+    //                ComboBoxsettings.Properties.DropDownStyle = DropDownStyle.DropDown;
+    //                ComboBoxsettings.ShowModelErrors = true;
+    //        }).BindList(ViewData["GetCemeteries"]).Bind(Model.CemeteryName).Render();
+    //    });
+    //});
 
 
     infoGroupItem1.Items.Add(i => i.Name, itemSettings =>

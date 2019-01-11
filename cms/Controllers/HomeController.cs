@@ -323,7 +323,8 @@ namespace cms.Controllers
 			if (exists != null)
 			{
                 CopyProperties(item, exists);
-				modelRepo.Attach(exists);
+                this.UpdateModel(exists);
+               // modelRepo.Attach(exists);
 				db.SaveChanges();
 			}
 
@@ -460,6 +461,7 @@ namespace cms.Controllers
             Guid graveId = Guid.Parse(GraveId);
 
             var model = db.GraveOwners;
+            var Gravesmodel = db.Graves;
             var exists = model.Where(c => c.ApplicationId == AppObjId && c.GraveId == graveId).SingleOrDefault();
 
             if (exists == null)
@@ -471,6 +473,17 @@ namespace cms.Controllers
 
                 model.Add(Item);
                 db.SaveChanges();
+
+                //Update Status of the Grave
+                var UpdateGrave = Gravesmodel.Where(c => c.ObjId == graveId).SingleOrDefault();
+
+                if (UpdateGrave != null)
+                {
+                    UpdateGrave.Status = "Used Space";
+                    Gravesmodel.Attach(UpdateGrave);
+                    db.SaveChanges();
+                }
+
             }
             if (exists != null)
             {
@@ -560,6 +573,8 @@ namespace cms.Controllers
 
         public ActionResult DualApplicationsUpdateEntryToForm(Guid ObjId, DualApplication model)
         {
+            ViewData["Mortuaries"] = GetMortuary();
+
             var DualApplicationsInfo = db.DualApplications.Where(s => s.ObjId == ObjId).FirstOrDefault();
 
             if (DualApplicationsInfo == null)
@@ -604,11 +619,40 @@ namespace cms.Controllers
 
         }
 
-        private List<DualApplication> GetDualApplicationDto(string headerObjId)
+
+
+        private List<ApplicationsDTO> GetDualApplicationDto(string headerObjId)
         {
             var model = db.DualApplications.Where(c => c.HeaderApplicationId.ToString() == headerObjId);
+            var Mortuaries = db.Mortuaries;
 
-            return model.ToList();
+            var query = from ap in model
+                        from mo in Mortuaries.Where(c => c.ObjId == ap.MortuaryId).DefaultIfEmpty()
+                        select new ApplicationsDTO
+                        {
+                            IdNo = ap.IdNo,
+                            ObjId = ap.ObjId,
+                            DeedName = ap.DeedName,
+                            Address = ap.Address,
+                            DateOfBirth = ap.DateOfBirth,
+                            DateOfBurial = ap.DateOfBurial,
+                            PlaceOfIssue = ap.PlaceOfIssue,
+                            AgeGroup = ap.AgeGroup,
+                            MortuaryName = mo.Name,
+                            MortuaryId = mo.ObjId,
+                            ReligionId = ap.ReligionId,
+                            DeedGender = ap.DeedGender,
+                            DeathAge = ap.DeathAge,
+                            CapturedDate = ap.CapturedDate,
+                            Burial_Status = ap.Burial_Status,
+                            UsualResidence = ap.UsualResidence,
+                            ReceiptNo = ap.ReceiptNo,
+                            CareTaker = ap.CareTaker,
+                            Amount = ap.Amount,
+                            AmountPaidDate = ap.AmountPaidDate
+                        };
+
+            return query.ToList();
         }
 
         [HttpPost, ValidateInput(false)]

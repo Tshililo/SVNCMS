@@ -152,14 +152,14 @@ namespace cms
             this.xrLabel25.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ForAttention]")});
             this.xrLabel25.Font = new System.Drawing.Font("Calibri", 9F);
-            this.xrLabel25.LocationFloat = new DevExpress.Utils.PointFloat(77.08334F, 160.1157F);
+            this.xrLabel25.LocationFloat = new DevExpress.Utils.PointFloat(125F, 160.1157F);
             this.xrLabel25.Name = "xrLabel25";
             this.xrLabel25.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel25.SizeF = new System.Drawing.SizeF(172.9167F, 15F);
+            this.xrLabel25.SizeF = new System.Drawing.SizeF(168.455F, 15F);
             this.xrLabel25.StylePriority.UseBorders = false;
             this.xrLabel25.StylePriority.UseFont = false;
             this.xrLabel25.StylePriority.UseTextAlignment = false;
-            this.xrLabel25.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.xrLabel25.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             this.xrLabel25.WordWrap = false;
             // 
             // TopMargin
@@ -789,7 +789,7 @@ namespace cms
             this.xrLabel10.LocationFloat = new DevExpress.Utils.PointFloat(0F, 160.1157F);
             this.xrLabel10.Name = "xrLabel10";
             this.xrLabel10.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel10.SizeF = new System.Drawing.SizeF(77.08334F, 15F);
+            this.xrLabel10.SizeF = new System.Drawing.SizeF(125F, 15.00002F);
             this.xrLabel10.StylePriority.UseBorders = false;
             this.xrLabel10.StylePriority.UseFont = false;
             this.xrLabel10.StylePriority.UseTextAlignment = false;
