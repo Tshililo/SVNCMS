@@ -23,6 +23,9 @@
 
         settings.CommandColumn.Visible = true;
         settings.CommandColumn.ShowSelectCheckbox = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+        settings.SettingsBehavior.AllowSelectSingleRowOnly = true;
+        settings.CommandColumn.ShowSelectCheckbox = true;
         //   settings.CommandColumn.Width = 40;
         settings.Settings.ShowStatusBar = GridViewStatusBarMode.Hidden;
 
@@ -110,7 +113,7 @@
         settings.Columns.Add(column => { column.FieldName = "ReceiptNo"; column.Caption = "Receipt No"; column.Width = Unit.Pixel(100); });
         settings.Columns.Add(column => { column.FieldName = "CareTaker"; column.Caption = "Capturer"; column.Width = Unit.Pixel(120); });
         settings.Columns.Add(column => { column.FieldName = "Amount"; column.Caption = "Amount"; column.Width = Unit.Pixel(130); });
-        settings.Columns.Add(column => { column.FieldName = "AmountPaidDate"; column.Caption = "Amount Paid Date"; column.PropertiesEdit.DisplayFormatString = "dd/MM/yyyy"; column.Width = Unit.Pixel(120); });
+        //     settings.Columns.Add(column => { column.FieldName = "AmountPaidDate"; column.Caption = "Amount Paid Date"; column.PropertiesEdit.DisplayFormatString = "dd/MM/yyyy"; column.Width = Unit.Pixel(120); });
 
 
 

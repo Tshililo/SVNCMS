@@ -16,11 +16,6 @@
           <Property Name="DateOfBurial" Type="datetime" />
           <Property Name="PlaceOfIssue" Type="nvarchar" MaxLength="30" />
           <Property Name="AgeGroup" Type="nvarchar" MaxLength="30" />
-          <Property Name="PurchaseOfGrave" Type="decimal" Precision="10" Scale="0" />
-          <Property Name="ReservationOfGrave" Type="decimal" Precision="10" Scale="0" />
-          <Property Name="OpenCloseGrave" Type="decimal" Precision="10" Scale="0" />
-          <Property Name="WideningOfGrave" Type="decimal" Precision="10" Scale="0" />
-          <Property Name="UseOfANiche" Type="decimal" Precision="10" Scale="0" />
           <Property Name="BurialOfPauper" Type="decimal" Precision="10" Scale="0" />
           <Property Name="Amount" Type="decimal" Precision="10" Scale="0" />
           <Property Name="AmountPaidDate" Type="datetime" />
@@ -30,7 +25,7 @@
           <Property Name="GrafNumber" Type="nvarchar" MaxLength="30" />
           <Property Name="ReligionId" Type="nvarchar" MaxLength="30" />
           <Property Name="AgeGroupId" Type="nvarchar" MaxLength="30" />
-          <Property Name="MortuaryId" Type="uniqueidentifier" />
+          <Property Name="MortuaryName" Type="nvarchar" MaxLength="100" />
           <Property Name="DeedGender" Type="nvarchar" MaxLength="30" />
           <Property Name="DeathAge" Type="nvarchar" MaxLength="30" />
           <Property Name="CauseOfDeath" Type="nvarchar" MaxLength="30" />
@@ -73,7 +68,7 @@
           <Property Name="GrafNumber" Type="nvarchar" MaxLength="30" />
           <Property Name="ReligionId" Type="nvarchar" MaxLength="30" />
           <Property Name="AgeGroupId" Type="nvarchar" MaxLength="30" />
-          <Property Name="MortuaryId" Type="uniqueidentifier" />
+          <Property Name="MortuaryName" Type="nvarchar" MaxLength="100" />
           <Property Name="DeedGender" Type="nvarchar" MaxLength="30" />
           <Property Name="DeathAge" Type="nvarchar" MaxLength="30" />
           <Property Name="CauseOfDeath" Type="nvarchar" MaxLength="30" />
@@ -184,41 +179,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="cmsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Application">
-          <Key>
-            <PropertyRef Name="ObjId" />
-          </Key>
-          <Property Name="ObjId" Type="Guid" Nullable="false" />
-          <Property Name="IdNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DeedName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
-          <Property Name="DateOfBurial" Type="DateTime" Precision="3" />
-          <Property Name="PlaceOfIssue" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="AgeGroup" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="PurchaseOfGrave" Type="Decimal" Precision="10" Scale="0" />
-          <Property Name="ReservationOfGrave" Type="Decimal" Precision="10" Scale="0" />
-          <Property Name="OpenCloseGrave" Type="Decimal" Precision="10" Scale="0" />
-          <Property Name="WideningOfGrave" Type="Decimal" Precision="10" Scale="0" />
-          <Property Name="UseOfANiche" Type="Decimal" Precision="10" Scale="0" />
-          <Property Name="BurialOfPauper" Type="Decimal" Precision="10" Scale="0" />
-          <Property Name="Amount" Type="Decimal" Precision="10" Scale="0" />
-          <Property Name="AmountPaidDate" Type="DateTime" Precision="3" />
-          <Property Name="ReceiptNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="PlaceOfBurial" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="CareTaker" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="GrafNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="ReligionId" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="AgeGroupId" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="MortuaryId" Type="Guid" />
-          <Property Name="DeedGender" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="DeathAge" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="CauseOfDeath" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="UsualResidence" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="CapturedDate" Type="DateTime" Precision="3" />
-          <Property Name="PurchaseCapturedDate" Type="DateTime" Precision="3" />
-          <Property Name="Burial_Status" Type="Boolean" />
-        </EntityType>
         <EntityType Name="Cemetery">
           <Key>
             <PropertyRef Name="ObjId" />
@@ -303,7 +263,6 @@
           <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityContainer Name="cmsEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Applications" EntityType="Self.Application" />
           <EntitySet Name="Cemeteries" EntityType="Self.Cemetery" />
           <EntitySet Name="Graves" EntityType="Self.Grave" />
           <EntitySet Name="GraveOwners" EntityType="Self.GraveOwner" />
@@ -314,6 +273,7 @@
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
           <EntitySet Name="PublicUsers" EntityType="cmsModel.PublicUser" />
+          <EntitySet Name="Applications" EntityType="cmsModel.Application" />
           <EntitySet Name="DualApplications" EntityType="cmsModel.DualApplication" />
         </EntityContainer>
         <EntityType Name="PublicUser">
@@ -322,6 +282,36 @@
           </Key>
           <Property Name="ObjId" Type="Guid" Nullable="false" />
           <Property Name="Cell_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="ObjId" />
+          </Key>
+          <Property Name="ObjId" Type="Guid" Nullable="false" />
+          <Property Name="IdNo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="DeedName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="DateOfBurial" Type="DateTime" Precision="3" />
+          <Property Name="PlaceOfIssue" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AgeGroup" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="BurialOfPauper" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="Amount" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="AmountPaidDate" Type="DateTime" Precision="3" />
+          <Property Name="ReceiptNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PlaceOfBurial" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CareTaker" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="GrafNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ReligionId" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AgeGroupId" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MortuaryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DeedGender" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="DeathAge" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CauseOfDeath" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UsualResidence" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CapturedDate" Type="DateTime" Precision="3" />
+          <Property Name="PurchaseCapturedDate" Type="DateTime" Precision="3" />
+          <Property Name="Burial_Status" Type="Boolean" />
         </EntityType>
         <EntityType Name="DualApplication">
           <Key>
@@ -349,7 +339,7 @@
           <Property Name="GrafNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="ReligionId" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="AgeGroupId" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="MortuaryId" Type="Guid" />
+          <Property Name="MortuaryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DeedGender" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="DeathAge" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="CauseOfDeath" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
@@ -365,42 +355,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="cmsModelStoreContainer" CdmEntityContainer="cmsEntities">
-          <EntitySetMapping Name="Applications">
-            <EntityTypeMapping TypeName="cmsModel.Application">
-              <MappingFragment StoreEntitySet="Application">
-                <ScalarProperty Name="ObjId" ColumnName="ObjId" />
-                <ScalarProperty Name="IdNo" ColumnName="IdNo" />
-                <ScalarProperty Name="DeedName" ColumnName="DeedName" />
-                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-                <ScalarProperty Name="DateOfBurial" ColumnName="DateOfBurial" />
-                <ScalarProperty Name="PlaceOfIssue" ColumnName="PlaceOfIssue" />
-                <ScalarProperty Name="AgeGroup" ColumnName="AgeGroup" />
-                <ScalarProperty Name="PurchaseOfGrave" ColumnName="PurchaseOfGrave" />
-                <ScalarProperty Name="ReservationOfGrave" ColumnName="ReservationOfGrave" />
-                <ScalarProperty Name="OpenCloseGrave" ColumnName="OpenCloseGrave" />
-                <ScalarProperty Name="WideningOfGrave" ColumnName="WideningOfGrave" />
-                <ScalarProperty Name="UseOfANiche" ColumnName="UseOfANiche" />
-                <ScalarProperty Name="BurialOfPauper" ColumnName="BurialOfPauper" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="AmountPaidDate" ColumnName="AmountPaidDate" />
-                <ScalarProperty Name="ReceiptNo" ColumnName="ReceiptNo" />
-                <ScalarProperty Name="PlaceOfBurial" ColumnName="PlaceOfBurial" />
-                <ScalarProperty Name="CareTaker" ColumnName="CareTaker" />
-                <ScalarProperty Name="GrafNumber" ColumnName="GrafNumber" />
-                <ScalarProperty Name="ReligionId" ColumnName="ReligionId" />
-                <ScalarProperty Name="AgeGroupId" ColumnName="AgeGroupId" />
-                <ScalarProperty Name="MortuaryId" ColumnName="MortuaryId" />
-                <ScalarProperty Name="DeedGender" ColumnName="DeedGender" />
-                <ScalarProperty Name="DeathAge" ColumnName="DeathAge" />
-                <ScalarProperty Name="CauseOfDeath" ColumnName="CauseOfDeath" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="UsualResidence" ColumnName="UsualResidence" />
-                <ScalarProperty Name="CapturedDate" ColumnName="CapturedDate" />
-                <ScalarProperty Name="PurchaseCapturedDate" ColumnName="PurchaseCapturedDate" />
-                <ScalarProperty Name="Burial_Status" ColumnName="Burial_Status" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Cemeteries">
             <EntityTypeMapping TypeName="cmsModel.Cemetery">
               <MappingFragment StoreEntitySet="Cemetery">
@@ -501,6 +455,37 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Applications">
+            <EntityTypeMapping TypeName="cmsModel.Application">
+              <MappingFragment StoreEntitySet="Application">
+                <ScalarProperty Name="Burial_Status" ColumnName="Burial_Status" />
+                <ScalarProperty Name="PurchaseCapturedDate" ColumnName="PurchaseCapturedDate" />
+                <ScalarProperty Name="CapturedDate" ColumnName="CapturedDate" />
+                <ScalarProperty Name="UsualResidence" ColumnName="UsualResidence" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CauseOfDeath" ColumnName="CauseOfDeath" />
+                <ScalarProperty Name="DeathAge" ColumnName="DeathAge" />
+                <ScalarProperty Name="DeedGender" ColumnName="DeedGender" />
+                <ScalarProperty Name="MortuaryName" ColumnName="MortuaryName" />
+                <ScalarProperty Name="AgeGroupId" ColumnName="AgeGroupId" />
+                <ScalarProperty Name="ReligionId" ColumnName="ReligionId" />
+                <ScalarProperty Name="GrafNumber" ColumnName="GrafNumber" />
+                <ScalarProperty Name="CareTaker" ColumnName="CareTaker" />
+                <ScalarProperty Name="PlaceOfBurial" ColumnName="PlaceOfBurial" />
+                <ScalarProperty Name="ReceiptNo" ColumnName="ReceiptNo" />
+                <ScalarProperty Name="AmountPaidDate" ColumnName="AmountPaidDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="BurialOfPauper" ColumnName="BurialOfPauper" />
+                <ScalarProperty Name="AgeGroup" ColumnName="AgeGroup" />
+                <ScalarProperty Name="PlaceOfIssue" ColumnName="PlaceOfIssue" />
+                <ScalarProperty Name="DateOfBurial" ColumnName="DateOfBurial" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="DeedName" ColumnName="DeedName" />
+                <ScalarProperty Name="IdNo" ColumnName="IdNo" />
+                <ScalarProperty Name="ObjId" ColumnName="ObjId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="DualApplications">
             <EntityTypeMapping TypeName="cmsModel.DualApplication">
               <MappingFragment StoreEntitySet="DualApplication">
@@ -512,7 +497,7 @@
                 <ScalarProperty Name="CauseOfDeath" ColumnName="CauseOfDeath" />
                 <ScalarProperty Name="DeathAge" ColumnName="DeathAge" />
                 <ScalarProperty Name="DeedGender" ColumnName="DeedGender" />
-                <ScalarProperty Name="MortuaryId" ColumnName="MortuaryId" />
+                <ScalarProperty Name="MortuaryName" ColumnName="MortuaryName" />
                 <ScalarProperty Name="AgeGroupId" ColumnName="AgeGroupId" />
                 <ScalarProperty Name="ReligionId" ColumnName="ReligionId" />
                 <ScalarProperty Name="GrafNumber" ColumnName="GrafNumber" />

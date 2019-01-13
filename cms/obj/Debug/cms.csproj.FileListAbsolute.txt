@@ -770,3 +770,4 @@ C:\Users\Tshililo\Documents\Visual Studio 2015\Projects\cms\cms\obj\Debug\cms.cs
 C:\Users\Tshililo\Documents\Visual Studio 2015\Projects\cms\cms\obj\Debug\cms.dll.licenses
 C:\Users\Tshililo\Documents\Visual Studio 2015\Projects\cms\cms\obj\Debug\cms.dll
 C:\Users\Tshililo\Documents\Visual Studio 2015\Projects\cms\cms\obj\Debug\cms.pdb
+C:\Users\Tshililo\Documents\Visual Studio 2015\Projects\cms\cms\obj\Debug\cms.csprojResolveAssemblyReference.cache

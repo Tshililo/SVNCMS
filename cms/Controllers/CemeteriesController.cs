@@ -43,7 +43,7 @@ namespace cms.Controllers
 
         public ActionResult CemeteryGridViewPartial()
         {
-            var CemeteriesRecords = db.Cemeteries.OrderBy(c => c.Name).ToList();
+            var CemeteriesRecords = db.Cemeteries.OrderBy(c => c.Name).ToList().OrderBy(c => c.Name);
             // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter
             return PartialView("GridViewPartialView", CemeteriesRecords);
         }

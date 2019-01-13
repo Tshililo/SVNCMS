@@ -68,7 +68,7 @@
     <Property Name="GrafNumber" Type="nvarchar" MaxLength="30" />
     <Property Name="ReligionId" Type="nvarchar" MaxLength="30" />
     <Property Name="AgeGroupId" Type="nvarchar" MaxLength="30" />
-    <Property Name="Mortuary" Type="nvarchar" MaxLength="30" />
+    <Property Name="MortuaryId" Type="uniqueidentifier" />
     <Property Name="DeedGender" Type="nvarchar" MaxLength="30" />
     <Property Name="DeathAge" Type="nvarchar" MaxLength="30" />
     <Property Name="CauseOfDeath" Type="nvarchar" MaxLength="30" />

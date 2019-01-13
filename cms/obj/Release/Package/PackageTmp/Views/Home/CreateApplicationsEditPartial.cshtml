@@ -31,12 +31,7 @@
     {
         itemSettings.Caption = "Id No";
         itemSettings.FieldName = "IdNo";
-        itemSettings.NestedExtensionType = FormLayoutNestedExtensionItemType.TextBox;
-        itemSettings.RequiredMarkDisplayMode = FieldRequiredMarkMode.Required;
-        TextBoxSettings textBoxSettings = (TextBoxSettings)itemSettings.NestedExtensionSettings;
-        itemSettings.RequiredMarkDisplayMode = FieldRequiredMarkMode.Required;
-        textBoxSettings.ShowModelErrors = true;
-        textBoxSettings.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithText;
+      
 
     });
 
@@ -203,7 +198,7 @@
         itemSettings.RequiredMarkDisplayMode = FieldRequiredMarkMode.Required;
         textBoxSettings.ShowModelErrors = true;
         textBoxSettings.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithText;
-        itemSettings.Caption = "Race";
+        itemSettings.Caption = "Population Group";
         itemSettings.SetNestedContent(() =>
         {
 

@@ -1,40 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="cmsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Application">
-    <Key>
-      <PropertyRef Name="ObjId" />
-    </Key>
-    <Property Name="ObjId" Type="Guid" Nullable="false" />
-    <Property Name="IdNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="DeedName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
-    <Property Name="DateOfBurial" Type="DateTime" Precision="3" />
-    <Property Name="PlaceOfIssue" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="AgeGroup" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="PurchaseOfGrave" Type="Decimal" Precision="10" Scale="0" />
-    <Property Name="ReservationOfGrave" Type="Decimal" Precision="10" Scale="0" />
-    <Property Name="OpenCloseGrave" Type="Decimal" Precision="10" Scale="0" />
-    <Property Name="WideningOfGrave" Type="Decimal" Precision="10" Scale="0" />
-    <Property Name="UseOfANiche" Type="Decimal" Precision="10" Scale="0" />
-    <Property Name="BurialOfPauper" Type="Decimal" Precision="10" Scale="0" />
-    <Property Name="Amount" Type="Decimal" Precision="10" Scale="0" />
-    <Property Name="AmountPaidDate" Type="DateTime" Precision="3" />
-    <Property Name="ReceiptNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="PlaceOfBurial" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="CareTaker" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="GrafNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="ReligionId" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="AgeGroupId" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="MortuaryId" Type="Guid" />
-    <Property Name="DeedGender" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="DeathAge" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="CauseOfDeath" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="UsualResidence" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="CapturedDate" Type="DateTime" Precision="3" />
-    <Property Name="PurchaseCapturedDate" Type="DateTime" Precision="3" />
-    <Property Name="Burial_Status" Type="Boolean" />
-  </EntityType>
   <EntityType Name="Cemetery">
     <Key>
       <PropertyRef Name="ObjId" />
@@ -119,7 +84,6 @@
     <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
   <EntityContainer Name="cmsEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Applications" EntityType="Self.Application" />
     <EntitySet Name="Cemeteries" EntityType="Self.Cemetery" />
     <EntitySet Name="Graves" EntityType="Self.Grave" />
     <EntitySet Name="GraveOwners" EntityType="Self.GraveOwner" />
@@ -130,6 +94,7 @@
     <EntitySet Name="Users" EntityType="Self.User" />
     <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
     <EntitySet Name="PublicUsers" EntityType="cmsModel.PublicUser" />
+    <EntitySet Name="Applications" EntityType="cmsModel.Application" />
     <EntitySet Name="DualApplications" EntityType="cmsModel.DualApplication" />
   </EntityContainer>
   <EntityType Name="PublicUser">
@@ -138,6 +103,36 @@
     </Key>
     <Property Name="ObjId" Type="Guid" Nullable="false" />
     <Property Name="Cell_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Application">
+    <Key>
+      <PropertyRef Name="ObjId" />
+    </Key>
+    <Property Name="ObjId" Type="Guid" Nullable="false" />
+    <Property Name="IdNo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="DeedName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+    <Property Name="DateOfBurial" Type="DateTime" Precision="3" />
+    <Property Name="PlaceOfIssue" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="AgeGroup" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="BurialOfPauper" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="Amount" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="AmountPaidDate" Type="DateTime" Precision="3" />
+    <Property Name="ReceiptNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PlaceOfBurial" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="CareTaker" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="GrafNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ReligionId" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="AgeGroupId" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="MortuaryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DeedGender" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="DeathAge" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="CauseOfDeath" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UsualResidence" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="CapturedDate" Type="DateTime" Precision="3" />
+    <Property Name="PurchaseCapturedDate" Type="DateTime" Precision="3" />
+    <Property Name="Burial_Status" Type="Boolean" />
   </EntityType>
   <EntityType Name="DualApplication">
     <Key>
@@ -165,7 +160,7 @@
     <Property Name="GrafNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <Property Name="ReligionId" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <Property Name="AgeGroupId" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="MortuaryId" Type="Guid" />
+    <Property Name="MortuaryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="DeedGender" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <Property Name="DeathAge" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <Property Name="CauseOfDeath" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />

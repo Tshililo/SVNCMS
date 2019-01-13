@@ -19,17 +19,16 @@
         settings.Caption = "Mortuary Information";
         //settings.RowSpan = 2;
         settings.ShowCaption = DefaultBoolean.True;
-        settings.ColCount = 2;
+        settings.ColCount = 1;
 
     });
 
+
     infoGroupItem1.Items.Add(i => i.Name, itemSettings =>
     {
-        //settings.Caption = "Load Reference";
-        //settings.FieldName = "LoadReference";
-        itemSettings.NestedExtensionType = FormLayoutNestedExtensionItemType.TextBox;
+        itemSettings.NestedExtensionType = FormLayoutNestedExtensionItemType.Memo;
         itemSettings.RequiredMarkDisplayMode = FieldRequiredMarkMode.Required;
-        TextBoxSettings textBoxSettings = (TextBoxSettings)itemSettings.NestedExtensionSettings;
+        MemoSettings textBoxSettings = (MemoSettings)itemSettings.NestedExtensionSettings;
         itemSettings.RequiredMarkDisplayMode = FieldRequiredMarkMode.Required;
         textBoxSettings.ShowModelErrors = true;
         textBoxSettings.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithText;
@@ -37,6 +36,7 @@
     });
 
 
+    
 
     var ButtonsGroupItem = formSettings.Items.AddGroupItem(Buttonsettings =>
     {

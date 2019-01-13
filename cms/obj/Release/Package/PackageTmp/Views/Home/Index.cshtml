@@ -43,6 +43,7 @@
 
             //get id of grave  table
             var GraveId = GravesGridViewPartial.GetRowKey(GravesGridViewPartial.GetFocusedRowIndex());
+
             $.ajax({
                 url: '@Url.Action("LinkToGraveAdd", "Home")',
                 type: "POST",
@@ -52,8 +53,8 @@
                 async: false,
                 data: { ApplicantObjId: ApplicantObjId, GraveId: GraveId },
                 success: function (data) {
-                    GVGraveOwner.PerformCallback();
-                    LinkToGravePopUp.Hide();
+                 GVGraveOwner.PerformCallback();
+                   LinkToGravePopUp.Hide();
 
                 },
                 error: function (xhr, textStatus, errorThrown) {
@@ -430,7 +431,7 @@
     settings.CallbackRouteValues = new { Controller = "Home", Action = "LinkToGraveLanding" };
     settings.LoadContentViaCallback = LoadContentViaCallback.OnFirstShow;
     settings.CloseAction = CloseAction.CloseButton;
-    settings.Width = Unit.Pixel(700);
+    settings.Width = Unit.Pixel(1200);
     settings.Height = Unit.Pixel(500);
     settings.ShowCloseButton = true;
     settings.ShowHeader = true;
@@ -444,7 +445,7 @@
     settings.ShowSizeGrip = ShowSizeGrip.True;
     settings.CloseAction = CloseAction.CloseButton;
     settings.PopupAction = PopupAction.LeftMouseClick;
-    settings.HeaderText = "Turtorials";
+    settings.HeaderText = "Graves";
     settings.ShowCloseButton = true;
 
 

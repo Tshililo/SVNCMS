@@ -3,9 +3,6 @@
 
 @using DevExpress.Web;
 @using DevExpress.Web.Mvc;
-@using cms.Models;
-
-@Html.HiddenFor(e => e.ObjId)
 
 @Html.HiddenFor(e => e.ObjId)
 
@@ -31,7 +28,7 @@
     {
         itemSettings.Caption = "Id No";
         itemSettings.FieldName = "IdNo";
-      
+
 
     });
 
@@ -113,27 +110,22 @@
     });
 
 
-    infoGroupItem1.Items.Add(e => e.MortuaryId, itemSettings =>
+    infoGroupItem1.Items.Add(e => e.MortuaryName, itemSettings =>
     {
-        itemSettings.NestedExtensionType = FormLayoutNestedExtensionItemType.TextBox;
-        itemSettings.RequiredMarkDisplayMode = FieldRequiredMarkMode.Required;
-        TextBoxSettings textBoxSettings = (TextBoxSettings)itemSettings.NestedExtensionSettings;
-        itemSettings.RequiredMarkDisplayMode = FieldRequiredMarkMode.Required;
-        textBoxSettings.ShowModelErrors = true;
-        textBoxSettings.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithText;
         itemSettings.Caption = "Mortuary";
         itemSettings.SetNestedContent(() =>
         {
             @Html.DevExpress().ComboBox(ComboBoxsettings =>
             {
 
-                ComboBoxsettings.Name = "MortuaryId";
+                ComboBoxsettings.Name = "MortuaryName";
                 ComboBoxsettings.Properties.DropDownStyle = DropDownStyle.DropDown;
                 ComboBoxsettings.Properties.TextField = "Name";
-                ComboBoxsettings.Properties.ValueField = "ObjId";
-                //   ComboBoxsettings.SelectedIndex = 1;
+                ComboBoxsettings.Properties.ValueField = "Name";
+                ComboBoxsettings.SelectedIndex = 0;
                 ComboBoxsettings.ShowModelErrors = true;
-            }).BindList(ViewData["Mortuaries"]).Render();
+                //  }).BindList(ViewData["Mortuaries"]).Render();
+            }).BindList(ViewData["Mortuaries"]).Bind(Model.MortuaryName).Render();
         });
     });
 
@@ -238,11 +230,11 @@
 
     });
 
-    Purchaseinfo.Items.Add(i => i.PurchaseCapturedDate, itemSettings =>
-    {
-        itemSettings.Caption = "Captured Date";
-        itemSettings.Name = "PurchaseCapturedDate";
-    });
+    //Purchaseinfo.Items.Add(i => i.AmountPaidDate, itemSettings =>
+    //{
+    //    itemSettings.Caption = "Captured Date";
+    //    itemSettings.Name = "PurchaseCapturedDate";
+    //});
     #endregion
 
     #region Buttons

@@ -21,11 +21,6 @@ namespace cms
         public Nullable<System.DateTime> DateOfBurial { get; set; }
         public string PlaceOfIssue { get; set; }
         public string AgeGroup { get; set; }
-        public Nullable<decimal> PurchaseOfGrave { get; set; }
-        public Nullable<decimal> ReservationOfGrave { get; set; }
-        public Nullable<decimal> OpenCloseGrave { get; set; }
-        public Nullable<decimal> WideningOfGrave { get; set; }
-        public Nullable<decimal> UseOfANiche { get; set; }
         public Nullable<decimal> BurialOfPauper { get; set; }
         public Nullable<decimal> Amount { get; set; }
         public Nullable<System.DateTime> AmountPaidDate { get; set; }
@@ -35,7 +30,7 @@ namespace cms
         public string GrafNumber { get; set; }
         public string ReligionId { get; set; }
         public string AgeGroupId { get; set; }
-        public Nullable<System.Guid> MortuaryId { get; set; }
+        public string MortuaryName { get; set; }
         public string DeedGender { get; set; }
         public string DeathAge { get; set; }
         public string CauseOfDeath { get; set; }

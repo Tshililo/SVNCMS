@@ -25,7 +25,6 @@ namespace cms
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Application> Applications { get; set; }
         public virtual DbSet<Cemetery> Cemeteries { get; set; }
         public virtual DbSet<Grave> Graves { get; set; }
         public virtual DbSet<GraveOwner> GraveOwners { get; set; }
@@ -36,6 +35,7 @@ namespace cms
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
         public virtual DbSet<PublicUser> PublicUsers { get; set; }
+        public virtual DbSet<Application> Applications { get; set; }
         public virtual DbSet<DualApplication> DualApplications { get; set; }
     }
 }

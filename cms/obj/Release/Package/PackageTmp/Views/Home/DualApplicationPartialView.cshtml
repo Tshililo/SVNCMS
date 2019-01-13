@@ -77,35 +77,46 @@
         settings.ClientSideEvents.Init = "function(s, e) { s.PerformCallback(); }";
         settings.ClientSideEvents.BeginCallback = "OnBeginCallback";
 
+
         settings.Columns.Add(column => { column.FieldName = "IdNo"; column.Caption = "Id No."; column.Width = Unit.Pixel(120); });
-        settings.Columns.Add(column => { column.FieldName = "DeedName"; column.Caption = "Deed Name"; column.Width = Unit.Pixel(120); });
+        settings.Columns.Add(column => { column.FieldName = "DeedName"; column.Caption = "Deed Name"; column.Width = Unit.Pixel(100); });
         settings.Columns.Add(column => { column.FieldName = "Address"; column.Caption = "Address"; column.Width = Unit.Pixel(100); });
-        settings.Columns.Add(columnCheck =>
-        {
-            columnCheck.FieldName = "Burial_Status";
-            columnCheck.Caption = "Buried?";
-            columnCheck.ColumnType = MVCxGridViewColumnType.CheckBox;
-            columnCheck.Width = Unit.Pixel(50);
-        });
         settings.Columns.Add(column => { column.FieldName = "ReligionId"; column.Caption = "Religion"; column.Width = Unit.Pixel(100); });
-        settings.Columns.Add(column => { column.FieldName = "DateOfBirth"; column.Caption = "Date Of Birth"; column.Width = Unit.Pixel(100); });
+        settings.Columns.Add(column => { column.FieldName = "DateOfBirth"; column.Caption = "Date Of Birth"; column.PropertiesEdit.DisplayFormatString = "dd/MM/yyyy"; column.PropertiesEdit.DisplayFormatString = "dd/MM/yyyy"; column.Width = Unit.Pixel(100); });
         settings.Columns.Add(column => { column.FieldName = "PlaceOfIssue"; column.Caption = "Place Of Issue"; column.Width = Unit.Pixel(130); });
         settings.Columns.Add(column => { column.FieldName = "AgeGroup"; column.Caption = "Age Group"; column.Width = Unit.Pixel(100); });
         settings.Columns.Add(column => { column.FieldName = "DeedGender"; column.Caption = "Deed Gender"; column.Width = Unit.Pixel(100); });
         settings.Columns.Add(column => { column.FieldName = "DeathAge"; column.Caption = "Death Age"; column.Width = Unit.Pixel(100); });
+
+        settings.Columns.Add(columnCheck =>
+        {
+            columnCheck.FieldName = "Burial_Status";
+            columnCheck.Caption = "Buried";
+            columnCheck.ColumnType = MVCxGridViewColumnType.CheckBox;
+            columnCheck.Width = Unit.Pixel(120);
+        });
+
+        settings.Columns.Add(column => { column.FieldName = "MortuaryName"; column.Caption = "Mortuary Name"; column.Width = Unit.Pixel(130); });
         settings.Columns.Add(column => { column.FieldName = "PlaceOfBurial"; column.Caption = "Place Of Burial"; column.Width = Unit.Pixel(130); });
+        settings.Columns.Add(column => { column.FieldName = "DateOfBurial"; column.Caption = "Date Of Burial"; column.PropertiesEdit.DisplayFormatString = "dd/MM/yyyy"; column.Width = Unit.Pixel(130); });
+
+        settings.Columns.Add(column => { column.FieldName = "UsualResidence"; column.Caption = "Usual Residence"; column.Width = Unit.Pixel(100); });
+        settings.Columns.Add(column => { column.FieldName = "CapturedDate"; column.Caption = "Captured Date"; column.PropertiesEdit.DisplayFormatString = "dd/MM/yyyy"; column.Width = Unit.Pixel(100); });
 
         settings.Columns.Add(column => { column.FieldName = "ReceiptNo"; column.Caption = "Receipt No"; column.Width = Unit.Pixel(100); });
-        settings.Columns.Add(column => { column.FieldName = "CareTaker"; column.Caption = "Care Taker"; column.Width = Unit.Pixel(120); });
-        settings.Columns.Add(column => { column.FieldName = "PurchaseOfGrave"; column.Caption = "Purchase Of Grave"; column.Width = Unit.Pixel(120); });
-        settings.Columns.Add(column => { column.FieldName = "ReservationOfGrave"; column.Caption = "Reservation Of Grave"; column.Width = Unit.Pixel(120); });
-        settings.Columns.Add(column => { column.FieldName = "OpenCloseGrave"; column.Caption = "Open Close Grave"; column.Width = Unit.Pixel(100); });
-
-        settings.Columns.Add(column => { column.FieldName = "UseOfANiche"; column.Caption = "Use Of ANiche"; column.Width = Unit.Pixel(120); });
-        settings.Columns.Add(column => { column.FieldName = "BurialOfPauper"; column.Caption = "Burial Of Pauper"; column.Width = Unit.Pixel(120); });
+        settings.Columns.Add(column => { column.FieldName = "CareTaker"; column.Caption = "Capturer"; column.Width = Unit.Pixel(120); });
         settings.Columns.Add(column => { column.FieldName = "Amount"; column.Caption = "Amount"; column.Width = Unit.Pixel(130); });
-        settings.Columns.Add(column => { column.FieldName = "AmountPaidDate"; column.Caption = "Paid Date"; column.PropertiesEdit.DisplayFormatString = "dd/MM/yyyy"; column.Width = Unit.Pixel(120); });
+        settings.Columns.Add(column => { column.FieldName = "AmountPaidDate"; column.Caption = "Amount Paid Date"; column.PropertiesEdit.DisplayFormatString = "dd/MM/yyyy"; column.Width = Unit.Pixel(120); });
 
+
+
+        settings.FormatConditions.AddTopBottom(c =>
+        {
+            c.FieldName = "Amount";
+            c.Rule = GridTopBottomRule.BottomPercent;
+            //   c.Threshold = 20;
+            c.Format = GridConditionHighlightFormat.RedText;
+        });
 
 
         settings.Settings.ShowHeaderFilterButton = true;

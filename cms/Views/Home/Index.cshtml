@@ -53,8 +53,8 @@
                 async: false,
                 data: { ApplicantObjId: ApplicantObjId, GraveId: GraveId },
                 success: function (data) {
-                  //  GVGraveOwner.PerformCallback();
-                 //   LinkToGravePopUp.Hide();
+                 GVGraveOwner.PerformCallback();
+                   LinkToGravePopUp.Hide();
 
                 },
                 error: function (xhr, textStatus, errorThrown) {
@@ -130,15 +130,15 @@
             return;
         }
 
-        if (datefrom == null)
-        {
-            alert('Please enter Date From');
-            return;
-        }
-        if (dateto == null) {
-            alert('Please enter Date To');
-            return;
-        }
+        //if (datefrom == null)
+        //{
+        //    alert('Please enter Date From');
+        //    return;
+        //}
+        //if (dateto == null) {
+        //    alert('Please enter Date To');
+        //    return;
+        //}
 
 
      //   alert(passed_params);
@@ -431,7 +431,7 @@
     settings.CallbackRouteValues = new { Controller = "Home", Action = "LinkToGraveLanding" };
     settings.LoadContentViaCallback = LoadContentViaCallback.OnFirstShow;
     settings.CloseAction = CloseAction.CloseButton;
-    settings.Width = Unit.Pixel(700);
+    settings.Width = Unit.Pixel(1200);
     settings.Height = Unit.Pixel(500);
     settings.ShowCloseButton = true;
     settings.ShowHeader = true;

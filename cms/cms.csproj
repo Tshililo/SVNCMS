@@ -359,6 +359,10 @@
     <Content Include="Views\SiteVisitAudit\CreateSiteVisitAuditEditPartial.cshtml" />
     <Content Include="Views\SiteVisitAudit\SiteVisitAuditMenu.cshtml" />
     <Content Include="Views\SiteVisitAudit\GridViewPartialView.cshtml" />
+    <Content Include="Views\Mortuary\CreateMortuaryEditPartial.cshtml" />
+    <Content Include="Views\Mortuary\GridViewPartialView.cshtml" />
+    <Content Include="Views\Mortuary\Index.cshtml" />
+    <Content Include="Views\Mortuary\MortuaryMenu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -436,10 +440,6 @@
     <Content Include="Views\Downloads\_FileManagerPartial.cshtml" />
     <Content Include="Views\Downloads\Index.cshtml" />
     <Content Include="Views\TandCs\Index.cshtml" />
-    <Content Include="Views\Mortuary\MortuaryMenu.cshtml" />
-    <Content Include="Views\Mortuary\CreateMortuaryEditPartial.cshtml" />
-    <Content Include="Views\Mortuary\GridViewPartialView.cshtml" />
-    <Content Include="Views\Mortuary\Index.cshtml" />
     <Content Include="Views\Home\DualApplicationLanding.cshtml" />
     <Content Include="Views\Home\ImportApplication.cshtml" />
     <Content Include="Views\Home\ReportOptions.cshtml" />

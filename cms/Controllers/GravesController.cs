@@ -74,7 +74,7 @@ namespace cms.Controllers
 
         public ActionResult GravesGridViewPartial()
         {
-            var GravesRecords = GetCemeteries();
+            var GravesRecords = GetCemeteries().OrderBy(c => c.CemeteryName).ThenBy(c => c.Name);
             // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter
             return PartialView("GridViewPartialView", GravesRecords);
         }
@@ -98,7 +98,7 @@ namespace cms.Controllers
                     db.SaveChanges();
                 }
          
-            var GravesRecords = GetCemeteries();
+            var GravesRecords = GetCemeteries().OrderBy(c => c.CemeteryName).ThenBy(c => c.Name);
             // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter
             return PartialView("GridViewPartialView", GravesRecords);
 
@@ -124,7 +124,7 @@ namespace cms.Controllers
                     ViewData["EditError"] = e.Message;
                 }
             }
-            var GravesRecords = GetCemeteries();
+            var GravesRecords = GetCemeteries().OrderBy(c => c.CemeteryName).ThenBy(c => c.Name);
             // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter
             return PartialView("GridViewPartialView", GravesRecords);
         }

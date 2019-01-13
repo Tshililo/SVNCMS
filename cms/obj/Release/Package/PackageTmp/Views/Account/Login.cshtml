@@ -1,63 +1,204 @@
-@{ Layout = "~/Views/Shared/_lightLayout.cshtml"; }
+@{ Layout = null; }
 @model cms.Models.LoginModel
+
+@{ Layout = "~/Views/Shared/_rootLayout.cshtml"; }
+
+@*<style>
+    #outPopUp {
+      position:relative;
+      z-index: 15;
+      top: 53%;
+      left: 50%;
+      margin: -100px 0 0 -150px;
+    }
+
+        .butt {
+            background-color: #0026ff; /* Green */
+            border: none;
+            color: white;
+            padding: 5px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+    #ImageLogo {
+      position: absolute;
+      z-index: 15;
+      top: 20%;
+      left: 45%;
+      margin: -100px 0 0 -150px;
+    }
+    </style>
+
+    <div id="ImageLogo">
+        <h2>
+            <img src="~/content/Images/X-PRESSIONS.png" width="450" height="350"><br />
+        </h2>
+        </div>
+    <div id="outPopUp">
+
+            @using (Html.BeginForm())
+            {
+
+                @Html.AntiForgeryToken()
+
+                @Html.DevExpress().TextBoxFor(m => m.UserName, tb =>
+    {
+        tb.Properties.Caption = "User Name";
+        tb.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
+        tb.ShowModelErrors = true;
+        tb.Properties.ValidationSettings.Display = Display.Dynamic;
+        tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.Text;
+        tb.Properties.ValidationSettings.ErrorTextPosition = ErrorTextPosition.Bottom;
+    }).GetHtml()
+
+                @Html.DevExpress().TextBoxFor(m => m.Password, tb =>
+           {
+               tb.Properties.Caption = "Password";
+               tb.Properties.Password = true;
+               tb.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
+               tb.ShowModelErrors = true;
+               tb.Properties.ValidationSettings.Display = Display.Dynamic;
+               tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.Text;
+               tb.Properties.ValidationSettings.ErrorTextPosition = ErrorTextPosition.Bottom;
+           }).GetHtml()
+
+                <br />
+                @Html.DevExpress().Button(settings =>
+                       {
+                           settings.Name = "Button";
+                           settings.Text = "Login";
+                           settings.Styles.Native = true;
+                           settings.UseSubmitBehavior = true;
+                           settings.ControlStyle.CssClass = "butt";
+                           settings.Width = Unit.Pixel(160);
+                           settings.Height = Unit.Pixel(35);
+
+
+                       }).GetHtml()
+
+
+               @Html.DevExpress().Button(b =>
+    {
+        b.Name = "Button";
+        b.Text = "Log On";
+        b.UseSubmitBehavior = true;
+    }).GetHtml()*@
+
+@*}
+        <p style="color:red">@ViewBag.ErrorMessage</p>
+
+    </div>*@
 
 
 <style>
-#outPopUp {
-  position: absolute;
-  z-index: 15;
-  top: 30%;
-  left: 50%;
-  margin: -100px 0 0 -150px;
-}
+    #outPopUp {
+        position: relative;
+        z-index: 15;
+        top: 23%;
+        left: 40%;
+      
+    }
+
+    #ImageLogo {
+        margin: -100px 0 0 -150px;
+    }
 </style>
 
 
-
 <div id="outPopUp">
-    <h2>
-        <img src="~/content/Images/Makhado.jpg"><br />
-    </h2>
-
 @using (Html.BeginForm())
 {
-
     @Html.AntiForgeryToken()
 
-    @Html.DevExpress().TextBoxFor(m => m.UserName, tb =>
+    @Html.DevExpress().FormLayout(formSettings =>
 {
-    tb.Properties.Caption = "User Name";
-    tb.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
-    tb.ShowModelErrors = true;
-    tb.Properties.ValidationSettings.Display = Display.Dynamic;
-    tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.Text;
-    tb.Properties.ValidationSettings.ErrorTextPosition = ErrorTextPosition.Bottom;
-}).GetHtml()
+    formSettings.Name = "LoginFeatureLayout";
+    formSettings.AlignItemCaptionsInAllGroups = true;
+    formSettings.ColCount = 1;
+
+
+    @Html.DevExpress().Image(
+    settings =>
+    {
+        settings.Name = "Logo";
+
+        settings.ImageUrl = "~/content/Images/Makhado.jpg";
+        settings.Properties.ImageAlign = ImageAlign.Middle;
+    }
+    ).Render();
+
+
+
+
+    @Html.DevExpress().TextBoxFor(m => m.UserName, tb =>
+    {
+        tb.Properties.Caption = "UserName";
+        tb.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
+        tb.ShowModelErrors = true;
+        tb.Width = 200;
+        tb.Height = 20;
+    }).Render();
+
 
     @Html.DevExpress().TextBoxFor(m => m.Password, tb =>
-{
-    tb.Properties.Caption = "Password";
-    tb.Properties.Password = true;
-    tb.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
-    tb.ShowModelErrors = true;
-    tb.Properties.ValidationSettings.Display = Display.Dynamic;
-    tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.Text;
-    tb.Properties.ValidationSettings.ErrorTextPosition = ErrorTextPosition.Bottom;
-}).GetHtml()
+    {
+        tb.Properties.Caption = "Password";
+        tb.Properties.Password = true;
+        tb.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
+        tb.ShowModelErrors = true;
+        tb.Properties.ValidationSettings.Display = Display.Dynamic;
+        tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.Text;
+        tb.Properties.ValidationSettings.ErrorTextPosition = ErrorTextPosition.Bottom;
+        tb.Width = 200;
+        tb.Height = 20;
+    }).Render();
+
+
+}).Bind(Model).GetHtml();
+
 
     <br />
- @Html.DevExpress().Button(b =>
-{
-    b.Name = "Button";
-    b.Text = "Log On";
-    b.UseSubmitBehavior = true;
-}).GetHtml()
+    Html.DevExpress().Button(btnSettings =>
+    {
+        btnSettings.Name = "Button";
+        btnSettings.Text = "Login";
+        btnSettings.Styles.Native = true;
+        btnSettings.UseSubmitBehavior = true;
+        //  btnSettings.ControlStyle.CssClass = "butt";
+        btnSettings.Width = Unit.Pixel(200);
+        btnSettings.Height = Unit.Pixel(35);
+    }).Render();
+
+    <br />
+    <br />
+    if (ViewData["EditError"] != null)
+    {
+
+        @Html.DevExpress().Label(
+            settings =>
+            {
+                settings.Name = "ErrorMessage";
+                settings.Text = ViewData["EditError"].ToString();
+                settings.Width = Unit.Pixel(200);
+                settings.Height = Unit.Pixel(35);
+            }).GetHtml();
+    }
 
 }
-    <p style="color:red">@ViewBag.ErrorMessage</p>
-
 </div>
 
- 
+
+
+
+
+
+
+
+
+
 
 

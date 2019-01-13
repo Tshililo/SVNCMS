@@ -232,7 +232,7 @@ namespace cms.Controllers
 		#region BurialRecordApplication
 		public ActionResult ApplicationsUpdateEntryToForm(Guid ObjId)
 		{
-			ViewData["Mortuaries"] = GetMortuary();
+			ViewData["Mortuaries"] = GetMortuary().OrderBy(c => c.Name);
 
             var Applications = db.Applications;
 
@@ -241,7 +241,7 @@ namespace cms.Controllers
             ViewData["Mortuaries"] = Mortuaries.ToList();
 
 
-           var mymodel = ReadApplication();
+           var mymodel = ReadApplication().OrderBy(c => c.IdNo);
 
             if (mymodel != null)
             {
@@ -256,7 +256,10 @@ namespace cms.Controllers
 
                 if (ApplicationsInfo != null)
                 {
+                   // ApplicationsInfo.Amount = ApplicationsInfo.Amount == 0 ? 0 : ApplicationsInfo.Amount;
+
                     return PartialView("CreateApplicationsEditPartial", ApplicationsInfo);
+
                 }
 
             }
@@ -270,7 +273,7 @@ namespace cms.Controllers
 
         public ActionResult ApplicationsGridViewPartial()
         {
-            var query = ReadApplication();
+            var query = ReadApplication().OrderBy(c => c.IdNo).ThenBy(c => c.Address);
             // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter
             return PartialView("GridViewPartialView", query);
         }
@@ -281,7 +284,7 @@ namespace cms.Controllers
             var Mortuaries = db.Mortuaries;
 
             var query =  from ap in model
-                   from mo in Mortuaries.Where(c => c.ObjId == ap.MortuaryId).DefaultIfEmpty()
+                 //  from mo in Mortuaries.Where(c => c.ObjId == ap.MortuaryId).DefaultIfEmpty()
                    select new ApplicationsDTO
                    {
                        IdNo = ap.IdNo,
@@ -292,8 +295,8 @@ namespace cms.Controllers
                        DateOfBurial = ap.DateOfBurial,
                        PlaceOfIssue = ap.PlaceOfIssue,
                        AgeGroup = ap.AgeGroup,
-                       MortuaryName = mo.Name,
-                       MortuaryId = mo.ObjId,
+                       MortuaryName = ap.MortuaryName,
+                      // MortuaryId = mo.ObjId,
                        ReligionId = ap.ReligionId,
                        DeedGender = ap.DeedGender,
                        DeathAge = ap.DeathAge,
@@ -322,8 +325,13 @@ namespace cms.Controllers
 			}
 			if (exists != null)
 			{
+
+                //exists.MortuaryId = item.MortuaryId == null ? exists.MortuaryId : item.MortuaryId;
+
                 CopyProperties(item, exists);
+
                 this.UpdateModel(exists);
+
                // modelRepo.Attach(exists);
 				db.SaveChanges();
 			}
@@ -480,7 +488,8 @@ namespace cms.Controllers
                 if (UpdateGrave != null)
                 {
                     UpdateGrave.Status = "Used Space";
-                    Gravesmodel.Attach(UpdateGrave);
+                  //  Gravesmodel.Attach(UpdateGrave);
+                    this.UpdateModel(UpdateGrave);
                     db.SaveChanges();
                 }
 
@@ -493,7 +502,7 @@ namespace cms.Controllers
                 db.SaveChanges();
 
             }
-            var BurialRecords = db.Applications.ToList();
+            var BurialRecords = ReadApplication();
             // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter
             return PartialView("GridViewPartialView", BurialRecords);
 
@@ -519,11 +528,6 @@ namespace cms.Controllers
                              ReceiptNo = app.ReceiptNo,
                              GrafNumber = app.GrafNumber,
                              CareTaker = app.CareTaker,
-                             PurchaseOfGrave = app.PurchaseOfGrave,
-                             ReservationOfGrave = app.ReservationOfGrave,
-                             OpenCloseGrave = app.OpenCloseGrave,
-                             WideningOfGrave = app.WideningOfGrave,
-                             UseOfANiche = app.WideningOfGrave,
                              BurialOfPauper = app.BurialOfPauper,
                              Amount = app.Amount,
                              AmountPaidDate = app.AmountPaidDate
@@ -537,6 +541,7 @@ namespace cms.Controllers
         public ActionResult GraveOwnerDelete(GraveOwnerDto item, string headerObjId)
         {
             var model = db.GraveOwners;
+            var modelGraves = db.Graves;
 
             if (item.ObjId != null)
             {
@@ -546,6 +551,16 @@ namespace cms.Controllers
                     if (GraveOwner != null)
                         model.Remove(GraveOwner);
                     db.SaveChanges();
+
+                    var UpdateGrave = modelGraves.Where(c => c.ObjId == GraveOwner.GraveId).SingleOrDefault();
+
+                    if (UpdateGrave != null)
+                    {
+                        UpdateGrave.Status = "Open Space";
+                        //  Gravesmodel.Attach(UpdateGrave);
+                        this.UpdateModel(UpdateGrave);
+                        db.SaveChanges();
+                    }
                 }
                 catch (Exception e)
                 {
@@ -571,16 +586,18 @@ namespace cms.Controllers
             return PartialView("DualApplicationPartialView", model.ToList());
         }
 
-        public ActionResult DualApplicationsUpdateEntryToForm(Guid ObjId, DualApplication model)
+        public ActionResult DualApplicationsUpdateEntryToForm(Guid ObjId, string headerObjId)
         {
-            ViewData["Mortuaries"] = GetMortuary();
+            ViewData["Mortuaries"] = GetMortuary().OrderBy(c => c.Name);
 
-            var DualApplicationsInfo = db.DualApplications.Where(s => s.ObjId == ObjId).FirstOrDefault();
+            var DualApplicationsInfo = GetDualApplicationDto(headerObjId).Where(s => s.ObjId == ObjId).FirstOrDefault();
 
             if (DualApplicationsInfo == null)
             {
-                model.ObjId = ObjId;
-                return PartialView("DualCreateApplicationsEditPartial", model);
+                DualApplicationsDTO NewItem = new DualApplicationsDTO();
+
+                NewItem.ObjId = ObjId;
+                return PartialView("DualCreateApplicationsEditPartial", NewItem);
             }
 
             if (DualApplicationsInfo != null)
@@ -592,22 +609,27 @@ namespace cms.Controllers
 
         }
 
-        public ActionResult AddDualApplication(string headerObjId, DualApplication Item)
+        public ActionResult AddDualApplication(string headerObjId, DualApplicationsDTO Item)
         {
             Guid AppObjId = Guid.Parse(headerObjId);
+
+
+            DualApplication ToSave = new DualApplication();
 
             var model = db.DualApplications;
             var exists = model.Where(c => c.ObjId == Item.ObjId).SingleOrDefault();
 
             if (exists == null)
             {
-                Item.HeaderApplicationId = AppObjId;
-                model.Add(Item);
+                CopyProperties(Item, ToSave);
+                ToSave.HeaderApplicationId = AppObjId;
+                model.Add(ToSave);
                 db.SaveChanges();
             }
             if (exists != null)
             {
-
+                CopyProperties(Item, exists);
+                exists.HeaderApplicationId = AppObjId;
                 this.UpdateModel(exists);
                 // model.Attach(userRole);
                 db.SaveChanges();
@@ -621,14 +643,14 @@ namespace cms.Controllers
 
 
 
-        private List<ApplicationsDTO> GetDualApplicationDto(string headerObjId)
+        private List<DualApplicationsDTO> GetDualApplicationDto(string headerObjId)
         {
             var model = db.DualApplications.Where(c => c.HeaderApplicationId.ToString() == headerObjId);
             var Mortuaries = db.Mortuaries;
 
             var query = from ap in model
-                        from mo in Mortuaries.Where(c => c.ObjId == ap.MortuaryId).DefaultIfEmpty()
-                        select new ApplicationsDTO
+                       // from mo in Mortuaries.Where(c => c.ObjId == ap.MortuaryId).DefaultIfEmpty()
+                        select new DualApplicationsDTO
                         {
                             IdNo = ap.IdNo,
                             ObjId = ap.ObjId,
@@ -638,8 +660,7 @@ namespace cms.Controllers
                             DateOfBurial = ap.DateOfBurial,
                             PlaceOfIssue = ap.PlaceOfIssue,
                             AgeGroup = ap.AgeGroup,
-                            MortuaryName = mo.Name,
-                            MortuaryId = mo.ObjId,
+                            MortuaryName = ap.MortuaryName,
                             ReligionId = ap.ReligionId,
                             DeedGender = ap.DeedGender,
                             DeathAge = ap.DeathAge,
@@ -699,7 +720,8 @@ namespace cms.Controllers
             return null;
         }
 
-	}
+       
+    }
     public class FileLoadingControllerUploadControlSettings
     {
         public static DevExpress.Web.UploadControlValidationSettings UploadValidationSettings = new DevExpress.Web.UploadControlValidationSettings()

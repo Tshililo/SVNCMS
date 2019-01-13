@@ -51,42 +51,8 @@ namespace cms
             var DualApplications = db.DualApplications;
             var Mortuaries = db.Mortuaries;
 
-            if (Showdual == true)
-            {
-                var ShowDual = (from ur in Applications
-                                from mo in Mortuaries.Where(c => c.ObjId == ur.MortuaryId).DefaultIfEmpty()
-                              from du in DualApplications.Where(c => c.HeaderApplicationId == ur.ObjId).DefaultIfEmpty()
-                              select new Models.SummaryDto.SummaryLineDto
-                              {
-                                  ObjId = ur.ObjId,
-                                  IdNo = ur.IdNo,
-                                  DeedName = ur.DeedName,
-                                  DateOfBirth = ur.DateOfBirth,
-                                  forAttention = forAttention,
-                                  DateOfBurial = ur.DateOfBurial,
-                                  PlaceOfIssue = ur.PlaceOfIssue,
-                                  AgeGroup = ur.AgeGroup,
-                                  MortuaryName = mo.Name,
-                                  ReligionId = ur.ReligionId,
-                                  DeedGender = ur.DeedGender,
-                                  DeathAge = ur.DeathAge,
-                                  Burial_Status = ur.Burial_Status,
-                                  Amount = ur.Amount,
-                                  ////////////////////////////////////////////////
-                                  duIdNo = du.IdNo,
-                                  duDeedName = du.DeedName,
-                                  duAgeGroup = du.AgeGroup,
-                                  duDeathAge = du.DeathAge,
-                                  duAmount = du.Amount,
-                                  duBurial_Status = du.Burial_Status,
-                              }).Where(c => c.ObjId == objId).OrderBy(c => c.DateOfBurial);
-                return ShowDual.ToList();
-            }
-
-            if (Showdual == false)
-            {
-                var NoDual = (from ur in Applications
-                             from mo in Mortuaries.Where(c => c.ObjId == ur.MortuaryId).DefaultIfEmpty()
+                var repo = (from ur in Applications
+                           //  from mo in Mortuaries.Where(c => c.ObjId == ur.MortuaryId).DefaultIfEmpty()
                              from du in DualApplications.Where(c => c.HeaderApplicationId == ur.ObjId).DefaultIfEmpty()
                              select new Models.SummaryDto.SummaryLineDto
                              {
@@ -98,7 +64,7 @@ namespace cms
                                  DateOfBurial = ur.DateOfBurial,
                                  PlaceOfIssue = ur.PlaceOfIssue,
                                  AgeGroup = ur.AgeGroup,
-                                 MortuaryName = mo.Name,
+                                 MortuaryName = ur.MortuaryName,
                                  ReligionId = ur.ReligionId,
                                  DeedGender = ur.DeedGender,
                                  DeathAge = ur.DeathAge,
@@ -111,10 +77,24 @@ namespace cms
                                  duDeathAge = du.DeathAge,
                                  duAmount = du.Amount,
                                  duBurial_Status = du.Burial_Status,
-                             }).Where(c => c.DateOfBurial >= dateFrom && c.DateOfBurial <= dateTo).OrderBy(c => c.DateOfBurial).ThenBy(c => c.AgeGroup);
-                return NoDual.ToList();
+                             }).OrderBy(c => c.DateOfBurial).ThenBy(c => c.AgeGroup).ToList();
+            
+            if (Showdual == true)
+            {
+                dateFrom = null;
+                dateTo = null;
             }
-            return null;
+
+            if (dateFrom != null && dateTo != null)
+            {
+                repo.Where(c => c.DateOfBurial >= dateFrom && c.DateOfBurial <= dateTo);
+            }
+
+            if (Showdual == true)
+            {
+                repo.FirstOrDefault();
+            }
+            return repo;
 
            
         }
