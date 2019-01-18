@@ -65,7 +65,7 @@
             @Html.DevExpress().ComboBox(ComboBoxsettings =>
             {
                 ComboBoxsettings.Name = "DeedGender";
-                //  ComboBoxsettings.SelectedIndex = 0;
+                ComboBoxsettings.SelectedIndex = 1;
                 ComboBoxsettings.Properties.Items.Add("Male");
                 ComboBoxsettings.Properties.Items.Add("Female");
                 ComboBoxsettings.Properties.DropDownStyle = DropDownStyle.DropDown;
@@ -122,7 +122,7 @@
                 ComboBoxsettings.Properties.DropDownStyle = DropDownStyle.DropDown;
                 ComboBoxsettings.Properties.TextField = "Name";
                 ComboBoxsettings.Properties.ValueField = "Name";
-                ComboBoxsettings.SelectedIndex = 0;
+                ComboBoxsettings.SelectedIndex = 1;
                 ComboBoxsettings.ShowModelErrors = true;
                 //  }).BindList(ViewData["Mortuaries"]).Render();
             }).BindList(ViewData["Mortuaries"]).Bind(Model.MortuaryName).Render();
@@ -136,12 +136,7 @@
 
     infoGroupItem1.Items.Add(e => e.AgeGroup, itemSettings =>
     {
-        itemSettings.NestedExtensionType = FormLayoutNestedExtensionItemType.TextBox;
-        itemSettings.RequiredMarkDisplayMode = FieldRequiredMarkMode.Required;
-        TextBoxSettings textBoxSettings = (TextBoxSettings)itemSettings.NestedExtensionSettings;
-        itemSettings.RequiredMarkDisplayMode = FieldRequiredMarkMode.Required;
-        textBoxSettings.ShowModelErrors = true;
-        textBoxSettings.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithText;
+
         itemSettings.Caption = "Age Group";
         itemSettings.SetNestedContent(() =>
         {
@@ -149,7 +144,7 @@
             @Html.DevExpress().ComboBox(ComboBoxsettings =>
             {
                 ComboBoxsettings.Name = "AgeGroup";
-                //  ComboBoxsettings.SelectedIndex = 0;
+                ComboBoxsettings.SelectedIndex = 1;
                 ComboBoxsettings.Properties.Items.Add("Adult");
                 ComboBoxsettings.Properties.Items.Add("Children");
                 ComboBoxsettings.Properties.DropDownStyle = DropDownStyle.DropDown;

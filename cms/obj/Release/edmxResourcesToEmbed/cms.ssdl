@@ -11,11 +11,6 @@
     <Property Name="DateOfBurial" Type="datetime" />
     <Property Name="PlaceOfIssue" Type="nvarchar" MaxLength="30" />
     <Property Name="AgeGroup" Type="nvarchar" MaxLength="30" />
-    <Property Name="PurchaseOfGrave" Type="decimal" Precision="10" Scale="0" />
-    <Property Name="ReservationOfGrave" Type="decimal" Precision="10" Scale="0" />
-    <Property Name="OpenCloseGrave" Type="decimal" Precision="10" Scale="0" />
-    <Property Name="WideningOfGrave" Type="decimal" Precision="10" Scale="0" />
-    <Property Name="UseOfANiche" Type="decimal" Precision="10" Scale="0" />
     <Property Name="BurialOfPauper" Type="decimal" Precision="10" Scale="0" />
     <Property Name="Amount" Type="decimal" Precision="10" Scale="0" />
     <Property Name="AmountPaidDate" Type="datetime" />
@@ -25,7 +20,7 @@
     <Property Name="GrafNumber" Type="nvarchar" MaxLength="30" />
     <Property Name="ReligionId" Type="nvarchar" MaxLength="30" />
     <Property Name="AgeGroupId" Type="nvarchar" MaxLength="30" />
-    <Property Name="MortuaryId" Type="uniqueidentifier" />
+    <Property Name="MortuaryName" Type="nvarchar" MaxLength="100" />
     <Property Name="DeedGender" Type="nvarchar" MaxLength="30" />
     <Property Name="DeathAge" Type="nvarchar" MaxLength="30" />
     <Property Name="CauseOfDeath" Type="nvarchar" MaxLength="30" />
@@ -68,7 +63,7 @@
     <Property Name="GrafNumber" Type="nvarchar" MaxLength="30" />
     <Property Name="ReligionId" Type="nvarchar" MaxLength="30" />
     <Property Name="AgeGroupId" Type="nvarchar" MaxLength="30" />
-    <Property Name="MortuaryId" Type="uniqueidentifier" />
+    <Property Name="MortuaryName" Type="nvarchar" MaxLength="100" />
     <Property Name="DeedGender" Type="nvarchar" MaxLength="30" />
     <Property Name="DeathAge" Type="nvarchar" MaxLength="30" />
     <Property Name="CauseOfDeath" Type="nvarchar" MaxLength="30" />

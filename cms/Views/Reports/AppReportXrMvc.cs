@@ -26,14 +26,16 @@ namespace cms
 
             bool Showdual = false;
 
-         //   if (!string.IsNullOrWhiteSpace(GetShowdual) || !string.IsNullOrEmpty(GetShowdual) || GetShowdual != "null")
-           // {
-                Showdual = bool.TryParse(GetShowdual, out Showdual);
-           // }
-
+            Showdual = bool.TryParse(GetShowdual, out Showdual);
+    
             if (Showdual == true)
             {
                 this.DetailReport2Dual.Visible = true;
+
+                this.xrLabel5.Visible = false;
+                this.FromDate.Visible = false;
+                this.xrLabel12.Visible = false;
+                this.ToDate.Visible = false;
             }
               
 
@@ -73,6 +75,11 @@ namespace cms
                                  ////////////////////////////////////////////////
                                  duIdNo = du.IdNo,
                                  duDeedName = du.DeedName,
+                                 DuDateOfBurial = du.DateOfBurial,
+                                 DuDateOfBirth = du.DateOfBirth,
+                                 DuMortuaryName = du.MortuaryName,
+                                 DuPlaceOfIssue = du.PlaceOfIssue,
+                                 DuReligionId = du.ReligionId,
                                  duAgeGroup = du.AgeGroup,
                                  duDeathAge = du.DeathAge,
                                  duAmount = du.Amount,

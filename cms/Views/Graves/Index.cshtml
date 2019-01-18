@@ -55,6 +55,16 @@
           // call edit funtion from custom button
       }
 
+      if (e.item.name == "btnHeaderCopy") {
+          var rowIndex = GravesGridViewPartial.GetFocusedRowIndex();
+
+          var CopyRowObjId = GravesGridViewPartial.GetRowKey(GravesGridViewPartial.GetFocusedRowIndex());
+
+         // alert(rowIndex);
+          GravesGridViewPartial.PerformCallback({ CopyRowIndex: rowIndex, CopyRowObjId: CopyRowObjId });
+
+      }
+
       if (e.item.name == "btnHeaderDelete") {
           if (confirm("Confirm Delete?")) {
               var index = GravesGridViewPartial.GetFocusedRowIndex();

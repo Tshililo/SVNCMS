@@ -185,7 +185,6 @@ namespace cms
             // 
             this.ReportFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrLabel7});
-            this.ReportFooter.Expanded = false;
             this.ReportFooter.HeightF = 45.41671F;
             this.ReportFooter.Name = "ReportFooter";
             // 
@@ -662,7 +661,6 @@ namespace cms
             // 
             this.PageFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrPanel3});
-            this.PageFooter.Expanded = false;
             this.PageFooter.HeightF = 32F;
             this.PageFooter.Name = "PageFooter";
             // 
@@ -1227,6 +1225,8 @@ namespace cms
             // xrTableCell34
             // 
             this.xrTableCell34.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.xrTableCell34.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DuReligionId]")});
             this.xrTableCell34.Font = new System.Drawing.Font("Calibri", 8F);
             this.xrTableCell34.Name = "xrTableCell34";
             this.xrTableCell34.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -1240,6 +1240,8 @@ namespace cms
             // xrTableCell35
             // 
             this.xrTableCell35.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.xrTableCell35.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DuDateOfBirth]")});
             this.xrTableCell35.Font = new System.Drawing.Font("Calibri", 8F);
             this.xrTableCell35.Name = "xrTableCell35";
             this.xrTableCell35.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -1254,6 +1256,8 @@ namespace cms
             // xrTableCell36
             // 
             this.xrTableCell36.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.xrTableCell36.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DuDateOfBurial]")});
             this.xrTableCell36.Font = new System.Drawing.Font("Calibri", 8F);
             this.xrTableCell36.Name = "xrTableCell36";
             this.xrTableCell36.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -1268,6 +1272,8 @@ namespace cms
             // xrTableCell37
             // 
             this.xrTableCell37.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.xrTableCell37.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DuPlaceOfIssue]")});
             this.xrTableCell37.Font = new System.Drawing.Font("Calibri", 8F);
             this.xrTableCell37.Name = "xrTableCell37";
             this.xrTableCell37.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -1281,6 +1287,8 @@ namespace cms
             // xrTableCell38
             // 
             this.xrTableCell38.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.xrTableCell38.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DuMortuaryName]")});
             this.xrTableCell38.Font = new System.Drawing.Font("Calibri", 8F);
             this.xrTableCell38.Name = "xrTableCell38";
             this.xrTableCell38.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);

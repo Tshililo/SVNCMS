@@ -20,28 +20,37 @@ namespace cms.Controllers
         [HttpPost]
         public ActionResult FileManagerPartial(string headerObjId)
         {
-			string RootFolder;
-			if (headerObjId == null)
-			{
-				RootFolder = @"C:\DropBox\";
-				return PartialView("_FileManagerPartial", RootFolder);
-			}
-			var model = db.Applications.Where(c => c.ObjId.ToString() == headerObjId).FirstOrDefault();
-			//RootFolder = @"~\Content\" + model.IdNo;
+            string RootFolder;
 
-			RootFolder = @"C:\DropBox\" + model.IdNo;
-			// Determine whether the directory exists.
-			if (Directory.Exists(RootFolder))
-			{
-				ViewBag.RootFolder = RootFolder;
-				return PartialView("_FileManagerPartial", RootFolder);
-			}
-			Directory.CreateDirectory(RootFolder);
-			ViewBag.RootFolder = RootFolder;
-			return PartialView("_FileManagerPartial", RootFolder);
-		}
+            ViewBag.headerObjId = headerObjId;
 
-		public ActionResult ApplicationsGridViewPartial()
+            if (headerObjId == null)
+            {
+                RootFolder = @"C:\DropBox\";
+                return PartialView("_FileManagerPartial", RootFolder);
+            }
+            var model = db.Applications.Where(c => c.ObjId.ToString() == headerObjId).FirstOrDefault();
+            //RootFolder = @"~\Content\" + model.IdNo;
+
+            RootFolder = @"C:\DropBox\" + model.IdNo;
+            // Determine whether the directory exists.
+            if (Directory.Exists(RootFolder))
+            {
+                ViewBag.RootFolder = RootFolder;
+                return PartialView("_FileManagerPartial", RootFolder);
+            }
+            Directory.CreateDirectory(RootFolder);
+            ViewBag.RootFolder = RootFolder;
+            return PartialView("_FileManagerPartial", RootFolder);
+        }
+
+
+        public FileStreamResult FileManagerPartialDownload()
+        {
+            return null;
+        }
+
+        public ActionResult ApplicationsGridViewPartial()
 		{
 			var model = db.Applications;
 
@@ -49,11 +58,7 @@ namespace cms.Controllers
 			return PartialView("GridViewPartialView", model.ToList());
 		}
 
-		public FileStreamResult FileManagerPartialDownload()
-        {
-            //  return FileManagerExtension.DownloadFiles("DropBox", DropBoxControllerDropBoxSettings.Model);
-            return null;
-        }
+
     }
 
 }

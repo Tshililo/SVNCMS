@@ -31,23 +31,6 @@ namespace cms.Controllers
             return db.Mortuaries.ToList();
         }
 
-        public PartialViewResult FileUploadPopUp()
-        {
-            FileUpload data = new FileUpload();
-
-            return PartialView("EditFileUploadPopUp", data);
-        }
-
-        public PartialViewResult ExportCSV(string headerObjId, string ApplicantObjId)
-        {
-           var FilteredQuery = db.Applications.ToList();
-
-            var filename = "";
-
-            return null;
-        }
-
-
         public PartialViewResult ImportApplication()
         {
             return PartialView("ImportApplication");
@@ -229,8 +212,43 @@ namespace cms.Controllers
             return PartialView("EditFileUploadPopUp", data);
         }
 
-		#region BurialRecordApplication
-		public ActionResult ApplicationsUpdateEntryToForm(Guid ObjId)
+
+
+        public ActionResult FileManagerPartial(string headerObjId)
+        {
+            string RootFolder;
+
+            ViewBag.headerObjId = headerObjId;
+
+            if (headerObjId == null)
+            {
+                RootFolder = @"C:\DropBox\";
+                return PartialView("_FileManagerPartial", RootFolder);
+            }
+            var model = db.Applications.Where(c => c.ObjId.ToString() == headerObjId).FirstOrDefault();
+            //RootFolder = @"~\Content\" + model.IdNo;
+
+            RootFolder = @"C:\DropBox\" + model.IdNo;
+            // Determine whether the directory exists.
+            if (Directory.Exists(RootFolder))
+            {
+                ViewBag.RootFolder = RootFolder;
+                return PartialView("_FileManagerPartial", RootFolder);
+            }
+            Directory.CreateDirectory(RootFolder);
+            ViewBag.RootFolder = RootFolder;
+            return PartialView("_FileManagerPartial", RootFolder);
+        }
+
+
+        public FileStreamResult FileManagerPartialDownload()
+        {
+            return null;
+        }
+
+
+        #region BurialRecordApplication
+        public ActionResult ApplicationsUpdateEntryToForm(Guid ObjId, string RowKey, Guid? RowObjId)
 		{
 			ViewData["Mortuaries"] = GetMortuary().OrderBy(c => c.Name);
 
@@ -246,7 +264,17 @@ namespace cms.Controllers
             if (mymodel != null)
             {
                 var ApplicationsInfo = mymodel.Where(s => s.ObjId == ObjId).FirstOrDefault();
+
                 ApplicationsDTO model = new ApplicationsDTO();
+
+                if (RowKey != null)
+                {
+                    var CopyApplicationInfo = mymodel.Where(s => s.ObjId == RowObjId).FirstOrDefault();
+                    CopyProperties(CopyApplicationInfo, model);
+                    model.ObjId = Guid.NewGuid();
+                    return PartialView("CreateApplicationsEditPartial", model);
+                }
+
                 if (ApplicationsInfo == null)
                 {
 
@@ -270,6 +298,19 @@ namespace cms.Controllers
 		}
 
 
+        public ActionResult CopyApplicationRecords(Guid? CopyRowObjId, int? CopyRowIndex)
+        {
+            if (CopyRowIndex != null)
+            {
+                ViewData["CopyRowIndex"] = CopyRowIndex;
+                ViewData["CopyRowObjId"] = CopyRowObjId;
+            }
+
+            var query = ReadApplication().OrderBy(c => c.IdNo).ThenBy(c => c.Address);
+            // DXCOMMENT: Pass a data model for GridView in the PartialView method's second parameter
+            return PartialView("GridViewPartialView", query);
+
+        }
 
         public ActionResult ApplicationsGridViewPartial()
         {
@@ -296,7 +337,8 @@ namespace cms.Controllers
                        PlaceOfIssue = ap.PlaceOfIssue,
                        AgeGroup = ap.AgeGroup,
                        MortuaryName = ap.MortuaryName,
-                      // MortuaryId = mo.ObjId,
+                       PlaceOfBurial = ap.PlaceOfBurial,
+                      CauseOfDeath = ap.CauseOfDeath,
                        ReligionId = ap.ReligionId,
                        DeedGender = ap.DeedGender,
                        DeathAge = ap.DeathAge,
@@ -408,46 +450,7 @@ namespace cms.Controllers
         #endregion
 
         #region DropBox
-        public ActionResult FileManagerPartial(string reportParams)
-        {
-			string RootFolder;
-			if (reportParams == null)
-			{
-				RootFolder = @"C:\DropBox\";
 
-                RootFolder = @"~\Content\ImportApplications";
-                return PartialView("_FileManagerPartial", RootFolder);
-			}
-
-			if (reportParams.Contains("C:"))
-			{
-				return PartialView("_FileManagerPartial", reportParams);
-			}
-			var model = db.Applications.Where(c => c.ObjId.ToString() == reportParams).FirstOrDefault();
-			//RootFolder = @"~\Content\" + model.IdNo;
-
-			RootFolder = @"~\Content\ImportApplications" + model.IdNo;
-         //   @"C:\DropBox\"
-			// Determine whether the directory exists.
-			if (Directory.Exists(RootFolder))
-			{
-				ViewBag.RootFolder = RootFolder;
-				return PartialView("_FileManagerPartial", RootFolder);
-			}
-			Directory.CreateDirectory(RootFolder);
-			ViewBag.RootFolder = RootFolder;
-			return PartialView("_FileManagerPartial", RootFolder);
-
-			//var RootFolder = @"~\Content\DropBox";
-			//return PartialView("_FileManagerPartial", RootFolder);
-		}
-
-
-
-        public FileStreamResult FileManagerPartialDownload()
-        {
-            return null;
-        } 
         #endregion
 
         #region GraveOwners
@@ -661,6 +664,8 @@ namespace cms.Controllers
                             PlaceOfIssue = ap.PlaceOfIssue,
                             AgeGroup = ap.AgeGroup,
                             MortuaryName = ap.MortuaryName,
+                            PlaceOfBurial = ap.PlaceOfBurial,
+
                             ReligionId = ap.ReligionId,
                             DeedGender = ap.DeedGender,
                             DeathAge = ap.DeathAge,
@@ -710,49 +715,8 @@ namespace cms.Controllers
         }
         #endregion
 
-        #region Attachment Upload
-
-        public ActionResult UploadControlUpload()
-        {
-
-            UploadControlExtension.GetUploadedFiles("UploadControl", FileLoadingControllerUploadControlSettings.UploadValidationSettings, FileLoadingControllerUploadControlSettings.FileUploadComplete);
-
-            return null;
-        }
-
        
     }
-    public class FileLoadingControllerUploadControlSettings
-    {
-        public static DevExpress.Web.UploadControlValidationSettings UploadValidationSettings = new DevExpress.Web.UploadControlValidationSettings()
-        {
-            AllowedFileExtensions = new string[] { ".csv", ".xls" },
-            MaxFileSize = 4000000
-        };
-        public static void FileUploadComplete(object sender, DevExpress.Web.FileUploadCompleteEventArgs e)
-        {
-
-            if (e.UploadedFile.IsValid)
-            {
-
-                try
-                {
-                    var ToUpload = new cms.Controllers.HomeController().SaveRecordsApplication(e.UploadedFile.FileBytes, e.UploadedFile.FileName);
-                    e.UploadedFile.IsValid = false;
-                    e.ErrorText = ToUpload;
-                }
-                catch (Exception ex)
-                {
-                    e.UploadedFile.IsValid = false;
-                    e.ErrorText = "Custom Error Text " + ex.Message;
-                }
-
-            }
-
-        }
-    }
-
-    #endregion
 
 
 

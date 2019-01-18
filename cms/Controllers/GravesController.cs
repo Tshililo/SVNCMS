@@ -47,7 +47,7 @@ namespace cms.Controllers
             return model;
         }
 
-        public ActionResult GravesUpdateEntryToForm(Guid ObjId)
+        public ActionResult GravesUpdateEntryToForm(Guid ObjId, string RowKey,Guid? RowObjId)
         {
             var GravesInfo = GetCemeteries().Where(s => s.ObjId == ObjId).FirstOrDefault();
 
@@ -56,6 +56,15 @@ namespace cms.Controllers
             ViewData["GetCemeteries"] = CemeteryInfo;
 
             CemeteryOwnerDTO model = new CemeteryOwnerDTO();
+
+
+            if (RowKey != null)
+            {
+                var CopyGravesInfo = GetCemeteries().Where(s => s.ObjId == RowObjId).FirstOrDefault();
+                CopyProperties(CopyGravesInfo, model);
+                model.ObjId = Guid.NewGuid();
+                return PartialView("CreateGravesEditPartial", model);
+            }
 
             if (GravesInfo == null)
             {
@@ -67,6 +76,7 @@ namespace cms.Controllers
             {
                 return PartialView("CreateGravesEditPartial", GravesInfo);
             }
+
 
             return null;
 
@@ -129,7 +139,19 @@ namespace cms.Controllers
             return PartialView("GridViewPartialView", GravesRecords);
         }
         #endregion
+        public ActionResult CopyGraveRecords(Guid? CopyRowObjId, int? CopyRowIndex)
+        {
+            if (CopyRowIndex != null)
+            {
+                ViewData["CopyRowIndex"] = CopyRowIndex;
+                ViewData["CopyRowObjId"] = CopyRowObjId;
+            }
 
+            var GravesInfo = GetCemeteries();
+            
+            return PartialView("GridViewPartialView", GravesInfo);
+
+        }
 
     }
 }

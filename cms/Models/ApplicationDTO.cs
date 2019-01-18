@@ -68,6 +68,7 @@ namespace cms.Models
         public string IdNo { get; set; }
         public string MortuaryName { get; set; }
         public Guid ObjId { get; set; }
+        public string PlaceOfBurial { get; set; }
         public string PlaceOfIssue { get; set; }
         public string ReceiptNo { get; set; }
         public string ReligionId { get; set; }

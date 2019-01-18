@@ -2,7 +2,7 @@
 
 @Html.DevExpress().FileManager(settings => {
     settings.Name = "DropBox";
-    settings.CallbackRouteValues = new { Controller = "DropBox", Action = "FileManagerPartial" };
+    settings.CallbackRouteValues = new { Controller = "DropBox", Action = "FileManagerPartial", headerObjId = @ViewBag.headerObjId };
 
         settings.DownloadRouteValues = new { Controller = "DropBox", Action = "FileManagerPartialDownload" };
     settings.SettingsEditing.AllowDownload = true;

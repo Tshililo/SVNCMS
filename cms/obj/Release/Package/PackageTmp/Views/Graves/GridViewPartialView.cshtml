@@ -1,3 +1,8 @@
+@using cms.Helpers;
+@using System.Text;
+@using DevExpress.Web;
+@using DevExpress.Web.Mvc;
+
 @{
     var grid = Html.DevExpress().GridView(settings =>
     {
@@ -6,10 +11,20 @@
         settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Graves", Action = "GravesEdit" };
         settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Graves", Action = "GravesEdit" };
         settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Graves", Action = "GravesDelete" };
+        settings.CustomActionRouteValues = new { Controller = "Graves", Action = "CopyGraveRecords" };
+
+
+        Html.PalBrokerHtml().GridView.GridDefaultBehavior(settings, "GravesGridViewPartial");
 
         settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
         settings.SettingsBehavior.ConfirmDelete = true;
 
+
+        settings.CommandColumn.Visible = false;
+        settings.CommandColumn.ShowSelectCheckbox = false;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+        settings.SettingsBehavior.AllowSelectSingleRowOnly = true;
+        settings.CommandColumn.ShowSelectCheckbox = false;
 
         settings.Settings.VerticalScrollBarMode = ScrollBarMode.Auto;
         settings.Settings.VerticalScrollableHeight = 420;
@@ -24,18 +39,11 @@
         settings.SettingsPopup.EditForm.HorizontalAlign = PopupHorizontalAlign.WindowCenter;
         settings.SettingsPopup.EditForm.ShowHeader = true;
 
-        settings.CommandColumn.Visible = false;
-        settings.CommandColumn.ShowNewButton = false;
-        settings.CommandColumn.ShowDeleteButton = false;
-        settings.CommandColumn.ShowEditButton = false;
 
         settings.SettingsBehavior.AllowFocusedRow = true;
         settings.SettingsPager.Visible = true;
         settings.Settings.ShowGroupPanel = true;
         settings.Settings.ShowFilterRow = true;
-        settings.SettingsBehavior.AllowSelectByRowClick = true;
-        settings.SettingsBehavior.AllowSelectSingleRowOnly = true;
-        settings.CommandColumn.ShowSelectCheckbox = true;
 
         settings.Width = Unit.Percentage(100);
 
@@ -44,8 +52,9 @@
 
         settings.SetEditFormTemplateContent(c =>
         {
-
-            ViewContext.Writer.Write((Html.Action("GravesUpdateEntryToForm", new { ObjId = c.KeyValue != null ? c.KeyValue.ToString() : Guid.NewGuid().ToString() }).ToHtmlString()));
+            var RowKey = ViewData["CopyRowIndex"];
+            var CopyRowObjId = ViewData["CopyRowObjId"];
+            ViewContext.Writer.Write((Html.Action("GravesUpdateEntryToForm", new { ObjId = c.KeyValue != null ? c.KeyValue.ToString() : Guid.NewGuid().ToString(), RowKey = RowKey, RowObjId = CopyRowObjId }).ToHtmlString()));
         });
 
         settings.BeforeGetCallbackResult = (s, e) =>
@@ -61,15 +70,40 @@
                 gridView.SettingsText.PopupEditFormCaption = "New Grave";
 
             }
+
+
+            if (ViewData["CopyRowIndex"] != null)
+            {
+                gridView.SettingsText.PopupEditFormCaption = "Copy Existing";
+                gridView.AddNewRow();
+            }
         };
 
-        settings.Columns.Add(column => { column.FieldName = "CemeteryName"; column.Caption = "Cemetery Name"; column.Width = Unit.Pixel(100); });
+        settings.InitNewRow = (s, e) =>
+        {
+            if (ViewData["CopyRowIndex"] != null)
+            {
+                MVCxGridView gridView = (MVCxGridView)s;
 
-        settings.Columns.Add(column => { column.FieldName = "Name"; column.Caption = "Plot"; column.Width = Unit.Pixel(100); });
-        settings.Columns.Add(column => { column.FieldName = "Longitude"; column.Caption = "Longitude"; column.Width = Unit.Pixel(100); });
-        settings.Columns.Add(column => { column.FieldName = "Latitude"; column.Caption = "Latitude"; column.Width = Unit.Pixel(100); });
+              //  e.NewValues["CemeteryId"] = gridView.GetRowValues((int)ViewData["CopyRowIndex"], "CemeteryId");
+                e.NewValues["CemeteryName"] = gridView.GetRowValues((int)ViewData["CopyRowIndex"], "CemeteryName");
+                e.NewValues["Longitude"] = gridView.GetRowValues((int)ViewData["CopyRowIndex"], "Longitude");
+                e.NewValues["Latitude"] = gridView.GetRowValues((int)ViewData["CopyRowIndex"], "Latitude");
+                e.NewValues["Status"] = gridView.GetRowValues((int)ViewData["CopyRowIndex"], "Status");
+
+
+            }
+
+        };
+
+        settings.Columns.Add(column => { column.FieldName = "CemeteryName"; column.Caption = "Cemetery Name"; column.Width = Unit.Pixel(400); });
+
+        settings.Columns.Add(column => { column.FieldName = "Name"; column.Caption = "Plot"; column.Width = Unit.Pixel(400); });
+        settings.Columns.Add(column => { column.FieldName = "Longitude"; column.Caption = "Longitude"; column.Width = Unit.Pixel(400); });
+        settings.Columns.Add(column => { column.FieldName = "Latitude"; column.Caption = "Latitude"; column.Width = Unit.Pixel(400); });
         settings.Columns.Add(column => { column.FieldName = "Status"; column.Caption = "Status"; column.Width = Unit.Pixel(100); });
         settings.Styles.AlternatingRow.BackColor = System.Drawing.Color.Beige;
+
 
     });
     if (ViewData["EditError"] != null)

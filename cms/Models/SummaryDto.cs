@@ -57,6 +57,11 @@ namespace cms.Models
             public decimal? duAmount { get;  set; }
             public bool? duBurial_Status { get; set; }
             public Guid ObjId { get;set; }
+            public string DuMortuaryName { get; set; }
+            public string DuPlaceOfIssue { get; set; }
+            public string DuReligionId { get; set; }
+            public DateTime? DuDateOfBurial { get; set; }
+            public DateTime? DuDateOfBirth { get; set; }
         }
 
         public List<SummaryLineDto> Lines

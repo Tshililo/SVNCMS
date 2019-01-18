@@ -13,6 +13,7 @@
         settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Home", Action = "ApplicationsEdit" };
         settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Home", Action = "ApplicationsEdit" };
         settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Home", Action = "ApplicationsDelete" };
+        settings.CustomActionRouteValues = new { Controller = "Home", Action = "CopyApplicationRecords" };
 
         #region Properties
         settings.Width = Unit.Percentage(100);
@@ -22,6 +23,9 @@
         settings.Settings.HorizontalScrollBarMode = ScrollBarMode.Auto;
 
         settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowSelectCheckbox = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+        settings.SettingsBehavior.AllowSelectSingleRowOnly = true;
         settings.CommandColumn.ShowSelectCheckbox = true;
         //   settings.CommandColumn.Width = 40;
         settings.Settings.ShowStatusBar = GridViewStatusBarMode.Hidden;
@@ -68,13 +72,45 @@
                 gridView.SettingsText.PopupEditFormCaption = "New Applicant";
 
             }
+            if (ViewData["CopyRowIndex"] != null)
+            {
+                gridView.SettingsText.PopupEditFormCaption = "Copy Existing";
+                gridView.AddNewRow();
+            }
         };
 
         settings.SetEditFormTemplateContent(c =>
         {
+            var RowKey = ViewData["CopyRowIndex"];
+            var CopyRowObjId = ViewData["CopyRowObjId"];
+
             ViewContext.Writer.Write((Html.Action("ApplicationsUpdateEntryToForm",
-                new { ObjId = c.KeyValue != null ? c.KeyValue.ToString() : Guid.NewGuid().ToString() }).ToHtmlString()));
+              new { ObjId = c.KeyValue != null ? c.KeyValue.ToString() : Guid.NewGuid().ToString(), RowKey = RowKey, RowObjId = CopyRowObjId }).ToHtmlString()));
         });
+
+        settings.InitNewRow = (s, e) =>
+        {
+            if (ViewData["CopyRowIndex"] != null)
+            {
+                MVCxGridView gridView = (MVCxGridView)s;
+
+                e.NewValues["IdNo"] = gridView.GetRowValues((int)ViewData["CopyRowIndex"], "IdNo");
+                e.NewValues["DeedName"] = gridView.GetRowValues((int)ViewData["CopyRowIndex"], "DeedName");
+                e.NewValues["Address"] = gridView.GetRowValues((int)ViewData["CopyRowIndex"], "Address");
+                e.NewValues["ReligionId"] = gridView.GetRowValues((int)ViewData["CopyRowIndex"], "ReligionId");
+                e.NewValues["DeedGender"] = gridView.GetRowValues((int)ViewData["CopyRowIndex"], "DeedGender");
+                e.NewValues["AgeGroup"] = gridView.GetRowValues((int)ViewData["CopyRowIndex"], "AgeGroup");
+                e.NewValues["MortuaryName"] = gridView.GetRowValues((int)ViewData["CopyRowIndex"], "MortuaryName");
+                e.NewValues["CauseOfDeath"] = gridView.GetRowValues((int)ViewData["CopyRowIndex"], "CauseOfDeath");
+
+
+                e.NewValues["Burial_Status"] = gridView.GetRowValues((int)ViewData["CopyRowIndex"], "Burial_Status");
+                e.NewValues["DateOfBurial"] = gridView.GetRowValues((int)ViewData["CopyRowIndex"], "DateOfBurial");
+                e.NewValues["Amount"] = gridView.GetRowValues((int)ViewData["CopyRowIndex"], "Amount");
+
+            }
+
+        };
 
         settings.ClientSideEvents.FocusedRowChanged = "OnApplicationHeaderGridFocusedRowChanged";
         settings.ClientSideEvents.Init = "function(s, e) { s.PerformCallback(); }";
@@ -84,14 +120,14 @@
 
         settings.Columns.Add(column => { column.FieldName = "IdNo"; column.Caption = "Id No."; column.Width = Unit.Pixel(120); });
         settings.Columns.Add(column => { column.FieldName = "DeedName"; column.Caption = "Deed Name"; column.Width = Unit.Pixel(100); });
-        settings.Columns.Add(column => { column.FieldName = "Address"; column.Caption = "Address"; column.Width = Unit.Pixel(100); });
+        settings.Columns.Add(column => { column.FieldName = "Address"; column.Caption = "Address"; column.Width = Unit.Pixel(200); });
         settings.Columns.Add(column => { column.FieldName = "ReligionId"; column.Caption = "Religion"; column.Width = Unit.Pixel(100); });
         settings.Columns.Add(column => { column.FieldName = "DateOfBirth"; column.Caption = "Date Of Birth"; column.PropertiesEdit.DisplayFormatString = "dd/MM/yyyy"; column.PropertiesEdit.DisplayFormatString = "dd/MM/yyyy"; column.Width = Unit.Pixel(100); });
         settings.Columns.Add(column => { column.FieldName = "PlaceOfIssue"; column.Caption = "Place Of Issue"; column.Width = Unit.Pixel(130); });
         settings.Columns.Add(column => { column.FieldName = "AgeGroup"; column.Caption = "Age Group"; column.Width = Unit.Pixel(100); });
         settings.Columns.Add(column => { column.FieldName = "DeedGender"; column.Caption = "Deed Gender"; column.Width = Unit.Pixel(100); });
         settings.Columns.Add(column => { column.FieldName = "DeathAge"; column.Caption = "Death Age"; column.Width = Unit.Pixel(100); });
-
+        settings.Columns.Add(column => { column.FieldName = "CauseOfDeath"; column.Caption = "CauseOfDeath"; column.Width = Unit.Pixel(120); });
         settings.Columns.Add(columnCheck =>
         {
             columnCheck.FieldName = "Burial_Status";
@@ -108,11 +144,7 @@
         settings.Columns.Add(column => { column.FieldName = "CapturedDate"; column.Caption = "Captured Date"; column.PropertiesEdit.DisplayFormatString = "dd/MM/yyyy"; column.Width = Unit.Pixel(100); });
 
         settings.Columns.Add(column => { column.FieldName = "ReceiptNo"; column.Caption = "Receipt No"; column.Width = Unit.Pixel(100); });
-        settings.Columns.Add(column => { column.FieldName = "CareTaker"; column.Caption = "Capturer"; column.Width = Unit.Pixel(120); });
         settings.Columns.Add(column => { column.FieldName = "Amount"; column.Caption = "Amount"; column.Width = Unit.Pixel(130); });
-        settings.Columns.Add(column => { column.FieldName = "AmountPaidDate"; column.Caption = "Amount Paid Date"; column.PropertiesEdit.DisplayFormatString = "dd/MM/yyyy"; column.Width = Unit.Pixel(120); });
-
-
 
         settings.FormatConditions.AddTopBottom(c =>
         {
