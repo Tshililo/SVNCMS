@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<html>
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>The Uba Chef</title>
+    <link rel="apple-touch-icon" href="~/assets/images/apple-touch-icon.png" />
+    <script>
+        if (window.screen.height == 568) { // iPhone 4"
+            document.querySelector("meta[name=viewport]").content = "width=320.1";
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- css -->
+    <link rel="stylesheet" href="~/Content/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+    <link rel="stylesheet" href="~/assets/css/style2.css">
+
+    <!-- scripts -->
+    <script src="~/Content/jquery-1.8.2.min.js"></script>
+    <script src="~/Content/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+    <script src="~/assets/js/screen.js"></script>
+
+</head>
+<body>
+
+    <div data-role="page">
+
+        <!-- header -->
+        @*<div data-role="header" class="page-header">
+                <a href="index.html" data-icon="arrow-l" data-iconpos="notext" data-direction="reverse" data-rel="back">Back</a>
+                <div class="logo"></div>
+                <a href="index.html" data-icon="home" data-iconpos="notext" rel="external" class="ui-btn-right">Home</a>
+            </div>*@
+        <!--/header -->
+        <!-- main content -->
+        <div data-role="content">
+
+            <section>
+                <p>
+                    <img class="mySlides" src="~/assets/images/BBQ/Barba.jpeg" style="width:100%">
+                </p>
+                <h2>Booking information</h2>
+
+                <p>
+                    <label for="People">
+                        <span>People:</span>
+                        <strong><abbr title="required">*</abbr></strong>
+                    </label>
+                    <input type="number" id="People" name="People">
+                </p>
+
+                <p>
+                    <label for="numberofplates ">
+                        <span>No Of Plates:</span>
+                        <strong><abbr title="required">*</abbr></strong>
+                    </label>
+                    <input type="number" id="numberofplates" name="numberofplates">
+                </p>
+
+                <p>
+                    <label for="Occasion">
+                        <span>Occasion:</span>
+                    </label>
+                    <select id="Occasion" name="Occasion">
+                        <option value="visa">BreakFast</option>
+                        <option value="visa">Lunch</option>
+                        <option value="mc">Dinner</option>
+                    </select>
+                </p>
+
+                <p>
+                    <label for="Events">
+                        <span>Events:</span>
+                    </label>
+                    <select id="Events" name="Events">
+                        <option value="visa">Birthday</option>
+                        <option value="visa">Wedding</option>
+                        <option value="mc">Graduation </option>
+                        <option value="mc">Other </option>
+                    </select>
+                </p>
+
+                @*<p>
+            <label for="Selectimages ">
+                <span>Upload Event images:</span>
+                <strong><abbr title="required">*</abbr></strong>
+            </label>
+            <input type="file" id="numberofplates" name="img" multiple>
+        </p>*@
+
+                <p>
+                    <label for="emailId">
+                        <span>Email:</span>
+
+                    </label>
+                    <input type="email" id="emailId" name="emailId">
+                </p>
+
+                <p>
+                    <label for="phoneNo">
+                        <span>phoneNo:</span>
+
+                    </label>
+                    <input type="tel" id="phoneNo" name="phoneNo">
+                </p>
+
+                <p>
+                    <label for="card">
+                        <span>Card type:</span>
+                    </label>
+                    <select id="card" name="usercard">
+                        <option value="visa">Visa</option>
+                        <option value="mc">Mastercard</option>
+                        <option value="amex">American Express</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="number">
+                        <span>Card number:</span>
+                        <strong><abbr title="required">*</abbr></strong>
+                    </label>
+                    <input type="tel" id="number" name="cardnumber">
+                </p>
+                <p>
+                    <label for="date">
+                        <span>Expiration date:</span>
+                        <strong><abbr title="required">*</abbr></strong>
+                        <em>formatted as mm/yy</em>
+                    </label>
+                    <input type="date" id="date" name="expiration">
+                </p>
+
+                <p>
+                    <input type="button" id="Request" onclick="myFunction()" value="Request Chef" name="Request">
+                </p>
+            </section>
+
+        </div><!-- /content -->
+
+    </div><!-- /page -->
+
+    <script>
+        function myFunction() {
+           
+            var PeopleId       = document.getElementById("People").value;
+            var numberofplates = document.getElementById("numberofplates").value;
+            var emailId = document.getElementById("emailId").value;
+            var phoneNo = document.getElementById("phoneNo").value;
+            
+          //  var e = document.getElementById("Occasion");
+          //  var value = e.options[e.selectedIndex].value;
+
+       
+         //   var card       = document.getElementById("card").value;
+         //   var number     = document.getElementById("number").value;
+        //    var expiration = document.getElementById("expiration").value;
+
+            alert(PeopleId + " " + numberofplates, emailId, phoneNo);
+
+                $.ajax({
+                url: '@Url.Action("SavePayments", "MainMenu")',
+                type: "POST",
+                //dataType: "json", // if we speficy this we must return json from the controller method. this way we dont need to return anything
+                dataType: "text",
+                traditional: true,
+                async: false,
+                    data: { PeopleId: PeopleId, numberofplates: numberofplates, emailId: emailId, phoneNo: phoneNo },
+                success: function (data) {
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert('Request Status: ' + xhr.status + '; Status Text: ' + textStatus + '; Error: ' + errorThrown);
+
+                }
+            });
+        }
+    </script>
+    
+</body>
+
+<!-- Mirrored from mobilize.beantownthemes.com/demos/2/about.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Oct 2019 06:17:45 GMT -->
+</html>
