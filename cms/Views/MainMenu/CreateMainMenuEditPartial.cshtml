@@ -30,74 +30,43 @@
 <body>
 
     <div data-role="page">
-
-        <!-- header -->
-        @*<div data-role="header" class="page-header">
-                <a href="index.html" data-icon="arrow-l" data-iconpos="notext" data-direction="reverse" data-rel="back">Back</a>
-                <div class="logo"></div>
-                <a href="index.html" data-icon="home" data-iconpos="notext" rel="external" class="ui-btn-right">Home</a>
-            </div>*@
-        <!--/header -->
+  
         <!-- main content -->
         <div data-role="content">
 
+            @if (ViewBag.CuizineType == "cb")
+            {
+                <!-- slider -->
+                <div class="slider-outer">
+                    <div class="slider-container">
+                        <div id="camera_wrap">
 
-            <!-- slider -->
-            <div class="slider-outer">
-                <div class="slider-container">
-                    <div id="camera_wrap">
-
-                        <div data-src="assets/images/CLASSICBBQ/1.jpg" width="100%">
-                            <div class="camera_caption fadeFromBottom">
+                            <div data-src="assets/images/CLASSICBBQ/1.jpg" width="100%">
+                                <div class="camera_caption fadeFromBottom">
+                                </div>
                             </div>
-                        </div>
 
-                        <div data-src="assets/images/CLASSICBBQ/2.jpg" width="100%">
-                            <div class="camera_caption fadeFromBottom" width="100%">
+                            <div data-src="assets/images/CLASSICBBQ/2.jpg" width="100%">
+                                <div class="camera_caption fadeFromBottom" width="100%">
+                                </div>
                             </div>
-                        </div>
 
-                        <div data-src="assets/images/CLASSICBBQ/3.jpg" width="100%">
-                            <div class="camera_caption fadeFromBottom" width="100%">
+                            <div data-src="assets/images/CLASSICBBQ/3.jpg" width="100%">
+                                <div class="camera_caption fadeFromBottom" width="100%">
+                                </div>
                             </div>
-                        </div>
 
-                        <div data-src="assets/images/CLASSICBBQ/4.jpg" width="100%">
-                            <div class="camera_caption fadeFromBottom">
-                            </div>
-                        </div>
+                            <!--<div data-src="assets/images/headers/4.jpg">
+                    </div>-->
 
-                        <div data-src="assets/images/CLASSICBBQ/5.jpg" width="100%">
-                            <div class="camera_caption fadeFromBottom">
-                            </div>
                         </div>
-
-                        <div data-src="assets/images/CLASSICBBQ/6.jpg" width="100%">
-                            <div class="camera_caption fadeFromBottom">
-                            </div>
-                        </div>
-
-                        <div data-src="assets/images/CLASSICBBQ/7.jpg" width="100%">
-                            <div class="camera_caption fadeFromBottom">
-                            </div>
-                        </div>
-
-                        <div data-src="assets/images/CLASSICBBQ/8.jpg" width="100%">
-                            <div class="camera_caption fadeFromBottom">
-                            </div>
-                        </div>
-
-                        <div data-src="assets/images/CLASSICBBQ/9.jpg" width="100%">
-                            <div class="camera_caption fadeFromBottom">
-                            </div>
-                        </div>
-                        <!--<div data-src="assets/images/headers/4.jpg">
-                        </div>-->
-
                     </div>
+                    <br class="clear" />
                 </div>
-                <br class="clear" />
-            </div><!-- /slider -->
+                <!-- /slider -->
+            }
+
+
             <section>
                 <h2>Booking information</h2>
 
@@ -158,37 +127,38 @@
                 </p>
 
                 @*<p>
-                        <label for="card">
-                            <span>Card type:</span>
-                        </label>
-                        <select id="card" name="usercard">
-                            <option value="visa">Visa</option>
-                            <option value="mc">Mastercard</option>
-                            <option value="amex">American Express</option>
-                        </select>
-                    </p>
-                    <p>
-                        <label for="number">
-                            <span>Card number:</span>
-                            <strong><abbr title="required">*</abbr></strong>
-                        </label>
-                        <input type="tel" id="number" name="cardnumber">
-                    </p>
-                    <p>
-                        <label for="date">
-                            <span>Expiration date:</span>
-                            <strong><abbr title="required">*</abbr></strong>
-                            <em>formatted as mm/yy</em>
-                        </label>
-                        <input type="date" id="date" name="expiration">
-                    </p>*@
+                <label for="card">
+                    <span>Card type:</span>
+                </label>
+                <select id="card" name="usercard">
+                    <option value="visa">Visa</option>
+                    <option value="mc">Mastercard</option>
+                    <option value="amex">American Express</option>
+                </select>
+            </p>
+            <p>
+                <label for="number">
+                    <span>Card number:</span>
+                    <strong><abbr title="required">*</abbr></strong>
+                </label>
+                <input type="tel" id="number" name="cardnumber">
+            </p>
+            <p>
+                <label for="date">
+                    <span>Expiration date:</span>
+                    <strong><abbr title="required">*</abbr></strong>
+                    <em>formatted as mm/yy</em>
+                </label>
+                <input type="date" id="date" name="expiration">
+            </p>*@
 
                 <p>
                     <input type="button" id="Request" onclick="myFunction()" value="Request Chef" name="Request">
                 </p>
             </section>
 
-        </div><!-- /content -->
+        </div>
+       <!-- /content -->
 
     </div><!-- /page -->
     <!-- slider -->
@@ -216,23 +186,11 @@
 
             var ee = document.getElementById("OccasionId");
             var OccasionIdValue = ee.options[ee.selectedIndex].value;
-           // alert(ee); //ID002
+            // alert(ee); //ID002
+            var MyIdInfo = PeopleId + "," + numberofplates + "," + emailId + "," + phoneNo + "," + OccasionIdValue + "," + EventIdValue + "," + @ViewBag.CuizineType;
 
-                $.ajax({
-                url: '@Url.Action("SavePayments", "MainMenu")',
-                type: "POST",
-                //dataType: "json", // if we speficy this we must return json from the controller method. this way we dont need to return anything
-                dataType: "text",
-                traditional: true,
-                async: false,
-                    data: { PeopleId: PeopleId, numberofplates: numberofplates, emailId: emailId, phoneNo: phoneNo, Occasionvalue: OccasionIdValue, EventsType: EventIdValue  },
-                success: function (data) {
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    alert('Request Status: ' + xhr.status + '; Status Text: ' + textStatus + '; Error: ' + errorThrown);
+            window.location.href = "/MainMenu/SavePayments?PeopleId=" + MyIdInfo;
 
-                }
-            });
         }
     </script>
 

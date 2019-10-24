@@ -45,6 +45,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Web.v17.2, Version=17.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -132,13 +133,6 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.10.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.6.10.9\lib\net452\MySql.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="MySql.Data.Entity.EF6, Version=6.10.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.Entity.6.10.9\lib\net452\MySql.Data.Entity.EF6.dll</HintPath>
-    </Reference>
-    <Reference Include="MySql.Web, Version=8.0.18.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -239,14 +233,9 @@
     <Content Include="assets\css\style2.css" />
     <Content Include="assets\images\apple-touch-icon.png" />
     <Content Include="assets\images\arrow.png" />
-    <Content Include="assets\images\BBQ\Barba.jpeg" />
     <Content Include="assets\images\blank.gif" />
     <Content Include="assets\images\camera-loader.gif" />
     <Content Include="assets\images\contact-error.png" />
-    <Content Include="assets\images\demo\thumbs\thumb1.jpg" />
-    <Content Include="assets\images\demo\thumbs\thumb2.jpg" />
-    <Content Include="assets\images\demo\thumbs\thumb3.jpg" />
-    <Content Include="assets\images\demo\thumbs\thumb4.jpg" />
     <Content Include="assets\images\headers\1.jpg" />
     <Content Include="assets\images\headers\2.jpg" />
     <Content Include="assets\images\headers\3.jpg" />
@@ -397,6 +386,16 @@
     <Content Include="assets\images\right-arrow-small.png" />
     <Content Include="assets\images\shadow1.png" />
     <Content Include="assets\images\shadow2.png" />
+    <Content Include="assets\images\SlideShow\1.jpg" />
+    <Content Include="assets\images\SlideShow\2.jpg" />
+    <Content Include="assets\images\SlideShow\3.jpg" />
+    <Content Include="assets\images\SlideShow\4.jpg" />
+    <Content Include="assets\images\SlideShow\5.jpg" />
+    <Content Include="assets\images\SlideShow\6.jpg" />
+    <Content Include="assets\images\SlideShow\7.jpg" />
+    <Content Include="assets\images\SlideShow\8.jpg" />
+    <Content Include="assets\images\SlideShow\9.jpg" />
+    <Content Include="assets\images\SlideShow\IMG-20191016-WA0007.jpg" />
     <Content Include="assets\images\social\dribble-r.png" />
     <Content Include="assets\images\social\fb-r.png" />
     <Content Include="assets\images\social\linkedin-r.png" />
@@ -428,21 +427,19 @@
     <Content Include="Content\mobile\1.3.0\jquery.mobile-1.3.0.min.css" />
     <Content Include="Content\mobile\1.3.0\jquery.mobile-1.3.0.min.js" />
     <Content Include="Global.asax" />
-    <Content Include="MainMenu\assets\images\BBQ\Barba.jpeg" />
-    <Content Include="MainMenu\assets\images\demo\thumbs\thumb1.jpg" />
-    <Content Include="MainMenu\assets\images\demo\thumbs\thumb2.jpg" />
-    <Content Include="MainMenu\assets\images\demo\thumbs\thumb3.jpg" />
-    <Content Include="MainMenu\assets\images\demo\thumbs\thumb4.jpg" />
-    <Content Include="MainMenu\assets\images\CLASSICBBQ\1.jpg" />
-    <Content Include="MainMenu\assets\images\CLASSICBBQ\2.jpg" />
-    <Content Include="MainMenu\assets\images\CLASSICBBQ\3.jpg" />
-    <Content Include="MainMenu\assets\images\CLASSICBBQ\4.jpg" />
-    <Content Include="MainMenu\assets\images\CLASSICBBQ\5.jpg" />
-    <Content Include="MainMenu\assets\images\CLASSICBBQ\6.jpg" />
-    <Content Include="MainMenu\assets\images\CLASSICBBQ\7.jpg" />
-    <Content Include="MainMenu\assets\images\CLASSICBBQ\8.jpg" />
-    <Content Include="MainMenu\assets\images\CLASSICBBQ\9.jpg" />
-    <Content Include="MainMenu\assets\images\CLASSICBBQ\IMG-20191016-WA0007.jpg" />
+    <Content Include="MainMenu\CLASSICBBQ\1.jpg" />
+    <Content Include="MainMenu\CLASSICBBQ\2.jpg" />
+    <Content Include="MainMenu\CLASSICBBQ\3.jpg" />
+    <Content Include="MainMenu\SlideShow\1.jpg" />
+    <Content Include="MainMenu\SlideShow\2.jpg" />
+    <Content Include="MainMenu\SlideShow\3.jpg" />
+    <Content Include="MainMenu\SlideShow\4.jpg" />
+    <Content Include="MainMenu\SlideShow\5.jpg" />
+    <Content Include="MainMenu\SlideShow\6.jpg" />
+    <Content Include="MainMenu\SlideShow\7.jpg" />
+    <Content Include="MainMenu\SlideShow\8.jpg" />
+    <Content Include="MainMenu\SlideShow\9.jpg" />
+    <Content Include="MainMenu\SlideShow\IMG-20191016-WA0007.jpg" />
     <Content Include="Scripts\ace.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -481,7 +478,7 @@
     </Content>
     <Content Include="Views\MainMenu\Index.cshtml" />
     <Content Include="Views\MainMenu\CreateMainMenuEditPartial.cshtml" />
-    <Content Include="Views\MainMenu\MainMenuMenu.cshtml" />
+    <Content Include="Views\MainMenu\Payments.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Boolean.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />

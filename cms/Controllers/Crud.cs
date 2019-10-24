@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text;
 using System.Web.Mvc;
-using MySql.Data.MySqlClient;
 
 namespace cms.Controllers
 {

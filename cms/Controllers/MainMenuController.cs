@@ -10,7 +10,6 @@ using System.Web;
 using System.Web.Mvc;
 using cms;
 using cms.Models;
-using MySql.Data.MySqlClient;
 
 namespace cms.Controllers
 {
@@ -24,26 +23,58 @@ namespace cms.Controllers
             return View();
         }
 
-        public ActionResult GetEdit()
+        public ActionResult GetEdit(string id)
         {
-            OnSiteVisitDto model = new OnSiteVisitDto();
-            return PartialView("CreateMainMenuEditPartial", model);
-
-        }
-
-        public ActionResult SavePayments(string PeopleId, string numberofplates, string emailId = "", string phoneNo = "", string Occasionvalue = "", string EventsType = "")
-        {
-            insert(PeopleId, numberofplates, emailId, phoneNo, Occasionvalue);
-
+            ViewBag.CuizineType = id;
             return PartialView("CreateMainMenuEditPartial");
 
-        
         }
+
+     
+        public ActionResult SavePayments(string PeopleId)
+        {
+            string RefNo = DateTime.Now.ToString("yyyy/MM/dd").Replace("/", "") + RandomString(4, false);
+
+            ViewBag.RefNo = RefNo;
+
+            List<string> p = PeopleId.Split(',').ToList();
+
+            string NoOfPeople = p[0];
+            string numberofplates = p[1];
+            string emailId = p[2];
+            string phoneNo = p[3];
+            string Occasionvalue = p[4];
+            string EventsType = p[5];
+            string CuisineType = p[6];
+
+            return PartialView("Payments");
+
+
+        }
+
+        //public ActionResult SavePayments(string PeopleId, string numberofplates, string emailId = "", string phoneNo = "", string Occasionvalue = "", string EventsType = "", string CuisineType = "")
+        //{
+        //    string RefNo = "UbaChef" + RandomString(9, false);
+
+        //    ViewBag.RefNo = RefNo;
+
+        //    List<string> p = passed_params.Split(',').ToList();
+        //    var rep = new AppReportXrMvc();
+        //    rep.ObjId.Value = p[0];
+        //    rep.Attention.Value = p[1];
+        //    rep.FromDate.Value = p[2];
+        //    rep.ToDate.Value = p[4];
+        //    rep.ShowDual.Value = p[6];
+
+        //    return PartialView("Payments");
+
+        
+        //}
 
         public void SendSMS(string PhoneNo, string RefNo, string Occasionvalue = "", string EventsType = "")
         {
             string to, msg;
-            msg = "Dear Customer. You have Booked a Chef for Occasion: " + Occasionvalue + " for " + EventsType + " Event" + RefNo + ""; ;
+            msg = "Dear Customer. You have Booked a Chef for Occasion: " + Occasionvalue + " for " + EventsType + " Event. RefNo:" + RefNo + ""; ;
             to = PhoneNo;
             WebClient client = new WebClient();
             // Add a user agent header in case the requested URI contains a query.
@@ -70,7 +101,7 @@ namespace cms.Controllers
             // Recipient e-mail address.
             Msg.To.Add(EmailAddress);
             Msg.Subject = "Dear Client";
-            Msg.Body = "You have Booked a Chef for Occasion: " + Occasionvalue + " for "  + EventsType + " Event" + RefNo + "";
+            Msg.Body = "You have Booked a Chef for Occasion: " + Occasionvalue + " for "  + EventsType + " Event. RefNo" + RefNo + "";
             Msg.IsBodyHtml = true;
             // your remote SMTP server IP.
             SmtpClient smtp = new SmtpClient();
@@ -97,24 +128,24 @@ namespace cms.Controllers
                 string NoOfPlates = numberofplates;
                 string Date = DateTime.Now.ToString();
                 string occasionvalue = Occasionvalue;
-                string RefNo = "Uba - " + RandomString(9, false);
+                string RefNo = "UbaChef" + RandomString(9, false);
                 string Eventstype = EventsType;
-                string FNUmber = ReplaceLastOccurrence(phoneNo, "0", "+27") +",";
+                string FNUmber = phoneNo + ",";
 
-                //This is my insert query in which i am taking input from the user through windows forms  
-                string Query = "insert into ubachef.Payments(ObjId,NoOfPeople,NoOfPlates,Date,RefNo,emailId,phoneNo,Occasion,EventsType) values('" + ObjId + "','" + 
-                    NoOfPeople + "','" + NoOfPlates + "','" + Date + "','" + RefNo + "','" + emailId + "','" + FNUmber + "','" + occasionvalue + "','" + EventsType + "');";
-                MySqlConnection MyConn2 = new MySqlConnection(gg.MyConnection2);
-                MySqlCommand MyCommand2 = new MySqlCommand(Query, MyConn2);
-                MySqlDataReader MyReader2;
-                MyConn2.Open();
-                MyReader2 = MyCommand2.ExecuteReader();     // Here our query will be executed and data saved into the database.  
+                ////This is my insert query in which i am taking input from the user through windows forms  
+                //string Query = "insert into ubachef.Payments(ObjId,NoOfPeople,NoOfPlates,Date,RefNo,emailId,phoneNo,Occasion,EventsType) values('" + ObjId + "','" + 
+                //    NoOfPeople + "','" + NoOfPlates + "','" + Date + "','" + RefNo + "','" + emailId + "','" + FNUmber + "','" + occasionvalue + "','" + EventsType + "');";
+                //MySqlConnection MyConn2 = new MySqlConnection(gg.MyConnection2);
+                //MySqlCommand MyCommand2 = new MySqlCommand(Query, MyConn2);
+                //MySqlDataReader MyReader2;
+                //MyConn2.Open();
+                //MyReader2 = MyCommand2.ExecuteReader();     // Here our query will be executed and data saved into the database.  
                
-                while (MyReader2.Read())
-                {
-                    return "Procord Not Processed";
-                }
-                MyConn2.Close();
+                //while (MyReader2.Read())
+                //{
+                //    return "Procord Not Processed";
+                //}
+                //MyConn2.Close();
 
 
                 SendEmail(emailId, RefNo, occasionvalue, Eventstype);

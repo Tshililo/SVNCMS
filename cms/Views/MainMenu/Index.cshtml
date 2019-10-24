@@ -50,52 +50,52 @@
             <div class="slider-container">
                 <div id="camera_wrap">
 
-                    <div data-src="assets/images/headers/1.jpg" width ="100%">
+                    <div data-src="assets/images/SlideShow/1.jpg" width="100%">
                         <div class="camera_caption fadeFromBottom">
                         </div>
                     </div>
 
-                    <div data-src="assets/images/headers/2.jpg" width ="100%">
-                        <div class="camera_caption fadeFromBottom" width ="100%">
+                    <div data-src="assets/images/SlideShow/2.jpg" width="100%">
+                        <div class="camera_caption fadeFromBottom" width="100%">
                         </div>
                     </div>
 
-                    <div data-src="assets/images/headers/3.jpg" width ="100%">
-                        <div class="camera_caption fadeFromBottom" width ="100%">
+                    <div data-src="assets/images/SlideShow/3.jpg" width="100%">
+                        <div class="camera_caption fadeFromBottom" width="100%">
                         </div>
                     </div>
 
-                    <div data-src="assets/images/headers/4.jpg" width ="100%">
+                    <div data-src="assets/images/SlideShow/4.jpg" width="100%">
                         <div class="camera_caption fadeFromBottom">
                         </div>
                     </div>
 
-                    <div data-src="assets/images/headers/5.jpg" width ="100%">
+                    <div data-src="assets/images/SlideShow/5.jpg" width="100%">
                         <div class="camera_caption fadeFromBottom">
                         </div>
                     </div>
 
-                    <div data-src="assets/images/headers/6.jpg" width ="100%">
+                    <div data-src="assets/images/SlideShow/6.jpg" width="100%">
                         <div class="camera_caption fadeFromBottom">
                         </div>
                     </div>
 
-                    <div data-src="assets/images/headers/7.jpg" width ="100%">
+                    <div data-src="assets/images/SlideShow/7.jpg" width="100%">
                         <div class="camera_caption fadeFromBottom">
                         </div>
                     </div>
 
-                    <div data-src="assets/images/headers/8.jpg" width ="100%">
+                    <div data-src="assets/images/SlideShow/8.jpg" width="100%">
                         <div class="camera_caption fadeFromBottom">
                         </div>
                     </div>
 
-                    <div data-src="assets/images/headers/9.jpg" width ="100%">
+                    <div data-src="assets/images/SlideShow/9.jpg" width="100%">
                         <div class="camera_caption fadeFromBottom">
                         </div>
                     </div>
                     <!--<div data-src="assets/images/headers/4.jpg">
-    </div>-->
+                    </div>-->
 
                 </div>
             </div>
@@ -115,15 +115,37 @@
             <!-- navigation -->
             <ul data-role="listview" data-inset="true" id="listview" style="margin-bottom:0px">
 
-                <li><a href="@Url.Action("GetEdit", "MainMenu")"  data-prefetch>CLASSIC BBQ</a></li>
-                <li><a href="@Url.Action("GetEdit", "MainMenu")"  data-prefetch>PLATTERS</a></li>
-                <li><a href="@Url.Action("GetEdit", "MainMenu")"  data-transition="flip" data-prefetch>EXECUTIVE STEAK</a></li>
+                <li><a onclick="myFunction1()" data-transition="flip" data-prefetch>CLASSIC BBQ</a></li>
+                <li><a onclick="myFunction2()" data-transition="flip" data-prefetch>PLATTERS</a></li>
+                <li><a onclick="myFunction3()" data-transition="flip" data-prefetch>EXECUTIVE STEAK</a></li>
 
             </ul>
         </div><!-- /content -->
 
 
     </div>
+    <script>
+        function myFunction1() {
+
+  
+            window.location.href = "/MainMenu/GetEdit?Id=" + "cb";
+
+        }
+
+        function myFunction2() {
+
+
+            window.location.href = "/MainMenu/GetEdit?Id=" + "pl";
+
+        }
+
+        function myFunction3() {
+
+
+            window.location.href = "/MainMenu/GetEdit?Id=" + "es";
+
+        }
+    </script>
 </div>
 
 
