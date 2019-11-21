@@ -42,8 +42,7 @@ namespace cms.Controllers
             }
         }
 
-        public cmsEntities db = new cmsEntities();
-
+        public string connectionString = "SERVER=localhost;DATABASE=ubachef;UID=root;PASSWORD=mukoni;";
 
         public DataSet ReadCsvIntoDataSet(string fileFullPath)
         {
@@ -97,6 +96,9 @@ namespace cms.Controllers
             sr.Close();
             return ds;
         }
+
+
+
 
 
     }

@@ -1,0 +1,51 @@
+@{
+
+
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "BookingGridViewPartial";
+
+        settings.CallbackRouteValues = new { Controller = "Booking", Action = "GridViewPartial" };
+
+        settings.Width = Unit.Percentage(100);
+
+        settings.Styles.AlternatingRow.BackColor = System.Drawing.Color.Beige;
+
+        settings.KeyFieldName = "ObjId";
+        settings.SettingsBehavior.AllowFocusedRow = true;
+        settings.SettingsPager.Visible = true;
+        settings.Settings.ShowGroupPanel = true;
+        settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+        settings.SettingsBehavior.AllowSelectSingleRowOnly = true;
+        settings.CommandColumn.ShowSelectCheckbox = true;
+
+
+        settings.ClientSideEvents.FocusedRowChanged = "OnBookingHeaderGridFocusedRowChanged";
+        settings.ClientSideEvents.Init = "function(s, e) { s.PerformCallback(); }";
+        settings.ClientSideEvents.EndCallback = "InitialSetFocus";
+
+        settings.Columns.Add("RequestDate");
+
+        settings.Columns.Add("EventsType");
+
+        settings.Columns.Add("occasion");
+
+        settings.Columns.Add("FromTime");
+
+        settings.Columns.Add("ToTime");
+
+        settings.Columns.Add("email");
+
+        settings.Columns.Add("occasion");
+
+         settings.Columns.Add("Accepted");
+    });
+    if (ViewData["EditError"] != null)
+    {
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+
+
+    }
+}
+@grid.Bind(Model).GetHtml()

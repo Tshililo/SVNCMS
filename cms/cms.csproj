@@ -25,6 +25,7 @@
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <UpgradeBackupLocation />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -178,6 +179,7 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MySql.Data, Version=8.0.18.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -270,16 +272,7 @@
     <Content Include="App_Data\TopMenu.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="cms.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>cms.edmx</DependentUpon>
-      <LastGenOutput>cms.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="cms.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>cms.edmx</DependentUpon>
-      <LastGenOutput>cms.cs</LastGenOutput>
-    </Content>
+    <Content Include="Content\Images\ChefPortal.png" />
     <Content Include="Content\Images\AquaHeader.jpg" />
     <Content Include="Content\Images\BlackGlassHeader.jpg" />
     <Content Include="Content\Images\Cemetery.jpg" />
@@ -322,14 +315,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="cms.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>cms.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="cms.edmx.diagram">
-      <DependentUpon>cms.edmx</DependentUpon>
-    </Content>
-    <Content Include="Content\Downloads\ApplicationForm.pdf" />
     <None Include="Properties\PublishProfiles\CMS.pubxml" />
     <None Include="Properties\PublishProfiles\cmsmakhkado - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\cmsmakhkado - Web Deploy.pubxml" />
@@ -343,26 +328,13 @@
     <Content Include="Views\Shared\EditorTemplates\Password.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\EmailAddress.cshtml" />
-    <Content Include="Views\Home\ApplicationMenu.cshtml" />
-    <Content Include="Views\Home\CreateApplicationsEditPartial.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\Home\_FileManagerPartial.cshtml" />
-    <Content Include="Views\ReportHeaders\Index.cshtml" />
-    <Content Include="Views\ReportHeaders\ReportHeaderLandingFormView.cshtml" />
-    <Content Include="Views\ReportHeaders\ReportHeaderMenu.cshtml" />
-    <Content Include="Views\ReportHeaders\_ReportHeaderGridViewPartial.cshtml" />
-    <Content Include="Views\DropBox\GridViewPartialView.cshtml" />
-    <Content Include="Views\DropBox\DropBoxMenu.cshtml" />
-    <Content Include="Views\SiteVisitAudit\Index.cshtml" />
-    <Content Include="Views\SiteVisitAudit\CreateSiteVisitAuditEditPartial.cshtml" />
-    <Content Include="Views\SiteVisitAudit\SiteVisitAuditMenu.cshtml" />
-    <Content Include="Views\SiteVisitAudit\GridViewPartialView.cshtml" />
-    <Content Include="Views\Mortuary\CreateMortuaryEditPartial.cshtml" />
-    <Content Include="Views\Mortuary\GridViewPartialView.cshtml" />
-    <Content Include="Views\Mortuary\Index.cshtml" />
-    <Content Include="Views\Mortuary\MortuaryMenu.cshtml" />
+    <Content Include="Views\Booking\_GridViewPartial.cshtml" />
+    <Content Include="Views\Booking\Index.cshtml" />
+    <Content Include="Views\users\UsersLandingFormView.cshtml" />
+    <Content Include="Views\Booking\ButtonMenu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -374,10 +346,6 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Account\ChangePassword.cshtml" />
-    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\ContentLeftPartialView.cshtml" />
     <Content Include="Views\Shared\HeaderPartialView.cshtml" />
     <Content Include="Views\Shared\LogOnPartialView.cshtml" />
@@ -385,70 +353,19 @@
     <Content Include="Views\Shared\_mainLayout.cshtml" />
     <Content Include="Views\Shared\_rootLayout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Home\GridViewPartialView.cshtml" />
-    <Content Include="Views\Cemeteries\Index.cshtml" />
-    <Content Include="Views\Cemeteries\GridViewPartialView.cshtml" />
-    <Content Include="Views\Cemeteries\CreateCemeteryEditPartial.cshtml" />
-    <Content Include="Views\Cemeteries\CemeteryMenu.cshtml" />
-    <Content Include="Views\Graves\GravesMenu.cshtml" />
-    <Content Include="Views\Graves\CreateGravesEditPartial.cshtml" />
-    <Content Include="Views\Graves\GridViewPartialView.cshtml" />
-    <Content Include="Views\Graves\Index.cshtml" />
     <Content Include="Views\users\Index.cshtml" />
-    <Content Include="Views\users\ResetPassword.cshtml" />
-    <Content Include="Views\users\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\users\RolesEditPartialFormView.cshtml" />
-    <Content Include="Views\users\UserMenu.cshtml" />
-    <Content Include="Views\users\UserRoleMenu.cshtml" />
-    <Content Include="Views\users\UsersChangePasswordForm.cshtml" />
-    <Content Include="Views\users\UsersEditPartialFormView.cshtml" />
-    <Content Include="Views\users\UsersLandingFormView.cshtml" />
+    <Content Include="Views\Booking\BookingLandingFormView.cshtml" />
     <Content Include="Views\users\_GridViewPartial.cshtml" />
-    <Content Include="Views\users\_UserRoles.cshtml" />
-    <Content Include="Views\Roles\Index.cshtml" />
-    <Content Include="Views\Roles\RoleMenu.cshtml" />
-    <Content Include="Views\Roles\UsersLandingFormView.cshtml" />
-    <Content Include="Views\Roles\_RolesGridViewPartial.cshtml" />
-    <Content Include="Views\DropBox\Index.cshtml" />
-    <Content Include="Views\DropBox\_FileManagerPartial.cshtml" />
-    <Content Include="Views\Home\GraveOwnerMenu.cshtml" />
-    <Content Include="Views\Home\GraveOwnerGridViewPartial.cshtml" />
-    <Content Include="Views\Home\LinkToGraveLanding.cshtml" />
-    <Content Include="Views\Home\GravesGridViewPartialView.cshtml" />
-    <Content Include="Views\Home\LinkToGraveMenu.cshtml" />
-    <Content Include="Views\Home\DualApplicationMenu.cshtml" />
-    <Content Include="Views\Home\DualApplicationPartialView.cshtml" />
-    <Content Include="Views\Home\DualCreateApplicationsEditPartial.cshtml" />
-    <Content Include="Views\Home\ReportViewPartial.cshtml" />
-    <Content Include="Views\Downloads\_FileManagerPartial.cshtml" />
-    <Content Include="Views\Downloads\Index.cshtml" />
     <Content Include="Views\TandCs\Index.cshtml" />
-    <Content Include="Views\Home\DualApplicationLanding.cshtml" />
-    <Content Include="Views\Home\ImportApplication.cshtml" />
-    <Content Include="Views\Home\ReportOptions.cshtml" />
-    <Content Include="Views\Home\ReportPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\DashboardConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -456,51 +373,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Cemetery.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="cms.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>cms.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="cms.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="cms.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>cms.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\MortuaryController.cs" />
-    <Compile Include="Controllers\ReportHeadersController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\GraveOwnerController.cs" />
-    <Compile Include="Controllers\DropBoxController.cs" />
-    <Compile Include="Controllers\DownloadsController.cs" />
-    <Compile Include="Controllers\GravesController.cs" />
-    <Compile Include="Controllers\CemeteriesController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\SiteVisitAuditController.cs" />
-    <Compile Include="DualApplication.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Grave.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GraveOwner.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\CemeteryOwnerDTO.cs" />
-    <Compile Include="Models\ChartSeriesOptions.cs" />
+    <Compile Include="Models\BookingsDto.cs" />
+    <Compile Include="Models\UsersDto.cs" />
     <Compile Include="Models\ReportOptionDTO.cs" />
     <Compile Include="Models\EmailSender.cs" />
     <Compile Include="Models\SummaryDto.cs" />
@@ -509,64 +390,24 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NorthwindContext.cs" />
     <Compile Include="Models\NorthwindDataProvider.cs" />
-    <Compile Include="Models\CemeteryOwnershipDto.cs" />
-    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Models\GraveOwnerDto.cs" />
     <Compile Include="Models\PalBrokerHelper.cs" />
     <Compile Include="Models\PalBrokerHtmlHelper.cs" />
     <Compile Include="Models\ApplicationModel.cs" />
     <Compile Include="Models\PasswordHelper.cs" />
-    <Compile Include="Models\ApplicationDTO.cs" />
-    <Compile Include="Models\OnSiteVisitDto.cs" />
-    <Compile Include="Models\UserRolesDto.cs" />
     <Compile Include="Controllers\usersController.cs" />
-    <Compile Include="Mortuary.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PublicUser.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ReportHeader.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Role.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SiteVisitAudit.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="User.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UserRole.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Reports\AppReportXrMvc.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Views\Reports\AppReportXrMvc.designer.cs">
-      <DependentUpon>AppReportXrMvc.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Dashboards\" />
-    <Folder Include="Content\Downloads\Thumbnails\" />
-    <Folder Include="Content\DropBox\" />
-    <Folder Include="Content\FileManager\Thumbnails\" />
-    <Folder Include="Content\ImportApplications\" />
     <Folder Include="System\" />
-    <Folder Include="Views\PublicViews\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
-    <EmbeddedResource Include="Views\Reports\AppReportXrMvc.resx">
-      <DependentUpon>AppReportXrMvc.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

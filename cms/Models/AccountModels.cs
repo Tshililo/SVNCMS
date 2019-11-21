@@ -12,7 +12,7 @@ namespace cms.Models {
         public UsersContext()
             : base("cmsEntities1") {
         }
-        public DbSet<UserRole> UserProfiles { get; set; }
+     //   public DbSet<UserRole> UserProfiles { get; set; }
     }
     [Table("UserProfile")]
     public class UserProfile {

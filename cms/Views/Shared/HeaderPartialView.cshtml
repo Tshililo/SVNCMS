@@ -1,6 +1,6 @@
 <div class="headerTop">
     <div class="templateTitle">
-        @Html.ActionLink("Makhado Municipality Cemetery Management System", "Index", "Home")
+        @Html.ActionLink("Chef Portal", "Index", "Home")
     </div>
     @*<div class="loginControl">
         @Html.Partial("LogOnPartialView")
@@ -17,7 +17,7 @@
 
     settings.Items.Add(item =>
     {
-        item.Text = "Download Application";
+        item.Text = "Download Terms & Conditions";
         item.NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "Downloads", Action = "index" });
     });
 
