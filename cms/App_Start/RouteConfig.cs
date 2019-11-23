@@ -17,7 +17,7 @@ namespace cms
 			routes.MapRoute(
 				name: "Default", // Route name
 				url: "{controller}/{action}/{id}", // URL with parameters
-				defaults: new { controller = "Booking", action = "index", id = UrlParameter.Optional } // Parameter defaults
+				defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional } // Parameter defaults
 			);
 
 

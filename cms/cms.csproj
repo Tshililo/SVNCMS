@@ -333,8 +333,35 @@
     </Content>
     <Content Include="Views\Booking\_GridViewPartial.cshtml" />
     <Content Include="Views\Booking\Index.cshtml" />
-    <Content Include="Views\users\UsersLandingFormView.cshtml" />
     <Content Include="Views\Booking\ButtonMenu.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Roles\RoleMenu.cshtml" />
+    <Content Include="Views\Roles\UsersLandingFormView.cshtml" />
+    <Content Include="Views\Roles\_RolesGridViewPartial.cshtml" />
+    <Content Include="Views\users\Index.cshtml" />
+    <Content Include="Views\users\ResetPassword.cshtml" />
+    <Content Include="Views\users\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\users\RolesEditPartialFormView.cshtml" />
+    <Content Include="Views\users\UserMenu.cshtml" />
+    <Content Include="Views\users\UserRoleMenu.cshtml" />
+    <Content Include="Views\users\UsersChangePasswordForm.cshtml" />
+    <Content Include="Views\users\UsersEditPartialFormView.cshtml" />
+    <Content Include="Views\users\UsersLandingFormView.cshtml" />
+    <Content Include="Views\users\_GridViewPartial.cshtml" />
+    <Content Include="Views\users\_UserRoles.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -360,9 +387,7 @@
     <Content Include="Views\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\users\Index.cshtml" />
     <Content Include="Views\Booking\BookingLandingFormView.cshtml" />
-    <Content Include="Views\users\_GridViewPartial.cshtml" />
     <Content Include="Views\TandCs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -373,9 +398,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

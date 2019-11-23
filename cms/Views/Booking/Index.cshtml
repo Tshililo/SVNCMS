@@ -21,13 +21,22 @@
             s.SetFocusedRowIndex(0);
     }
 
+    function HighlightEllipsis() {
+        $('.dxgv.dx-ellipsis').each(function (i, elem) {
+            var color = elem.offsetWidth < elem.scrollWidth ? '#FFF2C0' : 'white';
+            elem.style.transition = 'background 1s';
+            elem.style['background-color'] = color;
+        });
+    }
+
     // Roles Menu Buttons
     function OnBookingMenuClick(s, e) {
         //alert("I am here: So ya clicked he button over yonder then: " + e.item.name)
         //https://documentation.devexpress.com/#AspNet/DevExpressWebScriptsASPxClientGridView_UpdateEdittopic
         if (e.item.name == "btnHeaderAccept") {
 
-            // get ID of apllication table
+            if (confirm("Confirm Request?")) {
+           // get ID of apllication table
             var ObjId = BookingGridViewPartial.GetRowKey(BookingGridViewPartial.GetFocusedRowIndex());
 
             $.ajax({
@@ -45,8 +54,32 @@
 
                 }
             });
-
+        }
    
+        }
+
+        if (e.item.name == "btnHeaderReject") {
+
+            if (confirm("Reject Request?")) {
+                // get ID of apllication table
+                var ObjId = BookingGridViewPartial.GetRowKey(BookingGridViewPartial.GetFocusedRowIndex());
+
+                $.ajax({
+                    url: '@Url.Action("RejectRequest", "Booking")',
+                    type: "POST",
+                    dataType: "text",
+                    traditional: true,
+                    async: false,
+                    data: { ObjId: ObjId },
+                    success: function (data) {
+                        BookingGridViewPartial.Refresh();
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        alert('Request Status: ' + xhr.status + '; Status Text: ' + textStatus + '; Error: ' + errorThrown);
+
+                    }
+                });
+            }
         }
 
         //if (e.item.name == "btnHeaderAcceptPayment") {

@@ -18,4 +18,20 @@ namespace cms.Models
         
 
     }
+
+    public class RoleDto
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+
+    }
+
+    public class UserRolesDto
+    {
+        public Guid ObjId { get; set; }
+        public string RoleName { get; set; }
+        public string RoleId { get; set; }
+        public string UserId { get; set; }
+
+    }
 }

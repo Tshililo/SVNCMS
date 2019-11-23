@@ -43,15 +43,30 @@ namespace cms.Controllers
 
         public ActionResult AcceptRequest(string ObjId)
         {
-            UpdateRecord(ObjId);
+            string RequestStatus = "Yes";
+
+            UpdateRecord(ObjId, RequestStatus);
 
             var model = GetBooking();
 
             return PartialView("_GridViewPartial", model.ToList());
 
         }
+
+        public ActionResult RejectRequest(string ObjId)
+        {
+            string RequestStatus = "No";
+            UpdateRecord(ObjId, RequestStatus);
+
+            var model = GetBooking();
+
+            return PartialView("_GridViewPartial", model.ToList());
+
+        }
+
         
-        public void UpdateRecord(string ObjId)
+
+        public void UpdateRecord(string ObjId, string RequestStatus)
         {
             try
             {
@@ -62,7 +77,7 @@ namespace cms.Controllers
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.CommandText = query;
                 cmd.Parameters.AddWithValue("@ObjId", ObjId);
-                cmd.Parameters.AddWithValue("@Accepted", "Yes");
+                cmd.Parameters.AddWithValue("@Accepted", RequestStatus);
                 cmd.Connection = MyConn2;
                 cmd.ExecuteNonQuery();
                 MyConn2.Close();
@@ -81,6 +96,7 @@ namespace cms.Controllers
 
         private List<BookingsDto> GetBooking()
         {
+            var getdate = DateTime.Now.Date;
 
             List<BookingsDto> Bookings = new List<BookingsDto>();
 
@@ -105,7 +121,7 @@ namespace cms.Controllers
                                 occasion = sdr["occasion"].ToString(),
                                 FromTime = sdr["FromTime"].ToString(),
                                 ToTime = sdr["ToTime"].ToString(),
-                                RequestDate = sdr["RequestDate"].ToString(),
+                                RequestDate = DateTime.Parse(sdr["RequestDate"].ToString() + " 00:00:00").Date,
                                 Accepted = sdr["Accepted"].ToString()
                             });
                         }

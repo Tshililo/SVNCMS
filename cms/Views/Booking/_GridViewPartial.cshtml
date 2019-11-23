@@ -1,3 +1,8 @@
+@using DevExpress.Web;
+@using DevExpress.Web.Mvc;
+@using cms.Helpers;
+@using cms.Models;
+
 @{
 
 
@@ -11,6 +16,10 @@
 
         settings.Styles.AlternatingRow.BackColor = System.Drawing.Color.Beige;
 
+        Html.PalBrokerHtml().GridView.GridDefaultBehavior(settings, "BookingGridViewPartial");
+
+         settings.SettingsBehavior.AllowEllipsisInText = true;
+
         settings.KeyFieldName = "ObjId";
         settings.SettingsBehavior.AllowFocusedRow = true;
         settings.SettingsPager.Visible = true;
@@ -20,14 +29,24 @@
         settings.SettingsBehavior.AllowSelectSingleRowOnly = true;
         settings.CommandColumn.ShowSelectCheckbox = true;
 
+        settings.Settings.ShowHeaderFilterButton = true;
+        settings.SettingsPopup.HeaderFilter.Height = 250;
+        var headerFilterMode = GridHeaderFilterMode.CheckedList;
+
+        foreach (GridViewDataColumn column in settings.Columns)
+            column.SettingsHeaderFilter.Mode = headerFilterMode;
+
 
         settings.ClientSideEvents.FocusedRowChanged = "OnBookingHeaderGridFocusedRowChanged";
         settings.ClientSideEvents.Init = "function(s, e) { s.PerformCallback(); }";
         settings.ClientSideEvents.EndCallback = "InitialSetFocus";
 
-        settings.Columns.Add("RequestDate");
+        settings.Columns.Add(column => { column.FieldName = "RequestDate"; column.Caption = "Request Date"; column.PropertiesEdit.DisplayFormatString = "dd/MM/yyyy"; column.PropertiesEdit.DisplayFormatString = "dd/MM/yyyy"; column.Width = Unit.Pixel(100); });
 
-        settings.Columns.Add("EventsType");
+
+//settings.Columns.Add("RequestDate");
+
+settings.Columns.Add("EventsType");
 
         settings.Columns.Add("occasion");
 
@@ -39,7 +58,7 @@
 
         settings.Columns.Add("occasion");
 
-         settings.Columns.Add("Accepted");
+        settings.Columns.Add("Accepted");
     });
     if (ViewData["EditError"] != null)
     {

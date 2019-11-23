@@ -22,7 +22,7 @@ namespace cms.Models
 
         public string FromTime { get; set; }
         public string ToTime { get; set; }
-        public string RequestDate { get; set; }
+        public DateTime? RequestDate { get; set; }
         public string Accepted { get; set; }
         
     }

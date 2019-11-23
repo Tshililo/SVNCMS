@@ -22,22 +22,42 @@
     {
         group.Text = "Administration";
         group.Items.Add("Bookings", "", "~/Content/Images/booking.jpg").NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "Booking", Action = "index" });
-  //      group.Items.Add("Chef Audit", "", "~/Content/Images/audit.jpg").NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "SiteVisitAudit", Action = "index" });
+        //      group.Items.Add("Chef Audit", "", "~/Content/Images/audit.jpg").NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "SiteVisitAudit", Action = "index" });
     });
 
-    settings.Groups.Add(group =>
-    {
-        group.Text = "User Management";
-        group.Items.Add("Users", "", "~/Content/Images/users.jpg").NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "Users", Action = "index" });
-    //    group.Items.Add("Roles", "", "~/Content/Images/roles.png").NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "Roles", Action = "index" });
-    });
+    var userRole = Session["userRole"].ToString();
 
-    settings.Groups.Add(group =>
+    if (userRole == "Admin")
     {
-        group.Text = "System Settings";
-       // group.Items.Add("Report Header", "", "~/Content/Images/Report.jpg").NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "ReportHeaders", Action = "index" });
-        group.Items.Add("LogOut", "", "~/Content/Images/logout.jpg").NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "Account", Action = "LogOff" });
-    });
+        settings.Groups.Add(group =>
+        {
+            group.Text = "User Management";
+            group.Items.Add("Users", "", "~/Content/Images/users.jpg").NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "Users", Action = "index" });
+            group.Items.Add("Roles", "", "~/Content/Images/roles.png").NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "Roles", Action = "index" });
+            //    group.Items.Add("Roles", "", "~/Content/Images/roles.png").NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "Roles", Action = "index" });
+        });
+
+
+        settings.Groups.Add(group =>
+        {
+            group.Text = "System Settings";
+            // group.Items.Add("Report Header", "", "~/Content/Images/Report.jpg").NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "ReportHeaders", Action = "index" });
+            group.Items.Add("LogOut", "", "~/Content/Images/logout.jpg").NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "Account", Action = "LogOff" });
+        });
+    }
+
+    else
+    {
+        settings.Groups.Add(group =>
+        {
+            group.Text = "System Settings";
+            // group.Items.Add("Report Header", "", "~/Content/Images/Report.jpg").NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "ReportHeaders", Action = "index" });
+            group.Items.Add("LogOut", "", "~/Content/Images/logout.jpg").NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "Account", Action = "LogOff" });
+        });
+
+    }
+
+
 
 }).GetHtml()
 </div>
