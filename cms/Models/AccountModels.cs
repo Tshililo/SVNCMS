@@ -21,8 +21,32 @@ namespace cms.Models {
         public int UserId { get; set; }
         public string UserName { get; set; }
     }
-        
- 
+
+    public class booking
+    {
+        public Guid? ObjId { get; set; }
+
+        public string people { get; set; }
+        public string email { get; set; }
+        public string occasion { get; set; }
+        public string datecapture { get; set; }
+        public string EventsType { get; set; }
+        public string cuisinetype { get; set; }
+        public string phoneno { get; set; }
+        public string refno { get; set; }
+        public string address { get; set; }
+
+        public string FromTime { get; set; }
+
+        public string ToTime { get; set; }
+
+        public string RequestDate { get; set; }
+
+        public string Accepted { get; set; }
+        public string NamesId { get; set; }
+    }
+
+
     public class SendCodeViewModel
     {
         public string SelectedProvider { get; set; }

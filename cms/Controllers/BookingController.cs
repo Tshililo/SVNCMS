@@ -103,7 +103,7 @@ namespace cms.Controllers
             string constr = connectionString;
             using (MySqlConnection con = new MySqlConnection(constr))
             {
-                string query = "SELECT ObjId, email, EventsType,occasion,FromTime,ToTime,RequestDate,Accepted FROM Booking";
+                string query = "SELECT ObjId, email, EventsType,occasion,FromTime,ToTime,RequestDate,Accepted,refno FROM Booking";
 
                 using (MySqlCommand cmd = new MySqlCommand(query))
                 {
@@ -122,7 +122,8 @@ namespace cms.Controllers
                                 FromTime = sdr["FromTime"].ToString(),
                                 ToTime = sdr["ToTime"].ToString(),
                                 RequestDate = DateTime.Parse(sdr["RequestDate"].ToString() + " 00:00:00").Date,
-                                Accepted = sdr["Accepted"].ToString()
+                                Accepted = sdr["Accepted"].ToString(),
+                                refno = sdr["refno"].ToString()
                             });
                         }
                     }
