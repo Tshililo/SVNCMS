@@ -1,0 +1,47 @@
+﻿@Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "BookingLandingFormLayout";
+    settings.AlignItemCaptionsInAllGroups = true;
+    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+
+    var groupMain = settings.Items.AddGroupItem(groupSettings =>
+    {
+        groupSettings.Caption = string.Format("Booking Landing");
+        groupSettings.ShowCaption = DefaultBoolean.True;
+        groupSettings.GroupBoxDecoration = GroupBoxDecoration.HeadingLine;
+        groupSettings.SettingsItemCaptions.HorizontalAlign = FormLayoutHorizontalAlign.Left;
+        groupSettings.ColCount = 1;
+    });
+
+    //Header Partial View of Users
+    groupMain.Items.Add(itemSettings =>
+    {
+        itemSettings.Caption = "Bookings";
+        itemSettings.Name = "Bookings";
+        itemSettings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+        itemSettings.ShowCaption = DefaultBoolean.False;
+        itemSettings.ColSpan = 1;
+        itemSettings.SetNestedContent(() =>
+        {
+            //return method
+            @Html.RenderAction("GridViewPartial");
+        });
+    });
+    //Header Partial View of Users
+    groupMain.Items.Add(itemSettings =>
+    {
+        itemSettings.Caption = "BookingsMenu";
+        itemSettings.Name = "Booking Menu";
+        itemSettings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+        itemSettings.ShowCaption = DefaultBoolean.False;
+        itemSettings.ColSpan = 1;
+        itemSettings.SetNestedContent(() =>
+        {
+            //return method
+            @Html.RenderPartial("ButtonMenu");
+        });
+    });
+
+
+
+}).GetHtml()

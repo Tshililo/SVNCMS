@@ -1,0 +1,70 @@
+@using DevExpress.Web;
+@using DevExpress.Web.Mvc;
+@using cms.Helpers;
+@using cms.Models;
+
+@{
+
+
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "BookingGridViewPartial";
+
+        settings.CallbackRouteValues = new { Controller = "Booking", Action = "GridViewPartial" };
+
+        settings.Width = Unit.Percentage(100);
+
+        settings.Styles.AlternatingRow.BackColor = System.Drawing.Color.Beige;
+
+        Html.PalBrokerHtml().GridView.GridDefaultBehavior(settings, "BookingGridViewPartial");
+
+         settings.SettingsBehavior.AllowEllipsisInText = true;
+
+        settings.KeyFieldName = "ObjId";
+        settings.SettingsBehavior.AllowFocusedRow = true;
+        settings.SettingsPager.Visible = true;
+        settings.Settings.ShowGroupPanel = true;
+        settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+        settings.SettingsBehavior.AllowSelectSingleRowOnly = true;
+        settings.CommandColumn.ShowSelectCheckbox = true;
+
+        settings.Settings.ShowHeaderFilterButton = true;
+        settings.SettingsPopup.HeaderFilter.Height = 250;
+        var headerFilterMode = GridHeaderFilterMode.CheckedList;
+
+        foreach (GridViewDataColumn column in settings.Columns)
+            column.SettingsHeaderFilter.Mode = headerFilterMode;
+
+
+        settings.ClientSideEvents.FocusedRowChanged = "OnBookingHeaderGridFocusedRowChanged";
+        settings.ClientSideEvents.Init = "function(s, e) { s.PerformCallback(); }";
+        settings.ClientSideEvents.EndCallback = "InitialSetFocus";
+
+        settings.Columns.Add(column => { column.FieldName = "RequestDate"; column.Caption = "Request Date"; column.PropertiesEdit.DisplayFormatString = "dd/MM/yyyy"; column.PropertiesEdit.DisplayFormatString = "dd/MM/yyyy"; column.Width = Unit.Pixel(100); });
+
+
+//settings.Columns.Add("RequestDate");
+
+settings.Columns.Add("EventsType");
+
+        settings.Columns.Add("occasion");
+
+        settings.Columns.Add("FromTime");
+
+        settings.Columns.Add("ToTime");
+
+        settings.Columns.Add("email");
+
+        settings.Columns.Add("occasion");
+
+        settings.Columns.Add("Accepted");
+    });
+    if (ViewData["EditError"] != null)
+    {
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+
+
+    }
+}
+@grid.Bind(Model).GetHtml()

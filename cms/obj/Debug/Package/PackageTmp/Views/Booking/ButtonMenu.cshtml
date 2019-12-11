@@ -1,0 +1,16 @@
+@* Menu Header *@
+<div style="padding-bottom: 10px; float: right;">
+    @Html.DevExpress().Menu(settings =>
+{
+    settings.Name = "ApplicationMenu";
+    settings.ShowAsToolbar = true;
+    settings.ShowPopOutImages = DefaultBoolean.True;
+    settings.Items.Add("Accept Request", "btnHeaderAccept");
+    settings.Items.Add("Reject Request", "btnHeaderReject");
+    //  settings.Items.Add("Approve Payment", "btnHeaderAcceptPayment");
+    settings.ClientSideEvents.ItemClick = "OnBookingMenuClick";
+}).GetHtml()
+
+</div>
+
+

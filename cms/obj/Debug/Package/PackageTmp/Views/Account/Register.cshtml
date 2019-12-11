@@ -1,0 +1,48 @@
+@{ Layout = "~/Views/Shared/_lightLayout.cshtml"; }
+@model cms.PublicUser
+
+
+<style>
+    #outPopUp {
+        position: absolute;
+        z-index: 15;
+        top: 30%;
+        left: 50%;
+        margin: -100px 0 0 -150px;
+    }
+</style>
+
+<div id="outPopUp">
+    <h2>
+        <img src="~/content/Images/Makhado.jpg"><br />
+    </h2>
+    <div class="accountHeader">
+        <h2>Create a New Account</h2>
+        <p>Use the form below to create a new account.</p>
+        <p style="color:red">@ViewBag.ErrorMessage</p>
+    </div>
+
+@using (Html.BeginForm("PublicUsersAddNew", "Account", FormMethod.Post))
+{
+        @Html.AntiForgeryToken()
+
+        @Html.DevExpress().TextBoxFor(m => m.Cell_No, tb =>
+{
+    tb.Properties.Caption = "Phone Number";
+    tb.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
+    tb.ShowModelErrors = true;
+    tb.Properties.ValidationSettings.Display = Display.Dynamic;
+    tb.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.Text;
+    tb.Properties.ValidationSettings.ErrorTextPosition = ErrorTextPosition.Bottom;
+}).GetHtml()
+
+        <br />
+        @Html.DevExpress().Button(b =>
+{
+    b.Name = "Button";
+    b.Text = "Register";
+    b.UseSubmitBehavior = true;
+}).GetHtml()
+    }
+
+</div>

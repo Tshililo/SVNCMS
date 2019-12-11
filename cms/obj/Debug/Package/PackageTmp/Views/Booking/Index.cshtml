@@ -1,0 +1,113 @@
+﻿
+<script type="text/javascript">
+
+    function OnBookingHeaderGridFocusedRowChanged(s, e) {
+
+        //Get the User's Id from the selected row
+        s.GetRowValues(s.GetFocusedRowIndex(), 'ObjId', OnGetRowValues);
+    }
+
+    function OnGetRowValues(values) {
+        //return the selected value
+        UsersGrid_ObjId = values;
+    }
+    function OnBeginCallback(s, e) {
+        // alert('OnBeginCallback e:  ' + e);
+        e.customArgs["BookingId"] = UsersGrid_ObjId;
+
+    }
+    function InitialSetFocus(s, e) {
+        if (s.GetFocusedRowIndex() < 0)
+            s.SetFocusedRowIndex(0);
+    }
+
+    function HighlightEllipsis() {
+        $('.dxgv.dx-ellipsis').each(function (i, elem) {
+            var color = elem.offsetWidth < elem.scrollWidth ? '#FFF2C0' : 'white';
+            elem.style.transition = 'background 1s';
+            elem.style['background-color'] = color;
+        });
+    }
+
+    // Roles Menu Buttons
+    function OnBookingMenuClick(s, e) {
+        //alert("I am here: So ya clicked he button over yonder then: " + e.item.name)
+        //https://documentation.devexpress.com/#AspNet/DevExpressWebScriptsASPxClientGridView_UpdateEdittopic
+        if (e.item.name == "btnHeaderAccept") {
+
+            if (confirm("Confirm Request?")) {
+           // get ID of apllication table
+            var ObjId = BookingGridViewPartial.GetRowKey(BookingGridViewPartial.GetFocusedRowIndex());
+
+            $.ajax({
+                url: '@Url.Action("AcceptRequest", "Booking")',
+                type: "POST",
+                dataType: "text",
+                traditional: true,
+                async: false,
+                data: { ObjId: ObjId},
+                success: function (data) {
+                BookingGridViewPartial.Refresh();
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert('Request Status: ' + xhr.status + '; Status Text: ' + textStatus + '; Error: ' + errorThrown);
+
+                }
+            });
+        }
+   
+        }
+
+        if (e.item.name == "btnHeaderReject") {
+
+            if (confirm("Reject Request?")) {
+                // get ID of apllication table
+                var ObjId = BookingGridViewPartial.GetRowKey(BookingGridViewPartial.GetFocusedRowIndex());
+
+                $.ajax({
+                    url: '@Url.Action("RejectRequest", "Booking")',
+                    type: "POST",
+                    dataType: "text",
+                    traditional: true,
+                    async: false,
+                    data: { ObjId: ObjId },
+                    success: function (data) {
+                        BookingGridViewPartial.Refresh();
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        alert('Request Status: ' + xhr.status + '; Status Text: ' + textStatus + '; Error: ' + errorThrown);
+
+                    }
+                });
+            }
+        }
+
+        //if (e.item.name == "btnHeaderAcceptPayment") {
+
+        //    var index = Roles.GetFocusedRowIndex();
+        //   // alert('index : ' + index);
+
+        //    Roles.StartEditRow(index);
+        //    // call edit funtion from custom button
+        //}
+
+        //if (e.item.name == "btnHeaderDelete") {
+        //    if (confirm("Confirm Delete?")) {
+        //        var index = Roles.GetFocusedRowIndex();
+        //        Roles.DeleteRow(index);
+        //    }
+        //}
+
+    }
+
+</script>
+
+@using (Html.BeginForm())
+{
+
+    @Html.Partial("BookingLandingFormView");
+
+}
+
+
+
