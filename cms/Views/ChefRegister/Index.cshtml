@@ -1,0 +1,274 @@
+﻿
+
+<!DOCTYPE html>
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<html>
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>The Uba Chef</title>
+    <link rel="apple-touch-icon" href="~/assets/images/apple-touch-icon.png" />
+    <script>
+        if (window.screen.height == 568) { // iPhone 4"
+            document.querySelector("meta[name=viewport]").content = "width=320.1";
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- css -->
+    <link rel="stylesheet" href="~/Content/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+    <link rel="stylesheet" href="~/assets/css/style2.css">
+
+    <!-- scripts -->
+    <script src="~/Content/jquery-1.8.2.min.js"></script>
+    <script src="~/Content/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+    <script src="~/assets/js/screen.js"></script>
+
+</head>
+<body>
+
+    <div data-role="page">
+
+        <!-- main content -->
+        <div data-role="content">
+                <!-- slider -->
+                <div class="slider-outer">
+                    <div class="slider-container">
+                        <div id="camera_wrap">
+
+                            <div data-src="assets/images/ExecutiveSteak/1.jpg" width="100%">
+                                <div class="camera_caption fadeFromBottom">
+                                </div>
+                            </div>
+
+                            <div data-src="assets/images/ExecutiveSteak/2.jpg" width="100%">
+                                <div class="camera_caption fadeFromBottom" width="100%">
+                                </div>
+                            </div>
+
+                            <div data-src="assets/images/ExecutiveSteak/3.jpg" width="100%">
+                                <div class="camera_caption fadeFromBottom" width="100%">
+                                </div>
+                            </div>
+
+                            <!--<div data-src="assets/images/headers/4.jpg">
+                    </div>-->
+
+                        </div>
+                    </div>
+                    <br class="clear" />
+                </div>
+  
+
+                <section>
+                    <h2>Chef Registration information</h2>
+
+                    <p>
+                        <label for="Name">
+                            <span>Name:</span>
+                            <strong><abbr title="required">*</abbr></strong>
+                        </label>
+                        <input type="text" id="Name" name="Name">
+                    </p>
+
+                    <p>
+                        <label for="Surname">
+                            <span>Surname:</span>
+                            <strong><abbr title="required">*</abbr></strong>
+                        </label>
+                        <input type="text" id="Surname" name="Surname">
+                    </p>
+
+
+                    <p>
+                        <label for="AddressId">
+                            <span>Location</span>
+
+                        </label>
+                        <input type="text" id="AddressId" name="AddressId">
+                    </p>
+
+                    <p>
+                        <label for="Qualification">
+                            <span>Qualification</span>
+
+                        </label>
+                        <input type="file" id="Qualification" name="Qualification">
+                    </p>
+
+
+                    <p>
+                        <label for="emailId">
+                            <span>Email:</span>
+                            <strong><abbr title="required">*</abbr></strong>
+                        </label>
+                        <input type="email" id="emailId" name="emailId">
+                    </p>
+
+                    <p>
+                        <label for="phoneNo">
+                            <span>Phone No:(start with country code e.g +27)</span>
+                            <strong><abbr title="required">*</abbr></strong>
+                        </label>
+                        <input type="tel" id="phoneNo" name="phoneNo">
+                    </p>
+
+                    <label for="pricevalueId">
+                        <span>Total Price:</span>
+                    </label>
+                    <input type="text" id="pricevalueId" name="pricevalueId" style="text-align:center; background-color: red;  color: white;" value="" disabled>
+
+                    <p id="TotalPriceId"></p>
+
+                    <p>
+                        <input type="button" id="Request" onclick="myFunction()" value="Request Chef" name="Request">
+                    </p>
+                </section>
+
+        </div>
+        <!-- /content -->
+
+    </div><!-- /page -->
+    <!-- slider -->
+    <script>
+        jQuery(function () {
+            jQuery('#camera_wrap').camera({
+
+            });
+        });
+    </script>
+    <!-- /slider -->
+
+    <script>
+        function myFunction() {
+
+            var PeopleId = document.getElementById("People").value;
+
+            var NamesId = document.getElementById("Names").value;
+            
+
+            var FromTime = document.getElementById("FromTime").value;
+            var ToTime = document.getElementById("ToTime").value;
+            var emailId = document.getElementById("emailId").value;
+            var phoneNo = document.getElementById("phoneNo").value;
+            var AddressId = document.getElementById("AddressId").value;
+            var TotalPriceId = document.getElementById("pricevalueId").value;
+            var CuizineTypeId = document.getElementById("CuizineTypeId").value;
+            var e = document.getElementById("EventId");
+            var EventIdValue = e.options[e.selectedIndex].value;
+            var numberofplates = 0;
+            var ee = document.getElementById("OccasionId");
+            var OccasionIdValue = ee.options[ee.selectedIndex].value;
+            var RequestDate = document.getElementById("RequestDate").value;
+        
+            var MyIdInfo = PeopleId + "," + numberofplates + "," + emailId + "," + phoneNo
+                + "," + OccasionIdValue + "," + EventIdValue + ","
+                + CuizineTypeId + "," + AddressId + "," + FromTime + "," + ToTime + "," + TotalPriceId + "," + RequestDate + "," + NamesId + "";
+
+            if (PeopleId == "") {
+
+                alert("Please enter no of people");
+                return;
+            }
+
+            if (phoneNo == "") {
+
+                alert("Please enter phone no.");
+                return;
+            }
+
+            if (RequestDate == "") {
+
+                alert("Please enter Request Date");
+                return;
+            }
+
+            window.location.href = "/Home/SavePayments?PeopleId=" + MyIdInfo;
+
+        }
+
+        function OnPeopleChange() {
+            var PeopleId = document.getElementById("People").value;
+            var CuizineTypeId = document.getElementById("CuizineTypeId").value;
+            
+           
+            var results = parseInt(document.getElementById("People").value);
+
+
+            if (CuizineTypeId == "CLASSIC BBQ")
+            {
+                if (results < 10) {
+
+                    var preloaded = 250.00;
+                    var Ans = PeopleId * preloaded
+    
+                    document.getElementById("pricevalueId").value = "R" + Ans;
+
+                }
+
+                else {
+
+                    var preloaded = 200.00;
+                    var Ans = PeopleId * preloaded
+
+                    document.getElementById("pricevalueId").value = "R" + Ans;
+           
+                }
+
+            }
+
+            if (CuizineTypeId == "PLATTERS") {
+
+                if (results < 10) {
+
+                    var preloaded = 300.00;
+                    var Ans = PeopleId * preloaded
+
+                    document.getElementById("pricevalueId").value = "R" + Ans;
+
+                }
+
+                else {
+
+                    var preloaded = 250.00;
+                    var Ans = PeopleId * preloaded
+
+                    document.getElementById("pricevalueId").value = "R" + Ans;
+
+                }
+
+            }
+
+            if (CuizineTypeId == "EXECUTIVE STEAK") {
+
+                if (results < 10) {
+
+                    var preloaded = 300.00;
+                    var Ans = PeopleId * preloaded
+
+                    document.getElementById("pricevalueId").value = "R" + Ans;
+
+                }
+
+                else {
+
+                    var preloaded = 350.00;
+                    var Ans = PeopleId * preloaded
+
+                    document.getElementById("pricevalueId").value = "R" + Ans;
+
+                }
+
+            }
+
+                 }
+
+        
+    </script>
+
+</body>
+</html>

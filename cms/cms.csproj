@@ -755,6 +755,8 @@
     <Content Include="Views\Home\CreateMainMenuEditPartial.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Payments.cshtml" />
+    <Content Include="Views\ChefMobileRegister\Index.cshtml" />
+    <Content Include="Views\SupplierMobileRegister\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -793,6 +795,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\SupplierMobileRegisterController.cs" />
+    <Compile Include="Controllers\ChefMobileRegisterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\BookingController.cs" />

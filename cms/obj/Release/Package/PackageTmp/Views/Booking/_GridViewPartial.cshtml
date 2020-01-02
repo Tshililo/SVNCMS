@@ -18,7 +18,7 @@
 
         Html.PalBrokerHtml().GridView.GridDefaultBehavior(settings, "BookingGridViewPartial");
 
-         settings.SettingsBehavior.AllowEllipsisInText = true;
+        settings.SettingsBehavior.AllowEllipsisInText = true;
 
         settings.KeyFieldName = "ObjId";
         settings.SettingsBehavior.AllowFocusedRow = true;
@@ -43,7 +43,9 @@
 
         settings.Columns.Add(column => { column.FieldName = "RequestDate"; column.Caption = "Request Date"; column.PropertiesEdit.DisplayFormatString = "dd/MM/yyyy"; column.PropertiesEdit.DisplayFormatString = "dd/MM/yyyy"; column.Width = Unit.Pixel(100); });
 
+        settings.Columns.Add(column => { column.FieldName = "refno"; column.Caption = "Reference No"; column.Width = Unit.Pixel(100); });
 
+        
 //settings.Columns.Add("RequestDate");
 
 settings.Columns.Add("EventsType");

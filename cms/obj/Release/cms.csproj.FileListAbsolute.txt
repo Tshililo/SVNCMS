@@ -804,8 +804,6 @@ C:\Users\Tshililo\Documents\Visual Studio 2015\Projects\ChefApp\cms\bin\es\DevEx
 C:\Users\Tshililo\Documents\Visual Studio 2015\Projects\ChefApp\cms\bin\ja\DevExpress.Diagram.v17.2.Core.resources.dll
 C:\Users\Tshililo\Documents\Visual Studio 2015\Projects\ChefApp\cms\bin\ru\DevExpress.Diagram.v17.2.Core.resources.dll
 C:\Users\Tshililo\Documents\Visual Studio 2015\Projects\ChefApp\cms\obj\Release\cms.dll.licenses
-C:\Users\Tshililo\Documents\Visual Studio 2015\Projects\ChefApp\cms\obj\Release\cms.csproj.CoreCompileInputs.cache
-C:\Users\Tshililo\Documents\Visual Studio 2015\Projects\ChefApp\cms\obj\Release\cms.csproj.CopyComplete
 C:\Users\Tshililo\Documents\Visual Studio 2015\Projects\ChefApp\cms\obj\Release\cms.dll
 C:\Users\Tshililo\Documents\Visual Studio 2015\Projects\ChefApp\cms\obj\Release\cms.pdb
-C:\Users\Tshililo\Documents\Visual Studio 2015\Projects\ChefApp\cms\obj\Release\cms.csprojAssemblyReference.cache
+C:\Users\Tshililo\Documents\Visual Studio 2015\Projects\ChefApp\cms\obj\Release\cms.csprojResolveAssemblyReference.cache

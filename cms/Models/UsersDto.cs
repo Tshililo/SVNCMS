@@ -19,6 +19,14 @@ namespace cms.Models
 
     }
 
+    public class ChefModel
+    {
+        public Guid Id { get; set; }
+        public string Names { get; set; }
+        public byte[] Qualification { get; set; }
+
+    }
+
     public class RoleDto
     {
         public Guid Id { get; set; }
