@@ -9,7 +9,7 @@
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
-    <NameOfLastUsedPublishProfile>ubachef.co.za - Web Deploy</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>CMS</NameOfLastUsedPublishProfile>
     <WebStackScaffolding_DbContextTypeFullName>cms.CmsEntities</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
     <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>

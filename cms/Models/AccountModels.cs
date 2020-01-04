@@ -46,6 +46,19 @@ namespace cms.Models {
         public string NamesId { get; set; }
     }
 
+    public class Chefs
+    {
+        public Guid? ObjId { get; set; }
+        public string Idno { get; set; }
+        public string Names { get; set; }
+        public string AddressId { get; set; }
+        public string emailId { get; set; }
+        public string phoneNo { get; set; }
+        public string Remarks { get; set; }
+        public DateTime DateCaptured { get; set; }
+
+    }
+
 
     public class SendCodeViewModel
     {

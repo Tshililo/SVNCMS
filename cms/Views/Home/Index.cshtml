@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <title>The Uba Chef</title>
+    <title>THE U.B.A CHEF</title>
     <link rel="apple-touch-icon" href="~/assets/images/apple-touch-icon.png" />
     <script>
         if (window.screen.height == 568) { // iPhone 4"
@@ -99,7 +99,7 @@
                         </div>
                     </div>
                     <!--<div data-src="assets/images/headers/4.jpg">
-                    </div>-->
+                </div>-->
 
                 </div>
             </div>
@@ -113,7 +113,7 @@
         <div class="content-padd">
 
             <hr class="ornamental" />
-            <h3 class="home-title">Welcome to The Uba Chef!</h3>
+            <h3 class="home-title">WELCOME TO THE U.B.A CHEF!</h3>
 
             <hr class="ornamental" />
 
@@ -123,13 +123,26 @@
                 <li><a onclick="myFunction1()" data-transition="flip" data-prefetch>CLASSIC BBQ</a></li>
                 <li><a onclick="myFunction2()" data-transition="flip" data-prefetch>PLATTERS</a></li>
                 <li><a onclick="myFunction3()" data-transition="flip" data-prefetch>EXECUTIVE STEAK</a></li>
+                @*<li><a onclick="myFunction4()" data-transition="flip" data-prefetch>CHEF REGISTRATION</a></li>
+                <li><a onclick="myFunction5()" data-transition="flip" data-prefetch>SUPPLIER REGISTRATION</a></li>*@
 
             </ul>
         </div><!-- /content -->
 
-
+        <div class="navbar">
+            <a onclick="myFunction4()" class="active">CHEFS</a>
+            <a onclick="myFunction5()">SUPPLIERS</a>
+            <a href="">Contact</a>
+        </div>
     </div>
     <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
         function myFunction1() {
 
 
@@ -148,6 +161,20 @@
 
 
             window.location.href = "/Home/GetEdit?Id=" + "EXECUTIVE STEAK";
+
+        }
+
+        function myFunction4() {
+
+
+            window.location.href = "/ChefMobileRegister/Index";
+
+        }
+
+        function myFunction5() {
+
+
+            window.location.href = "/SupplierMobileRegister/Index";
 
         }
     </script>

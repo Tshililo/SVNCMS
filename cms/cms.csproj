@@ -293,7 +293,6 @@
     <Content Include="assets\images\headers\9.jpg" />
     <Content Include="assets\images\headers\IMG-20191016-WA0007.jpg" />
     <Content Include="assets\images\left-arrow-small.png" />
-    <Content Include="assets\images\logo-sm.png" />
     <Content Include="assets\images\logo.png" />
     <Content Include="assets\images\nav-icons\address-book-sm.png" />
     <Content Include="assets\images\nav-icons\address-book.png" />
@@ -496,9 +495,6 @@
     <Content Include="Home\assets\images\CLASSICBBQ\2.jpg" />
     <Content Include="Home\assets\images\CLASSICBBQ\3.jpg" />
     <Content Include="Home\assets\images\contact-error.png" />
-    <Content Include="Home\assets\images\ExecutiveSteak\1.jpg" />
-    <Content Include="Home\assets\images\ExecutiveSteak\2.jpg" />
-    <Content Include="Home\assets\images\ExecutiveSteak\3.jpg" />
     <Content Include="Home\assets\images\headers\1.jpg" />
     <Content Include="Home\assets\images\headers\2.jpg" />
     <Content Include="Home\assets\images\headers\3.jpg" />
@@ -510,7 +506,6 @@
     <Content Include="Home\assets\images\headers\9.jpg" />
     <Content Include="Home\assets\images\headers\IMG-20191016-WA0007.jpg" />
     <Content Include="Home\assets\images\left-arrow-small.png" />
-    <Content Include="Home\assets\images\logo-sm.png" />
     <Content Include="Home\assets\images\logo.png" />
     <Content Include="Home\assets\images\nav-icons\address-book-sm.png" />
     <Content Include="Home\assets\images\nav-icons\address-book.png" />
@@ -645,14 +640,7 @@
     <Content Include="Home\assets\images\page-backgrounds\paper.jpg" />
     <Content Include="Home\assets\images\pattern.png" />
     <Content Include="Home\assets\images\pattern2.png" />
-    <Content Include="Home\assets\images\PaymentMethods\1.png" />
-    <Content Include="Home\assets\images\PaymentMethods\2.jpg" />
-    <Content Include="Home\assets\images\PaymentMethods\3.png" />
     <Content Include="Home\assets\images\PlatterCuizines.jpeg" />
-    <Content Include="Home\assets\images\PLATTERS\1.jpg" />
-    <Content Include="Home\assets\images\PLATTERS\2.jpg" />
-    <Content Include="Home\assets\images\PLATTERS\3.jpg" />
-    <Content Include="Home\assets\images\PLATTERS\4.jpg" />
     <Content Include="Home\assets\images\right-arrow-small.png" />
     <Content Include="Home\assets\images\shadow1.png" />
     <Content Include="Home\assets\images\shadow2.png" />
