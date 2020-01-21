@@ -22,7 +22,7 @@
     {
         group.Text = "Administration";
         group.Items.Add("Bookings", "", "~/Content/Images/booking.jpg").NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "Booking", Action = "index" });
-        //      group.Items.Add("Chef Audit", "", "~/Content/Images/audit.jpg").NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "SiteVisitAudit", Action = "index" });
+        group.Items.Add("Chefs", "", "~/Content/Images/audit.jpg").NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "DropBox", Action = "index" });
     });
 
     var userRole = Session["userRole"].ToString();

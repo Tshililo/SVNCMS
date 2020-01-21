@@ -133,32 +133,32 @@ namespace cms.Helpers
             };
 #endif
          // GRID EXPORTS
-         settings.SettingsExport.EnableClientSideExportAPI = true;
-         settings.SettingsExport.ExcelExportMode = DevExpress.Export.ExportType.WYSIWYG;
+      //   settings.SettingsExport.EnableClientSideExportAPI = true;
+     //    settings.SettingsExport.ExcelExportMode = DevExpress.Export.ExportType.WYSIWYG;
          settings.SettingsExport.RenderBrick = (sender, e) => {
             if(e.RowType == GridViewRowType.Data && e.VisibleIndex % 2 == 0)
                e.BrickStyle.BackColor = System.Drawing.Color.FromArgb(0xEE, 0xEE, 0xEE);
          };
-         settings.Toolbars.Add(toolbar =>
-         {
+     //    settings.Toolbars.Add(toolbar =>
+     //    {
 
-            toolbar.EnableAdaptivity = true;
-            toolbar.Items.Add(GridViewToolbarCommand.Refresh);
-            toolbar.Items.Add(GridViewToolbarCommand.ClearFilter);
-            toolbar.Items.Add(GridViewToolbarCommand.ClearGrouping);
-            toolbar.Items.Add(GridViewToolbarCommand.ShowSearchPanel);
+     //       toolbar.EnableAdaptivity = true;
+     //       toolbar.Items.Add(GridViewToolbarCommand.Refresh);
+     //       toolbar.Items.Add(GridViewToolbarCommand.ClearFilter);
+     //       toolbar.Items.Add(GridViewToolbarCommand.ClearGrouping);
+     //       toolbar.Items.Add(GridViewToolbarCommand.ShowSearchPanel);
 
-            if(gridName != "gvFruitSpecStock")
-            {
-					// toolbar.Items.Add(GridViewToolbarCommand.ExportToPdf); // removed for now
-					toolbar.Items.Add(GridViewToolbarCommand.ExportToXls);
-               // toolbar.Items.Add(GridViewToolbarCommand.ExportToXlsx);
-               //toolbar.Items.Add(GridViewToolbarCommand.ExportToDocx);// removed for now
-               // toolbar.Items.Add(GridViewToolbarCommand.ExportToRtf);// removed for now
-               // toolbar.Items.Add(GridViewToolbarCommand.ExportToCsv);// removed for now
-            }
+     //       if(gridName != "gvFruitSpecStock")
+     //       {
+					//// toolbar.Items.Add(GridViewToolbarCommand.ExportToPdf); // removed for now
+					//toolbar.Items.Add(GridViewToolbarCommand.ExportToXls);
+     //          // toolbar.Items.Add(GridViewToolbarCommand.ExportToXlsx);
+     //          //toolbar.Items.Add(GridViewToolbarCommand.ExportToDocx);// removed for now
+     //          // toolbar.Items.Add(GridViewToolbarCommand.ExportToRtf);// removed for now
+     //          // toolbar.Items.Add(GridViewToolbarCommand.ExportToCsv);// removed for now
+     //       }
 
-         });
+     //    });
 
       }
 
@@ -260,39 +260,39 @@ namespace cms.Helpers
             };
 #endif
             // GRID EXPORTS
-            settings.SettingsExport.EnableClientSideExportAPI = true;
-            settings.SettingsExport.ExcelExportMode = DevExpress.Export.ExportType.WYSIWYG;
-            settings.SettingsExport.RenderBrick = (sender, e) => {
-                if (e.RowType == GridViewRowType.Data && e.VisibleIndex % 2 == 0)
-                    e.BrickStyle.BackColor = System.Drawing.Color.FromArgb(0xEE, 0xEE, 0xEE);
-            };
-            settings.Toolbars.Add(toolbar =>
-            {
-                //toolbar.Enabled = true;
-                //toolbar.Position = GridToolbarPosition.Top;
-                //toolbar.ItemAlign = GridToolbarItemAlign.Left;
-                //toolbar.Name = gridName + "Refresh";
+            //settings.SettingsExport.EnableClientSideExportAPI = true;
+            //settings.SettingsExport.ExcelExportMode = DevExpress.Export.ExportType.WYSIWYG;
+            //settings.SettingsExport.RenderBrick = (sender, e) => {
+            //    if (e.RowType == GridViewRowType.Data && e.VisibleIndex % 2 == 0)
+            //        e.BrickStyle.BackColor = System.Drawing.Color.FromArgb(0xEE, 0xEE, 0xEE);
+            //};
+            //settings.Toolbars.Add(toolbar =>
+            //{
+            //    //toolbar.Enabled = true;
+            //    //toolbar.Position = GridToolbarPosition.Top;
+            //    //toolbar.ItemAlign = GridToolbarItemAlign.Left;
+            //    //toolbar.Name = gridName + "Refresh";
 
-                //if(gridName != "gvLoadoutHeader" || gridName != "gvFruitSpecStock")
-                //   toolbar.Items.Add(GridViewToolbarCommand.Refresh, true);
+            //    //if(gridName != "gvLoadoutHeader" || gridName != "gvFruitSpecStock")
+            //    //   toolbar.Items.Add(GridViewToolbarCommand.Refresh, true);
 
-                toolbar.EnableAdaptivity = true;
-                toolbar.Items.Add(GridViewToolbarCommand.Refresh);
-                toolbar.Items.Add(GridViewToolbarCommand.ClearFilter);
-                toolbar.Items.Add(GridViewToolbarCommand.ClearGrouping);
-                toolbar.Items.Add(GridViewToolbarCommand.ShowSearchPanel);
+            //    toolbar.EnableAdaptivity = true;
+            //    toolbar.Items.Add(GridViewToolbarCommand.Refresh);
+            //    toolbar.Items.Add(GridViewToolbarCommand.ClearFilter);
+            //    toolbar.Items.Add(GridViewToolbarCommand.ClearGrouping);
+            //    toolbar.Items.Add(GridViewToolbarCommand.ShowSearchPanel);
 
-                if (gridName != "gvFruitSpecStock")
-                {
-                    // toolbar.Items.Add(GridViewToolbarCommand.ExportToPdf); // removed for now
-                    toolbar.Items.Add(GridViewToolbarCommand.ExportToXls);
-                    toolbar.Items.Add(GridViewToolbarCommand.ExportToXlsx);
-                    //toolbar.Items.Add(GridViewToolbarCommand.ExportToDocx);// removed for now
-                    // toolbar.Items.Add(GridViewToolbarCommand.ExportToRtf);// removed for now
-                    // toolbar.Items.Add(GridViewToolbarCommand.ExportToCsv);// removed for now
-                }
+            //    if (gridName != "gvFruitSpecStock")
+            //    {
+            //        // toolbar.Items.Add(GridViewToolbarCommand.ExportToPdf); // removed for now
+            //        toolbar.Items.Add(GridViewToolbarCommand.ExportToXls);
+            //        toolbar.Items.Add(GridViewToolbarCommand.ExportToXlsx);
+            //        //toolbar.Items.Add(GridViewToolbarCommand.ExportToDocx);// removed for now
+            //        // toolbar.Items.Add(GridViewToolbarCommand.ExportToRtf);// removed for now
+            //        // toolbar.Items.Add(GridViewToolbarCommand.ExportToCsv);// removed for now
+            //    }
 
-            });
+            //});
 
             return settings;
 

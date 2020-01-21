@@ -25,6 +25,7 @@
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <UpgradeBackupLocation />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,48 +45,51 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Charts.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.DataAccess.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Pdf.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Xpf.Printing.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Dashboard.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dashboard.v18.1.Web.WebForms, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dashboard.v18.1.Web, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dashboard.v18.1.Web.Mvc5, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Map.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.TreeMap.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.Resources.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpf.Printing.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      
     </Reference>
-    <Reference Include="DevExpress.Xpo.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraCharts.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.PivotGrid.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Sparkline.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.CodeParser.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Xpo.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v18.1.Web, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      
     </Reference>
-    <Reference Include="DevExpress.XtraGauges.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraGauges.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v18.1.Presets, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v18.1.Win, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      
     </Reference>
-    <Reference Include="DevExpress.XtraLayout.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraLayout.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      
     </Reference>
-    <Reference Include="DevExpress.XtraPivotGrid.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraMap.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPivotGrid.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      
     </Reference>
-    <Reference Include="DevExpress.XtraPrinting.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraPrinting.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      
     </Reference>
-    <Reference Include="DevExpress.XtraReports.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraReports.v16.2.Extensions, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraReports.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v18.1.Extensions, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      
     </Reference>
-    <Reference Include="DevExpress.XtraReports.v16.2.Service, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraReports.v18.1.Service, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      
     </Reference>
+    <Reference Include="DevExpress.XtraTreeMap.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -175,6 +179,7 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MySql.Data, Version=8.0.18.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -235,6 +240,7 @@
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -244,15 +250,15 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="DevExpress.Utils.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Data.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Web.ASPxThemes.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Office.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.RichEdit.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.RichEdit.v16.2.Export, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Printing.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Web.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Web.Mvc5.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.ASPxThemes.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v18.1.Export, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.Mvc5.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="WebMatrix.Data, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.3.2.3\lib\net45\WebMatrix.Data.dll</HintPath>
       <Private>True</Private>
@@ -262,37 +268,398 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Makhadocms.mdf" />
-    <Content Include="App_Data\Makhadocms_log.ldf">
-      <DependentUpon>Makhadocms.mdf</DependentUpon>
-    </Content>
     <Content Include="App_Data\SideMenu.xml" />
     <Content Include="App_Data\TopMenu.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="CmsEntities.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CmsEntities.edmx</DependentUpon>
-      <LastGenOutput>CmsEntities.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="CmsEntities.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CmsEntities.edmx</DependentUpon>
-      <LastGenOutput>CmsEntities.cs</LastGenOutput>
-    </Content>
+    <Content Include="assets\contact\js\contact.js" />
+    <Content Include="assets\css\style2.css" />
+    <Content Include="assets\images\apple-touch-icon.png" />
+    <Content Include="assets\images\arrow.png" />
+    <Content Include="assets\images\blank.gif" />
+    <Content Include="assets\images\camera-loader.gif" />
+    <Content Include="assets\images\CLASSICBBQ\1.jpg" />
+    <Content Include="assets\images\CLASSICBBQ\2.jpg" />
+    <Content Include="assets\images\CLASSICBBQ\3.jpg" />
+    <Content Include="assets\images\contact-error.png" />
+    <Content Include="assets\images\headers\1.jpg" />
+    <Content Include="assets\images\headers\2.jpg" />
+    <Content Include="assets\images\headers\3.jpg" />
+    <Content Include="assets\images\headers\4.jpg" />
+    <Content Include="assets\images\headers\5.jpg" />
+    <Content Include="assets\images\headers\6.jpg" />
+    <Content Include="assets\images\headers\7.jpg" />
+    <Content Include="assets\images\headers\8.jpg" />
+    <Content Include="assets\images\headers\9.jpg" />
+    <Content Include="assets\images\headers\IMG-20191016-WA0007.jpg" />
+    <Content Include="assets\images\left-arrow-small.png" />
+    <Content Include="assets\images\logo.png" />
+    <Content Include="assets\images\nav-icons\address-book-sm.png" />
+    <Content Include="assets\images\nav-icons\address-book.png" />
+    <Content Include="assets\images\nav-icons\apartments-sm.png" />
+    <Content Include="assets\images\nav-icons\apartments.png" />
+    <Content Include="assets\images\nav-icons\balloons-sm.png" />
+    <Content Include="assets\images\nav-icons\balloons.png" />
+    <Content Include="assets\images\nav-icons\brush-sm.png" />
+    <Content Include="assets\images\nav-icons\brush.png" />
+    <Content Include="assets\images\nav-icons\brush2-sm.png" />
+    <Content Include="assets\images\nav-icons\brush2.png" />
+    <Content Include="assets\images\nav-icons\calendar-sm.png" />
+    <Content Include="assets\images\nav-icons\calendar.png" />
+    <Content Include="assets\images\nav-icons\calendar2-sm.png" />
+    <Content Include="assets\images\nav-icons\calendar2.png" />
+    <Content Include="assets\images\nav-icons\camera-sm.png" />
+    <Content Include="assets\images\nav-icons\camera.png" />
+    <Content Include="assets\images\nav-icons\car-sm.png" />
+    <Content Include="assets\images\nav-icons\car.png" />
+    <Content Include="assets\images\nav-icons\cell-sm.png" />
+    <Content Include="assets\images\nav-icons\cell.png" />
+    <Content Include="assets\images\nav-icons\cell2-sm.png" />
+    <Content Include="assets\images\nav-icons\cell2.png" />
+    <Content Include="assets\images\nav-icons\cell3-sm.png" />
+    <Content Include="assets\images\nav-icons\cell3.png" />
+    <Content Include="assets\images\nav-icons\chair-sm.png" />
+    <Content Include="assets\images\nav-icons\chair.png" />
+    <Content Include="assets\images\nav-icons\chat-sm.png" />
+    <Content Include="assets\images\nav-icons\chat.png" />
+    <Content Include="assets\images\nav-icons\chat2-sm.png" />
+    <Content Include="assets\images\nav-icons\chat2.png" />
+    <Content Include="assets\images\nav-icons\closed-sm.png" />
+    <Content Include="assets\images\nav-icons\closed.png" />
+    <Content Include="assets\images\nav-icons\dribble-sm.png" />
+    <Content Include="assets\images\nav-icons\dribble.png" />
+    <Content Include="assets\images\nav-icons\eye-sm.png" />
+    <Content Include="assets\images\nav-icons\eye.png" />
+    <Content Include="assets\images\nav-icons\facebook-sm.png" />
+    <Content Include="assets\images\nav-icons\facebook.png" />
+    <Content Include="assets\images\nav-icons\film-sm.png" />
+    <Content Include="assets\images\nav-icons\film.png" />
+    <Content Include="assets\images\nav-icons\flag-sm.png" />
+    <Content Include="assets\images\nav-icons\flag.png" />
+    <Content Include="assets\images\nav-icons\footprint-sm.png" />
+    <Content Include="assets\images\nav-icons\footprint.png" />
+    <Content Include="assets\images\nav-icons\footprints-sm.png" />
+    <Content Include="assets\images\nav-icons\footprints.png" />
+    <Content Include="assets\images\nav-icons\globe-sm.png" />
+    <Content Include="assets\images\nav-icons\globe.png" />
+    <Content Include="assets\images\nav-icons\home-sm.png" />
+    <Content Include="assets\images\nav-icons\home.png" />
+    <Content Include="assets\images\nav-icons\home2-sm.png" />
+    <Content Include="assets\images\nav-icons\home2.png" />
+    <Content Include="assets\images\nav-icons\icecream-sm.png" />
+    <Content Include="assets\images\nav-icons\icecream.png" />
+    <Content Include="assets\images\nav-icons\key-sm.png" />
+    <Content Include="assets\images\nav-icons\key.png" />
+    <Content Include="assets\images\nav-icons\like-sm.png" />
+    <Content Include="assets\images\nav-icons\like.png" />
+    <Content Include="assets\images\nav-icons\mail-sm.png" />
+    <Content Include="assets\images\nav-icons\mail.png" />
+    <Content Include="assets\images\nav-icons\mail2-sm.png" />
+    <Content Include="assets\images\nav-icons\mail2.png" />
+    <Content Include="assets\images\nav-icons\map-marker-sm.png" />
+    <Content Include="assets\images\nav-icons\map-marker.png" />
+    <Content Include="assets\images\nav-icons\map-sm.png" />
+    <Content Include="assets\images\nav-icons\map.png" />
+    <Content Include="assets\images\nav-icons\monitor-sm.png" />
+    <Content Include="assets\images\nav-icons\monitor.png" />
+    <Content Include="assets\images\nav-icons\mouse-sm.png" />
+    <Content Include="assets\images\nav-icons\mouse.png" />
+    <Content Include="assets\images\nav-icons\movie-camera-sm.png" />
+    <Content Include="assets\images\nav-icons\movie-camera.png" />
+    <Content Include="assets\images\nav-icons\movie-sm.png" />
+    <Content Include="assets\images\nav-icons\movie.png" />
+    <Content Include="assets\images\nav-icons\music-sm.png" />
+    <Content Include="assets\images\nav-icons\music.png" />
+    <Content Include="assets\images\nav-icons\paint-brush-sm.png" />
+    <Content Include="assets\images\nav-icons\paint-brush.png" />
+    <Content Include="assets\images\nav-icons\pen-sm.png" />
+    <Content Include="assets\images\nav-icons\pen.png" />
+    <Content Include="assets\images\nav-icons\pencil-sm.png" />
+    <Content Include="assets\images\nav-icons\pencil.png" />
+    <Content Include="assets\images\nav-icons\phone-sm.png" />
+    <Content Include="assets\images\nav-icons\phone.png" />
+    <Content Include="assets\images\nav-icons\phone2-sm.png" />
+    <Content Include="assets\images\nav-icons\phone2.png" />
+    <Content Include="assets\images\nav-icons\phone3-sm.png" />
+    <Content Include="assets\images\nav-icons\phone3.png" />
+    <Content Include="assets\images\nav-icons\photos-sm.png" />
+    <Content Include="assets\images\nav-icons\photos.png" />
+    <Content Include="assets\images\nav-icons\photos2-sm.png" />
+    <Content Include="assets\images\nav-icons\photos2.png" />
+    <Content Include="assets\images\nav-icons\plane-sm.png" />
+    <Content Include="assets\images\nav-icons\plane.png" />
+    <Content Include="assets\images\nav-icons\plate-sm.png" />
+    <Content Include="assets\images\nav-icons\plate.png" />
+    <Content Include="assets\images\nav-icons\popsicle-sm.png" />
+    <Content Include="assets\images\nav-icons\popsicle.png" />
+    <Content Include="assets\images\nav-icons\presentation-sm.png" />
+    <Content Include="assets\images\nav-icons\presentation.png" />
+    <Content Include="assets\images\nav-icons\rss-sm.png" />
+    <Content Include="assets\images\nav-icons\rss.png" />
+    <Content Include="assets\images\nav-icons\run-sm.png" />
+    <Content Include="assets\images\nav-icons\run.png" />
+    <Content Include="assets\images\nav-icons\search-sm.png" />
+    <Content Include="assets\images\nav-icons\search.png" />
+    <Content Include="assets\images\nav-icons\sign-sm.png" />
+    <Content Include="assets\images\nav-icons\sign.png" />
+    <Content Include="assets\images\nav-icons\table-sm.png" />
+    <Content Include="assets\images\nav-icons\table.png" />
+    <Content Include="assets\images\nav-icons\twitter-sm.png" />
+    <Content Include="assets\images\nav-icons\twitter.png" />
+    <Content Include="assets\images\nav-icons\twitter2-sm.png" />
+    <Content Include="assets\images\nav-icons\twitter2.png" />
+    <Content Include="assets\images\nav-icons\users-sm.png" />
+    <Content Include="assets\images\nav-icons\users.png" />
+    <Content Include="assets\images\nav-icons\v-card-sm.png" />
+    <Content Include="assets\images\nav-icons\v-card.png" />
+    <Content Include="assets\images\nav-icons\walk-sm.png" />
+    <Content Include="assets\images\nav-icons\walk.png" />
+    <Content Include="assets\images\nav-icons\wine-sm.png" />
+    <Content Include="assets\images\nav-icons\wine.png" />
+    <Content Include="assets\images\nav-icons\wine2-sm.png" />
+    <Content Include="assets\images\nav-icons\wine2.png" />
+    <Content Include="assets\images\nav-icons\wordpress-sm.png" />
+    <Content Include="assets\images\nav-icons\wordpress.png" />
+    <Content Include="assets\images\nav-icons\you-tube-sm.png" />
+    <Content Include="assets\images\nav-icons\you-tube.png" />
+    <Content Include="assets\images\ornamental-sm.png" />
+    <Content Include="assets\images\ornamental.png" />
+    <Content Include="assets\images\page-backgrounds\paper.jpg" />
+    <Content Include="assets\images\pattern.png" />
+    <Content Include="assets\images\pattern2.png" />
+    <Content Include="assets\images\PlatterCuizines.jpeg" />
+    <Content Include="assets\images\right-arrow-small.png" />
+    <Content Include="assets\images\shadow1.png" />
+    <Content Include="assets\images\shadow2.png" />
+    <Content Include="assets\images\SlideShow\1.jpg" />
+    <Content Include="assets\images\SlideShow\2.jpg" />
+    <Content Include="assets\images\SlideShow\3.jpg" />
+    <Content Include="assets\images\SlideShow\4.jpg" />
+    <Content Include="assets\images\SlideShow\5.jpg" />
+    <Content Include="assets\images\SlideShow\6.jpg" />
+    <Content Include="assets\images\SlideShow\7.jpg" />
+    <Content Include="assets\images\SlideShow\8.jpg" />
+    <Content Include="assets\images\SlideShow\9.jpg" />
+    <Content Include="assets\images\SlideShow\IMG-20191016-WA0007.jpg" />
+    <Content Include="assets\images\social\dribble-r.png" />
+    <Content Include="assets\images\social\fb-r.png" />
+    <Content Include="assets\images\social\linkedin-r.png" />
+    <Content Include="assets\images\social\twitter2-r.png" />
+    <Content Include="assets\images\social\wordpress-r.png" />
+    <Content Include="assets\images\twitterBack.png" />
+    <Content Include="assets\js\screen.js" />
+    <Content Include="assets\portfolio\code.photoswipe.jquery-3.0.5.min.js" />
+    <Content Include="assets\portfolio\error.gif" />
+    <Content Include="assets\portfolio\icons%402x.png" />
+    <Content Include="assets\portfolio\icons.png" />
+    <Content Include="assets\portfolio\images\1L.jpg" />
+    <Content Include="assets\portfolio\images\1s.jpg" />
+    <Content Include="assets\portfolio\images\2L.jpg" />
+    <Content Include="assets\portfolio\images\2s.jpg" />
+    <Content Include="assets\portfolio\images\3L.jpg" />
+    <Content Include="assets\portfolio\images\3s.jpg" />
+    <Content Include="assets\portfolio\images\4L.jpg" />
+    <Content Include="assets\portfolio\images\4s.jpg" />
+    <Content Include="assets\portfolio\lib\klass.min.js" />
+    <Content Include="assets\portfolio\loader.gif" />
+    <Content Include="assets\portfolio\photoswipe.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\ChefPortal.png" />
     <Content Include="Content\Images\AquaHeader.jpg" />
     <Content Include="Content\Images\BlackGlassHeader.jpg" />
-    <Content Include="Content\Images\DashBoard.jpg" />
+    <Content Include="Content\Images\Cemetery.jpg" />
     <Content Include="Content\Images\GlassHeader.jpg" />
     <Content Include="Content\Images\Makhado.jpg" />
     <Content Include="Content\Images\PlasticBlueHeader.jpg" />
     <Content Include="Content\Images\RedWineHeader.jpg" />
     <Content Include="Content\Images\roles.png" />
     <Content Include="Content\Images\users.jpg" />
+    <Content Include="Content\jquery-1.8.2.min.js" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\jquery-ui.min.css" />
+    <Content Include="Content\mobile\1.3.0\images\ajax-loader.gif" />
+    <Content Include="Content\mobile\1.3.0\images\icons-18-black.png" />
+    <Content Include="Content\mobile\1.3.0\images\icons-18-white.png" />
+    <Content Include="Content\mobile\1.3.0\images\icons-36-black.png" />
+    <Content Include="Content\mobile\1.3.0\images\icons-36-white.png" />
+    <Content Include="Content\mobile\1.3.0\jquery.mobile-1.3.0.min.css" />
+    <Content Include="Content\mobile\1.3.0\jquery.mobile-1.3.0.min.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="Home\assets\images\apple-touch-icon.png" />
+    <Content Include="Home\assets\images\arrow.png" />
+    <Content Include="Home\assets\images\blank.gif" />
+    <Content Include="Home\assets\images\camera-loader.gif" />
+    <Content Include="Home\assets\images\CLASSICBBQ\1.jpg" />
+    <Content Include="Home\assets\images\CLASSICBBQ\2.jpg" />
+    <Content Include="Home\assets\images\CLASSICBBQ\3.jpg" />
+    <Content Include="Home\assets\images\contact-error.png" />
+    <Content Include="Home\assets\images\headers\1.jpg" />
+    <Content Include="Home\assets\images\headers\2.jpg" />
+    <Content Include="Home\assets\images\headers\3.jpg" />
+    <Content Include="Home\assets\images\headers\4.jpg" />
+    <Content Include="Home\assets\images\headers\5.jpg" />
+    <Content Include="Home\assets\images\headers\6.jpg" />
+    <Content Include="Home\assets\images\headers\7.jpg" />
+    <Content Include="Home\assets\images\headers\8.jpg" />
+    <Content Include="Home\assets\images\headers\9.jpg" />
+    <Content Include="Home\assets\images\headers\IMG-20191016-WA0007.jpg" />
+    <Content Include="Home\assets\images\left-arrow-small.png" />
+    <Content Include="Home\assets\images\logo.png" />
+    <Content Include="Home\assets\images\nav-icons\address-book-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\address-book.png" />
+    <Content Include="Home\assets\images\nav-icons\apartments-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\apartments.png" />
+    <Content Include="Home\assets\images\nav-icons\balloons-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\balloons.png" />
+    <Content Include="Home\assets\images\nav-icons\brush-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\brush.png" />
+    <Content Include="Home\assets\images\nav-icons\brush2-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\brush2.png" />
+    <Content Include="Home\assets\images\nav-icons\calendar-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\calendar.png" />
+    <Content Include="Home\assets\images\nav-icons\calendar2-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\calendar2.png" />
+    <Content Include="Home\assets\images\nav-icons\camera-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\camera.png" />
+    <Content Include="Home\assets\images\nav-icons\car-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\car.png" />
+    <Content Include="Home\assets\images\nav-icons\cell-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\cell.png" />
+    <Content Include="Home\assets\images\nav-icons\cell2-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\cell2.png" />
+    <Content Include="Home\assets\images\nav-icons\cell3-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\cell3.png" />
+    <Content Include="Home\assets\images\nav-icons\chair-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\chair.png" />
+    <Content Include="Home\assets\images\nav-icons\chat-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\chat.png" />
+    <Content Include="Home\assets\images\nav-icons\chat2-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\chat2.png" />
+    <Content Include="Home\assets\images\nav-icons\closed-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\closed.png" />
+    <Content Include="Home\assets\images\nav-icons\dribble-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\dribble.png" />
+    <Content Include="Home\assets\images\nav-icons\eye-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\eye.png" />
+    <Content Include="Home\assets\images\nav-icons\facebook-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\facebook.png" />
+    <Content Include="Home\assets\images\nav-icons\film-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\film.png" />
+    <Content Include="Home\assets\images\nav-icons\flag-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\flag.png" />
+    <Content Include="Home\assets\images\nav-icons\footprint-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\footprint.png" />
+    <Content Include="Home\assets\images\nav-icons\footprints-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\footprints.png" />
+    <Content Include="Home\assets\images\nav-icons\globe-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\globe.png" />
+    <Content Include="Home\assets\images\nav-icons\home-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\home.png" />
+    <Content Include="Home\assets\images\nav-icons\home2-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\home2.png" />
+    <Content Include="Home\assets\images\nav-icons\icecream-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\icecream.png" />
+    <Content Include="Home\assets\images\nav-icons\key-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\key.png" />
+    <Content Include="Home\assets\images\nav-icons\like-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\like.png" />
+    <Content Include="Home\assets\images\nav-icons\mail-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\mail.png" />
+    <Content Include="Home\assets\images\nav-icons\mail2-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\mail2.png" />
+    <Content Include="Home\assets\images\nav-icons\map-marker-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\map-marker.png" />
+    <Content Include="Home\assets\images\nav-icons\map-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\map.png" />
+    <Content Include="Home\assets\images\nav-icons\monitor-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\monitor.png" />
+    <Content Include="Home\assets\images\nav-icons\mouse-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\mouse.png" />
+    <Content Include="Home\assets\images\nav-icons\movie-camera-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\movie-camera.png" />
+    <Content Include="Home\assets\images\nav-icons\movie-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\movie.png" />
+    <Content Include="Home\assets\images\nav-icons\music-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\music.png" />
+    <Content Include="Home\assets\images\nav-icons\paint-brush-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\paint-brush.png" />
+    <Content Include="Home\assets\images\nav-icons\pen-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\pen.png" />
+    <Content Include="Home\assets\images\nav-icons\pencil-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\pencil.png" />
+    <Content Include="Home\assets\images\nav-icons\phone-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\phone.png" />
+    <Content Include="Home\assets\images\nav-icons\phone2-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\phone2.png" />
+    <Content Include="Home\assets\images\nav-icons\phone3-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\phone3.png" />
+    <Content Include="Home\assets\images\nav-icons\photos-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\photos.png" />
+    <Content Include="Home\assets\images\nav-icons\photos2-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\photos2.png" />
+    <Content Include="Home\assets\images\nav-icons\plane-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\plane.png" />
+    <Content Include="Home\assets\images\nav-icons\plate-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\plate.png" />
+    <Content Include="Home\assets\images\nav-icons\popsicle-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\popsicle.png" />
+    <Content Include="Home\assets\images\nav-icons\presentation-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\presentation.png" />
+    <Content Include="Home\assets\images\nav-icons\rss-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\rss.png" />
+    <Content Include="Home\assets\images\nav-icons\run-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\run.png" />
+    <Content Include="Home\assets\images\nav-icons\search-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\search.png" />
+    <Content Include="Home\assets\images\nav-icons\sign-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\sign.png" />
+    <Content Include="Home\assets\images\nav-icons\table-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\table.png" />
+    <Content Include="Home\assets\images\nav-icons\twitter-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\twitter.png" />
+    <Content Include="Home\assets\images\nav-icons\twitter2-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\twitter2.png" />
+    <Content Include="Home\assets\images\nav-icons\users-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\users.png" />
+    <Content Include="Home\assets\images\nav-icons\v-card-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\v-card.png" />
+    <Content Include="Home\assets\images\nav-icons\walk-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\walk.png" />
+    <Content Include="Home\assets\images\nav-icons\wine-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\wine.png" />
+    <Content Include="Home\assets\images\nav-icons\wine2-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\wine2.png" />
+    <Content Include="Home\assets\images\nav-icons\wordpress-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\wordpress.png" />
+    <Content Include="Home\assets\images\nav-icons\you-tube-sm.png" />
+    <Content Include="Home\assets\images\nav-icons\you-tube.png" />
+    <Content Include="Home\assets\images\ornamental-sm.png" />
+    <Content Include="Home\assets\images\ornamental.png" />
+    <Content Include="Home\assets\images\page-backgrounds\paper.jpg" />
+    <Content Include="Home\assets\images\pattern.png" />
+    <Content Include="Home\assets\images\pattern2.png" />
+    <Content Include="Home\assets\images\PlatterCuizines.jpeg" />
+    <Content Include="Home\assets\images\right-arrow-small.png" />
+    <Content Include="Home\assets\images\shadow1.png" />
+    <Content Include="Home\assets\images\shadow2.png" />
+    <Content Include="Home\assets\images\SlideShow\1.jpg" />
+    <Content Include="Home\assets\images\SlideShow\2.jpg" />
+    <Content Include="Home\assets\images\SlideShow\3.jpg" />
+    <Content Include="Home\assets\images\SlideShow\4.jpg" />
+    <Content Include="Home\assets\images\SlideShow\5.jpg" />
+    <Content Include="Home\assets\images\SlideShow\6.jpg" />
+    <Content Include="Home\assets\images\SlideShow\7.jpg" />
+    <Content Include="Home\assets\images\SlideShow\8.jpg" />
+    <Content Include="Home\assets\images\SlideShow\9.jpg" />
+    <Content Include="Home\assets\images\SlideShow\IMG-20191016-WA0007.jpg" />
+    <Content Include="Home\assets\images\social\dribble-r.png" />
+    <Content Include="Home\assets\images\social\fb-r.png" />
+    <Content Include="Home\assets\images\social\linkedin-r.png" />
+    <Content Include="Home\assets\images\social\twitter2-r.png" />
+    <Content Include="Home\assets\images\social\wordpress-r.png" />
+    <Content Include="Home\assets\images\twitterBack.png" />
     <Content Include="Scripts\ace.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -322,14 +689,13 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="CmsEntities.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CmsEntities.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="CmsEntities.edmx.diagram">
-      <DependentUpon>CmsEntities.edmx</DependentUpon>
-    </Content>
+    <Content Include="assets\images\logo.psd" />
+    <Content Include="assets\images\page-backgrounds\paper.psd" />
+    <Content Include="Home\assets\images\logo.psd" />
+    <Content Include="Home\assets\images\page-backgrounds\paper.psd" />
     <None Include="Properties\PublishProfiles\CMS.pubxml" />
+    <None Include="Properties\PublishProfiles\cmsmakhkado - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\cmsmakhkado - Web Deploy.pubxml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Views\Shared\DisplayTemplates\Boolean.cshtml" />
@@ -340,52 +706,29 @@
     <Content Include="Views\Shared\EditorTemplates\Password.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\EmailAddress.cshtml" />
-    <Content Include="Views\Home\ApplicationMenu.cshtml" />
-    <Content Include="Views\Home\CreateApplicationsEditPartial.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Web.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Booking\_GridViewPartial.cshtml" />
+    <Content Include="Views\Booking\Index.cshtml" />
+    <Content Include="Views\Booking\ButtonMenu.cshtml" />
     <Content Include="Views\Account\ChangePassword.cshtml" />
     <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Shared\ContentLeftPartialView.cshtml" />
-    <Content Include="Views\Shared\HeaderPartialView.cshtml" />
-    <Content Include="Views\Shared\LogOnPartialView.cshtml" />
-    <Content Include="Views\Shared\_lightLayout.cshtml" />
-    <Content Include="Views\Shared\_mainLayout.cshtml" />
-    <Content Include="Views\Shared\_rootLayout.cshtml" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Home\GridViewPartialView.cshtml" />
-    <Content Include="Views\Cemeteries\Index.cshtml" />
-    <Content Include="Views\Cemeteries\GridViewPartialView.cshtml" />
-    <Content Include="Views\Cemeteries\CreateCemeteryEditPartial.cshtml" />
-    <Content Include="Views\Cemeteries\CemeteryMenu.cshtml" />
-    <Content Include="Views\Graves\GravesMenu.cshtml" />
-    <Content Include="Views\Graves\CreateGravesEditPartial.cshtml" />
-    <Content Include="Views\Graves\GridViewPartialView.cshtml" />
-    <Content Include="Views\Graves\Index.cshtml" />
-    <Content Include="Views\Graves\LinkingLandingFormView.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Roles\RoleMenu.cshtml" />
+    <Content Include="Views\Roles\UsersLandingFormView.cshtml" />
+    <Content Include="Views\Roles\_RolesGridViewPartial.cshtml" />
     <Content Include="Views\users\Index.cshtml" />
     <Content Include="Views\users\ResetPassword.cshtml" />
     <Content Include="Views\users\ResetPasswordConfirmation.cshtml" />
@@ -397,24 +740,15 @@
     <Content Include="Views\users\UsersLandingFormView.cshtml" />
     <Content Include="Views\users\_GridViewPartial.cshtml" />
     <Content Include="Views\users\_UserRoles.cshtml" />
-    <Content Include="Views\Roles\Index.cshtml" />
-    <Content Include="Views\Roles\RoleMenu.cshtml" />
-    <Content Include="Views\Roles\UsersLandingFormView.cshtml" />
-    <Content Include="Views\Roles\_RolesGridViewPartial.cshtml" />
+    <Content Include="Views\Home\CreateMainMenuEditPartial.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Payments.cshtml" />
+    <Content Include="Views\ChefMobileRegister\Index.cshtml" />
+    <Content Include="Views\SupplierMobileRegister\Index.cshtml" />
+    <Content Include="Views\DropBox\DropBoxMenu.cshtml" />
+    <Content Include="Views\DropBox\GridViewPartialView.cshtml" />
     <Content Include="Views\DropBox\Index.cshtml" />
     <Content Include="Views\DropBox\_FileManagerPartial.cshtml" />
-    <Content Include="Views\Home\GraveOwnerMenu.cshtml" />
-    <Content Include="Views\Home\GraveOwnerGridViewPartial.cshtml" />
-    <Content Include="Views\Home\LinkToGraveLanding.cshtml" />
-    <Content Include="Views\Home\GravesGridViewPartialView.cshtml" />
-    <Content Include="Views\Home\LinkToGraveMenu.cshtml" />
-    <Content Include="Views\Home\DualApplicationMenu.cshtml" />
-    <Content Include="Views\Home\DualApplicationPartialView.cshtml" />
-    <Content Include="Views\Home\DualCreateApplicationsEditPartial.cshtml" />
-    <Content Include="Views\Home\ReportViewPartial.cshtml" />
-    <Content Include="Views\Downloads\_FileManagerPartial.cshtml" />
-    <Content Include="Views\Downloads\Index.cshtml" />
-    <Content Include="Views\TandCs\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -423,102 +757,75 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgeGroup.cs">
-      <DependentUpon>CmsEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Application.cs">
-      <DependentUpon>CmsEntities.tt</DependentUpon>
-    </Compile>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\ContentLeftPartialView.cshtml" />
+    <Content Include="Views\Shared\HeaderPartialView.cshtml" />
+    <Content Include="Views\Shared\LogOnPartialView.cshtml" />
+    <Content Include="Views\Shared\_lightLayout.cshtml" />
+    <Content Include="Views\Shared\_mainLayout.cshtml" />
+    <Content Include="Views\Shared\_rootLayout.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Booking\BookingLandingFormView.cshtml" />
+    <Content Include="Views\TandCs\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\DashboardConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RootRouteConstraint.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Cemetery.cs">
-      <DependentUpon>CmsEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CmsEntities.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CmsEntities.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CmsEntities.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CmsEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CmsEntities.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CmsEntities.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\TandCsController.cs" />
-    <Compile Include="Controllers\GraveOwnerController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DropBoxController.cs" />
-    <Compile Include="Controllers\DownloadsController.cs" />
-    <Compile Include="Controllers\GravesController.cs" />
-    <Compile Include="Controllers\CemeteriesController.cs" />
+    <Compile Include="Controllers\SupplierMobileRegisterController.cs" />
+    <Compile Include="Controllers\ChefMobileRegisterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="DualApplication.cs">
-      <DependentUpon>CmsEntities.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Controllers\BookingController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Grave.cs">
-      <DependentUpon>CmsEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GraveOwner.cs">
-      <DependentUpon>CmsEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\BookingsDto.cs" />
+    <Compile Include="Models\UsersDto.cs" />
+    <Compile Include="Models\ReportOptionDTO.cs" />
     <Compile Include="Models\EmailSender.cs" />
+    <Compile Include="Models\SummaryDto.cs" />
     <Compile Include="Models\GridHelper.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NorthwindContext.cs" />
     <Compile Include="Models\NorthwindDataProvider.cs" />
-    <Compile Include="Models\CemeteryOwnershipDto.cs" />
-    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Models\GraveOwnerDto.cs" />
     <Compile Include="Models\PalBrokerHelper.cs" />
     <Compile Include="Models\PalBrokerHtmlHelper.cs" />
+    <Compile Include="Models\ApplicationModel.cs" />
     <Compile Include="Models\PasswordHelper.cs" />
-    <Compile Include="Models\UserRolesDto.cs" />
     <Compile Include="Controllers\usersController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Religion.cs">
-      <DependentUpon>CmsEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Role.cs">
-      <DependentUpon>CmsEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="Models\ApplicantReportXrMvc.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>CmsEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UserRole.cs">
-      <DependentUpon>CmsEntities.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\Downloads\Thumbnails\" />
-    <Folder Include="Content\DropBox\" />
-    <Folder Include="Content\FileManager\Thumbnails\" />
+    <Folder Include="App_Data\Dashboards\" />
+    <Folder Include="System\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
-    <EmbeddedResource Include="Models\ApplicantReportXrMvc.resx">
-      <DependentUpon>ApplicantReportXrMvc.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
