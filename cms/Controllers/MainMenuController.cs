@@ -100,7 +100,9 @@ namespace cms.Controllers
                
                 //This is my insert query in which i am taking input from the user through windows forms  
                 string Query = "insert into BookingTutor(ObjId,NoOfPeople,email,datecapture,Qualification,Description,phoneno,refno,address,Duration,RequestDate,Accepted,Names,TotalPrice) values('" +
-                Tosave.ObjId + "','" + Tosave.people + "','" + Tosave.email + "','" + Tosave.datecapture + "','" + Tosave.Qualification + "','" + Tosave.Description
+                Tosave.ObjId + "','" + Tosave.people + "','" + Tosave.email + "','" + Tosave.datecapture 
+                + "','" + Tosave.Qualification 
+                + "','" + Description
                 + "','" + Tosave.phoneno + "','" + Tosave.refno + "','" + Tosave.address
                 + "','" + Tosave.Duration  + "','" + Tosave.RequestDate
                 + "','" + Tosave.Accepted + "','" + Tosave.NamesId + "','" + TotalPriceId + "');";

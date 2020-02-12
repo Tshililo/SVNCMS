@@ -244,13 +244,10 @@
             var PeopleId = document.getElementById("People").value;
             var NamesId = document.getElementById("Names").value;
             var Duration = document.getElementById("Duration").value;
-           // var ToTime = document.getElementById("ToTime").value;
             var emailId = document.getElementById("emailId").value;
             var phoneNo = document.getElementById("phoneNo").value;
             var AddressId = document.getElementById("AddressId").value;
-
-            var TotalPriceId  = parseFloat(document.getElementById("pricevalueId").value).toFixed(2);
-
+            var TotalPriceId = document.getElementById("pricevalueId").value;
             var CuizineTypeId = document.getElementById("CuizineTypeId").value;
             var Description = document.getElementById("Description").value;
             var RequestDate = document.getElementById("RequestDate").value;
@@ -275,6 +272,18 @@
                 alert("Please enter Request Date");
                 return;
             }
+
+            if (TotalPriceId == "") {
+
+                alert("No Price Captured");
+                return;
+            }
+
+            if (TotalPriceId < 0) {
+
+                alert("Price Cannot be less than 0");
+                return;
+            }
             
             document.getElementById('MyEditPageId').style.display = 'none';
   
@@ -294,35 +303,33 @@
             {
                 if (results > 0) {
                     var answer = PeopleId / 0.45;
-
-                    document.getElementById("pricevalueId").value = "R" + answer;
+                    parseFloat(answer).toFixed(2);
+                    document.getElementById("pricevalueId").value = "R" + parseFloat(answer).toFixed(2);;
 
                 }
-
-
 
             }
 
             if (CuizineTypeId == "DIPLOMA") {
-                if (results < 10) {
+                if (results > 0) {
                     //document.getElementById("pricevalueId").value = "R300.00";
 
-                    var answer = PeopleId * 0.50;
+                    var answer = PeopleId / 0.50;
 
-                    document.getElementById("pricevalueId").value = "R" + answer;
+                    document.getElementById("pricevalueId").value = "R" + parseFloat(answer).toFixed(2);;
 
                 }
 
             }
 
             if (CuizineTypeId == "DEGREE") {
-                if (results < 10) {
+                if (results > 0) {
 
                    // document.getElementById("pricevalueId").value = "R300.00";
 
-                    var answer = PeopleId * 0.60;
+                    var answer = PeopleId / 0.60;
 
-                    document.getElementById("pricevalueId").value = "R" + answer;
+                    document.getElementById("pricevalueId").value = "R" + parseFloat(answer).toFixed(2);;
 
                 }
 
