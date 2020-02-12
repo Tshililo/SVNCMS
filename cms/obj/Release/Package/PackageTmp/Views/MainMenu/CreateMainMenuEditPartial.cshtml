@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <html>
@@ -31,61 +33,142 @@
 
     <div data-role="page">
 
-        <!-- header -->
-        @*<div data-role="header" class="page-header">
-                <a href="index.html" data-icon="arrow-l" data-iconpos="notext" data-direction="reverse" data-rel="back">Back</a>
-                <div class="logo"></div>
-                <a href="index.html" data-icon="home" data-iconpos="notext" rel="external" class="ui-btn-right">Home</a>
-            </div>*@
-        <!--/header -->
         <!-- main content -->
         <div data-role="content">
 
+            @if (ViewBag.CuizineType == "CLASSIC BBQ")
+            {
+                <!-- slider -->
+                <div class="slider-outer">
+                    <div class="slider-container">
+                        <div id="camera_wrap">
 
-            <!-- slider -->
-            <div class="slider-outer">
-                <div class="slider-container">
-                    <div id="camera_wrap">
-
-                        <div data-src="assets/images/CLASSICBBQ/1.jpg" width="100%">
-                            <div class="camera_caption fadeFromBottom">
+                            <div data-src="assets/images/CLASSICBBQ/1.jpg" width="100%">
+                                <div class="camera_caption fadeFromBottom">
+                                </div>
                             </div>
-                        </div>
 
-                        <div data-src="assets/images/CLASSICBBQ/2.jpg" width="100%">
-                            <div class="camera_caption fadeFromBottom" width="100%">
+                            <div data-src="assets/images/CLASSICBBQ/2.jpg" width="100%">
+                                <div class="camera_caption fadeFromBottom" width="100%">
+                                </div>
                             </div>
-                        </div>
 
-                        <div data-src="assets/images/CLASSICBBQ/3.jpg" width="100%">
-                            <div class="camera_caption fadeFromBottom" width="100%">
+                            <div data-src="assets/images/CLASSICBBQ/3.jpg" width="100%">
+                                <div class="camera_caption fadeFromBottom" width="100%">
+                                </div>
                             </div>
+
+                            <!--<div data-src="assets/images/headers/4.jpg">
+                            </div>-->
+
                         </div>
-
-                        <!--<div data-src="assets/images/headers/4.jpg">
-                        </div>-->
-
                     </div>
+                    <br class="clear" />
                 </div>
-                <br class="clear" />
-            </div><!-- /slider -->
+                <!-- /slider -->
+            }
+
+            @if (ViewBag.CuizineType == "PLATTERS")
+            {
+                <!-- slider -->
+                <div class="slider-outer">
+                    <div class="slider-container">
+                        <div id="camera_wrap">
+
+                            <div data-src="assets/images/PLATTERS/1.jpg" width="100%">
+                                <div class="camera_caption fadeFromBottom">
+                                </div>
+                            </div>
+
+                            <div data-src="assets/images/PLATTERS/2.jpg" width="100%">
+                                <div class="camera_caption fadeFromBottom" width="100%">
+                                </div>
+                            </div>
+
+                            <div data-src="assets/images/PLATTERS/3.jpg" width="100%">
+                                <div class="camera_caption fadeFromBottom" width="100%">
+                                </div>
+                            </div>
+
+                            <!--<div data-src="assets/images/headers/4.jpg">
+                            </div>-->
+
+                        </div>
+                    </div>
+                    <br class="clear" />
+                </div>
+                <!-- /slider -->
+            }
+
+
+            @if (ViewBag.CuizineType == "EXECUTIVE STEAK")
+            {
+                <!-- slider -->
+                <div class="slider-outer">
+                    <div class="slider-container">
+                        <div id="camera_wrap">
+
+                            <div data-src="assets/images/ExecutiveSteak/1.jpg" width="100%">
+                                <div class="camera_caption fadeFromBottom">
+                                </div>
+                            </div>
+
+                            <div data-src="assets/images/ExecutiveSteak/2.jpg" width="100%">
+                                <div class="camera_caption fadeFromBottom" width="100%">
+                                </div>
+                            </div>
+
+                            <div data-src="assets/images/ExecutiveSteak/3.jpg" width="100%">
+                                <div class="camera_caption fadeFromBottom" width="100%">
+                                </div>
+                            </div>
+
+                            <!--<div data-src="assets/images/headers/4.jpg">
+                            </div>-->
+
+                        </div>
+                    </div>
+                    <br class="clear" />
+                </div>
+                <!-- /slider -->
+            }
+
+
             <section>
                 <h2>Booking information</h2>
 
+                <input type="hidden" id="CuizineTypeId" name="CuizineTypeId" value="@ViewBag.CuizineType" />
+
                 <p>
                     <label for="People">
-                        <span>People:</span>
+                        <span>No Of People:</span>
                         <strong><abbr title="required">*</abbr></strong>
                     </label>
-                    <input type="number" id="People" name="People">
+                    <input type="number" id="People" onchange="OnPeopleChange()" name="People">
                 </p>
 
                 <p>
-                    <label for="numberofplates ">
-                        <span>No Of Plates:</span>
+                    <label for="RequestDate ">
+                        <span>Request Date: (2 days in advance)</span>
                         <strong><abbr title="required">*</abbr></strong>
                     </label>
-                    <input type="number" id="numberofplates" name="numberofplates">
+                    <input type="date" id="RequestDate" name="RequestDate">
+                </p>
+
+                <p>
+                    <label for="FromTime ">
+                        <span>From:</span>
+                        <strong><abbr title="required">*</abbr></strong>
+                    </label>
+                    <input type="time" id="FromTime" name="FromTime">
+                </p>
+
+                <p>
+                    <label for="ToTime ">
+                        <span>To:</span>
+                        <strong><abbr title="required">*</abbr></strong>
+                    </label>
+                    <input type="time" id="ToTime" name="ToTime">
                 </p>
 
                 <p>
@@ -111,55 +194,53 @@
                     </select>
                 </p>
 
+                <p>
+                    <label for="Names">
+                        <span>Name and Surname:</span>
+
+                    </label>
+                    <input type="text" id="Names" name="Names">
+                </p>
+
+                <p>
+                    <label for="AddressId">
+                        <span>Event Address:</span>
+
+                    </label>
+                    <input type="text" id="AddressId" name="AddressId">
+                </p>
+
 
                 <p>
                     <label for="emailId">
                         <span>Email:</span>
-
+                        <strong><abbr title="required">*</abbr></strong>
                     </label>
                     <input type="email" id="emailId" name="emailId">
                 </p>
 
                 <p>
                     <label for="phoneNo">
-                        <span>phoneNo:</span>
-
+                        <span>Phone No:(start with country code e.g +27)</span>
+                        <strong><abbr title="required">*</abbr></strong>
                     </label>
                     <input type="tel" id="phoneNo" name="phoneNo">
                 </p>
 
-                <p>
-                        <label for="card">
-                            <span>Card type:</span>
-                        </label>
-                        <select id="card" name="usercard">
-                            <option value="visa">Visa</option>
-                            <option value="mc">Mastercard</option>
-                            <option value="amex">American Express</option>
-                        </select>
-                    </p>
-                    <p>
-                        <label for="number">
-                            <span>Card number:</span>
-                            <strong><abbr title="required">*</abbr></strong>
-                        </label>
-                        <input type="tel" id="number" name="cardnumber">
-                    </p>
-                    <p>
-                        <label for="date">
-                            <span>Expiration date:</span>
-                            <strong><abbr title="required">*</abbr></strong>
-                            <em>formatted as mm/yy</em>
-                        </label>
-                        <input type="date" id="date" name="expiration">
-                    </p>
+                <label for="pricevalueId">
+                    <span>Total Price:</span>
+                </label>
+                <input type="text" id="pricevalueId" name="pricevalueId" style="text-align:center; background-color: red;  color: white;" value="" disabled>
+
+                <p id="TotalPriceId"></p>
 
                 <p>
                     <input type="button" id="Request" onclick="myFunction()" value="Request Chef" name="Request">
                 </p>
             </section>
 
-        </div><!-- /content -->
+        </div>
+        <!-- /content -->
 
     </div><!-- /page -->
     <!-- slider -->
@@ -175,36 +256,127 @@
     <script>
         function myFunction() {
 
-            var PeopleId       = document.getElementById("People").value;
-            var numberofplates = document.getElementById("numberofplates").value;
+            var PeopleId = document.getElementById("People").value;
+
+            var NamesId = document.getElementById("Names").value;
+
+
+            var FromTime = document.getElementById("FromTime").value;
+            var ToTime = document.getElementById("ToTime").value;
             var emailId = document.getElementById("emailId").value;
             var phoneNo = document.getElementById("phoneNo").value;
-
+            var AddressId = document.getElementById("AddressId").value;
+            var TotalPriceId = document.getElementById("pricevalueId").value;
+            var CuizineTypeId = document.getElementById("CuizineTypeId").value;
             var e = document.getElementById("EventId");
             var EventIdValue = e.options[e.selectedIndex].value;
-            //alert(e); //ID002
-
-
+            var numberofplates = 0;
             var ee = document.getElementById("OccasionId");
             var OccasionIdValue = ee.options[ee.selectedIndex].value;
-           // alert(ee); //ID002
+            var RequestDate = document.getElementById("RequestDate").value;
 
-                $.ajax({
-                url: '@Url.Action("SavePayments", "MainMenu")',
-                type: "POST",
-                //dataType: "json", // if we speficy this we must return json from the controller method. this way we dont need to return anything
-                dataType: "text",
-                traditional: true,
-                async: false,
-                    data: { PeopleId: PeopleId, numberofplates: numberofplates, emailId: emailId, phoneNo: phoneNo, Occasionvalue: OccasionIdValue, EventsType: EventIdValue  },
-                success: function (data) {
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    alert('Request Status: ' + xhr.status + '; Status Text: ' + textStatus + '; Error: ' + errorThrown);
+            var MyIdInfo = PeopleId + "," + numberofplates + "," + emailId + "," + phoneNo
+                + "," + OccasionIdValue + "," + EventIdValue + ","
+                + CuizineTypeId + "," + AddressId + "," + FromTime + "," + ToTime + "," + TotalPriceId + "," + RequestDate + "," + NamesId + "";
+
+            if (PeopleId == "") {
+
+                alert("Please enter no of people");
+                return;
+            }
+
+            if (phoneNo == "") {
+
+                alert("Please enter phone no.");
+                return;
+            }
+
+            if (RequestDate == "") {
+
+                alert("Please enter Request Date");
+                return;
+            }
+
+            window.location.href = "/MainMenu/SavePayments?PeopleId=" + MyIdInfo;
+
+        }
+
+        function OnPeopleChange() {
+            var PeopleId = document.getElementById("People").value;
+            var CuizineTypeId = document.getElementById("CuizineTypeId").value;
+
+
+            var results = parseInt(document.getElementById("People").value);
+
+
+            if (CuizineTypeId == "CLASSIC BBQ")
+            {
+                if (results < 10) {
+                    var answer = PeopleId * 250.00;
+
+                    document.getElementById("pricevalueId").value = "R" + answer;
 
                 }
-            });
-        }
+
+                else {
+
+                 //   document.getElementById("pricevalueId").value = "R200.00";
+
+                    var answer = PeopleId * 200.00;
+
+                    document.getElementById("pricevalueId").value = "R" + answer;
+
+                }
+
+            }
+
+            if (CuizineTypeId == "PLATTERS") {
+                if (results < 10) {
+                    //document.getElementById("pricevalueId").value = "R300.00";
+
+                    var answer = PeopleId * 250.00;
+
+                    document.getElementById("pricevalueId").value = "R" + answer;
+
+                }
+
+                else {
+                    //document.getElementById("pricevalueId").value = "R250.00";
+
+                    var answer = PeopleId * 200.00;
+
+                    document.getElementById("pricevalueId").value = "R" + answer;
+
+                }
+
+            }
+
+            if (CuizineTypeId == "EXECUTIVE STEAK") {
+                if (results < 10) {
+
+                   // document.getElementById("pricevalueId").value = "R300.00";
+
+                    var answer = PeopleId * 350.00;
+
+                    document.getElementById("pricevalueId").value = "R" + answer;
+
+                }
+
+                else {
+
+                    //document.getElementById("pricevalueId").value = "R350.00";
+
+                    var answer = PeopleId * 300.00;
+
+                    document.getElementById("pricevalueId").value = "R" + answer;
+
+                }
+
+            }
+
+                 }
+
+
     </script>
 
 </body>

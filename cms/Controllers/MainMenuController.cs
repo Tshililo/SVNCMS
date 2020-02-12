@@ -10,14 +10,14 @@ using System.Web;
 using System.Web.Mvc;
 using cms;
 using cms.Models;
+using MySql.Data.MySqlClient;
+using System.Text;
 
 namespace cms.Controllers
 {
   //  [Authorize]
     public class MainMenuController : BaseController
     {
-        BaseController gg = new BaseController();
-        // GET: Cemeteries
         public ActionResult Index()
         {
             return View();
@@ -30,52 +30,109 @@ namespace cms.Controllers
 
         }
 
-     
+
         public ActionResult SavePayments(string PeopleId)
         {
-            string RefNo = DateTime.Now.ToString("yyyy/MM/dd").Replace("/", "") + RandomString(4, false);
-
-            ViewBag.RefNo = RefNo;
 
             List<string> p = PeopleId.Split(',').ToList();
+            try
+            {
+                string NoOfPeople = p[0];
+                string Description = p[1];
+                string emailId = p[2];
+                string phoneNo = p[3];
+                string CuisineType = p[4];
+                string AddressId = p[5];
+                //////////////////////////////////////////////////////////////
+                string Duration = p[6];
+                string TotalPriceId = p[7];
+                string RequestDate = p[8];
+                string NamesId = p[9];
 
-            string NoOfPeople = p[0];
-            string numberofplates = p[1];
-            string emailId = p[2];
-            string phoneNo = p[3];
-            string Occasionvalue = p[4];
-            string EventsType = p[5];
-            string CuisineType = p[6];
+                string fPhoneNo = phoneNo + ",";
+                //////////////////////////////////////////////////////////////
+                string RefNo = DateTime.Now.ToString("yyyy/MM/dd").Replace("/", "") + RandomString(4, false);
+
+                ViewBag.RefNo = RefNo;
+                insertrecords(NoOfPeople, emailId, fPhoneNo,  CuisineType, RefNo, AddressId, Duration, RequestDate, NamesId, Description, TotalPriceId);
+                // SendEmail(emailId, RefNo, Occasionvalue, EventsType, CuisineType, TotalPriceId);
+                SendSMS(NoOfPeople, emailId, fPhoneNo, CuisineType, RefNo, AddressId, Duration, RequestDate, NamesId, Description, TotalPriceId);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
 
             return PartialView("Payments");
 
 
         }
 
-        //public ActionResult SavePayments(string PeopleId, string numberofplates, string emailId = "", string phoneNo = "", string Occasionvalue = "", string EventsType = "", string CuisineType = "")
-        //{
-        //    string RefNo = "UbaChef" + RandomString(9, false);
+        // ubachefEntities db = new ubachefEntities();
 
-        //    ViewBag.RefNo = RefNo;
-
-        //    List<string> p = passed_params.Split(',').ToList();
-        //    var rep = new AppReportXrMvc();
-        //    rep.ObjId.Value = p[0];
-        //    rep.Attention.Value = p[1];
-        //    rep.FromDate.Value = p[2];
-        //    rep.ToDate.Value = p[4];
-        //    rep.ShowDual.Value = p[6];
-
-        //    return PartialView("Payments");
-
-        
-        //}
-
-        public void SendSMS(string PhoneNo, string RefNo, string Occasionvalue = "", string EventsType = "")
+        public void insertrecords(string PeopleId,  string emailId = "", string phoneNo = "",
+           string CuisineType = "", string RefNo = "", string AddressId = "",
+            string Duration = "", string RequestDate = "", string NamesId = "", string Description = "", string TotalPriceId = "")
         {
+
+            try
+            {
+                //var model = db.bookings;
+
+                booking Tosave = new booking();
+
+                Tosave.ObjId = Guid.NewGuid();
+                Tosave.people = PeopleId;
+                Tosave.Description = Description;
+                Tosave.email = emailId;
+                Tosave.datecapture = DateTime.Now.ToString("yyyy/MM/dd");
+                Tosave.Qualification = CuisineType;
+                Tosave.phoneno = phoneNo;
+                Tosave.refno = RefNo;
+                Tosave.address = AddressId;
+                Tosave.RequestDate = RequestDate;
+                Tosave.Accepted = "No";
+                Tosave.NamesId = NamesId;
+                Tosave.Duration = Duration;
+               
+                //This is my insert query in which i am taking input from the user through windows forms  
+                string Query = "insert into BookingTutor(ObjId,NoOfPeople,email,datecapture,Qualification,Description,phoneno,refno,address,Duration,RequestDate,Accepted,Names,TotalPrice) values('" +
+                Tosave.ObjId + "','" + Tosave.people + "','" + Tosave.email + "','" + Tosave.datecapture + "','" + Tosave.Qualification + "','" + Tosave.Description
+                + "','" + Tosave.phoneno + "','" + Tosave.refno + "','" + Tosave.address
+                + "','" + Tosave.Duration  + "','" + Tosave.RequestDate
+                + "','" + Tosave.Accepted + "','" + Tosave.NamesId + "','" + TotalPriceId + "');";
+
+                MySqlConnection MyConn2 = new MySqlConnection(connectionString);
+                MySqlCommand MyCommand2 = new MySqlCommand(Query, MyConn2);
+                MySqlDataReader MyReader2;
+                MyConn2.Open();
+                MyReader2 = MyCommand2.ExecuteReader();     // Here our query will be executed and data saved into the database.  
+
+                MyConn2.Close();
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
+
+        public void SendSMS(string PeopleId, string emailId = "", string phoneNo = "",
+           string CuisineType = "", string RefNo = "", string AddressId = "",
+            string Duration = "", string RequestDate = "", string NamesId = "", string Description = "", string TotalPriceId = "")
+        {
+
+
             string to, msg;
-            msg = "Dear Customer. You have Booked a Chef for Occasion: " + Occasionvalue + " for " + EventsType + " Event. RefNo:" + RefNo + ""; ;
-            to = PhoneNo;
+            msg = "Dear" + NamesId + " You have Booked a Turtor for "  + "Duration of: " + Duration + " Minutes. "+"RefNo: " + RefNo + ". Amount to pay " + TotalPriceId;
+            to = phoneNo;
             WebClient client = new WebClient();
             // Add a user agent header in case the requested URI contains a query.
             client.Headers.Add("user-agent", "Mozilla/4.0(compatible; MSIE 6.0; Windows NT 5.2; .NET CLR1.0.3705;)");
@@ -88,20 +145,20 @@ namespace cms.Controllers
             Stream data = client.OpenRead(baseurl);
             StreamReader reader = new StreamReader(data);
             string s = reader.ReadToEnd();
-            //data.Close();
             reader.Close();
+            data.Close();
 
         }
 
-        private void SendEmail(string EmailAddress , string RefNo, string Occasionvalue = "", string EventsType = "")
+        private void SendEmail(string EmailAddress, string RefNo, string Occasionvalue = "", string EventsType = "", string CuisineType = "", string TotalPriceId = "")
         {
             MailMessage Msg = new MailMessage();
             // Sender e-mail address.
             Msg.From = new MailAddress("ubachefnoreply@gmail.com");
             // Recipient e-mail address.
             Msg.To.Add(EmailAddress);
-            Msg.Subject = "Dear Client";
-            Msg.Body = "You have Booked a Chef for Occasion: " + Occasionvalue + " for "  + EventsType + " Event. RefNo" + RefNo + "";
+            Msg.Subject = "Uba Chef Booking Details";
+            Msg.Body = "Dear Customer. You have Booked a Chef for " + CuisineType + " " + "Occasion: " + Occasionvalue + " for " + EventsType + " Event. RefNo: " + RefNo + ". Amount to pay " + TotalPriceId;
             Msg.IsBodyHtml = true;
             // your remote SMTP server IP.
             SmtpClient smtp = new SmtpClient();
@@ -119,46 +176,19 @@ namespace cms.Controllers
             return result;
         }
 
-        private string insert(string PeopleId, string numberofplates, string emailId = "", string phoneNo = "", string Occasionvalue = "", string EventsType = "")
+        public string RandomString(int size, bool lowerCase)
         {
-            try
+            StringBuilder builder = new StringBuilder();
+            Random random = new Random();
+            char ch;
+            for (int i = 0; i < size; i++)
             {
-                Guid ObjId = Guid.NewGuid();
-                string NoOfPeople = PeopleId;
-                string NoOfPlates = numberofplates;
-                string Date = DateTime.Now.ToString();
-                string occasionvalue = Occasionvalue;
-                string RefNo = "UbaChef" + RandomString(9, false);
-                string Eventstype = EventsType;
-                string FNUmber = phoneNo + ",";
-
-                ////This is my insert query in which i am taking input from the user through windows forms  
-                //string Query = "insert into ubachef.Payments(ObjId,NoOfPeople,NoOfPlates,Date,RefNo,emailId,phoneNo,Occasion,EventsType) values('" + ObjId + "','" + 
-                //    NoOfPeople + "','" + NoOfPlates + "','" + Date + "','" + RefNo + "','" + emailId + "','" + FNUmber + "','" + occasionvalue + "','" + EventsType + "');";
-                //MySqlConnection MyConn2 = new MySqlConnection(gg.MyConnection2);
-                //MySqlCommand MyCommand2 = new MySqlCommand(Query, MyConn2);
-                //MySqlDataReader MyReader2;
-                //MyConn2.Open();
-                //MyReader2 = MyCommand2.ExecuteReader();     // Here our query will be executed and data saved into the database.  
-               
-                //while (MyReader2.Read())
-                //{
-                //    return "Procord Not Processed";
-                //}
-                //MyConn2.Close();
-
-
-                SendEmail(emailId, RefNo, occasionvalue, Eventstype);
-                SendSMS(emailId, RefNo, occasionvalue, Eventstype);
-                return "Procord Processed";
+                ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
+                builder.Append(ch);
             }
-            catch (Exception ex)
-            {
-                return ex.Message.ToString();
-            }
-
-
+            if (lowerCase)
+                return builder.ToString().ToLower();
+            return builder.ToString();
         }
-      
-        }
+    }
 }

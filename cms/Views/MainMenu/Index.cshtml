@@ -1,11 +1,54 @@
-﻿@{ Layout = null; }
+﻿
+@{ Layout = null; }
 
-@model System.Collections.IEnumerable
+@inherits System.Web.Mvc.WebViewPage
+
+<!DOCTYPE html>
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+
+<html>
 
 <head>
+
+    <style>
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #ff006e;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.navbar a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.navbar .icon {
+  display: none;
+}
+    </style>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <title>The Uba Chef</title>
+    <title>THE TURTOR APP</title>
     <link rel="apple-touch-icon" href="~/assets/images/apple-touch-icon.png" />
     <script>
         if (window.screen.height == 568) { // iPhone 4"
@@ -26,6 +69,7 @@
 
 </head>
 
+
 <div id="home-page" data-role="page">
 
     <!-- slider -->
@@ -38,9 +82,9 @@
     </script>
     <!-- /slider -->
     <!-- header -->
-    <div data-role="header" class="page-header">
+    @*<div data-role="header" class="page-header">
         <div class="logo"></div>
-    </div>
+    </div>*@
     <!--/header -->
     <!-- main content -->
     <div data-role="content">
@@ -60,47 +104,48 @@
                         </div>
                     </div>
 
-                    <div data-src="assets/images/SlideShow/3.jpg" width="100%">
+                    <div data-src="~/assets/images/SlideShow/3.jpg" width="100%">
                         <div class="camera_caption fadeFromBottom" width="100%">
                         </div>
                     </div>
 
-                    <div data-src="assets/images/SlideShow/4.jpg" width="100%">
+                    <div data-src="~/assets/images/SlideShow/4.jpg" width="100%">
                         <div class="camera_caption fadeFromBottom">
                         </div>
                     </div>
 
-                    <div data-src="assets/images/SlideShow/5.jpg" width="100%">
+                    @*<div data-src="~/assets/images/SlideShow/5.jpg" width="100%">
                         <div class="camera_caption fadeFromBottom">
                         </div>
                     </div>
 
-                    <div data-src="assets/images/SlideShow/6.jpg" width="100%">
+                    <div data-src="~/assets/images/SlideShow/6.jpg" width="100%">
                         <div class="camera_caption fadeFromBottom">
                         </div>
                     </div>
 
-                    <div data-src="assets/images/SlideShow/7.jpg" width="100%">
+                    <div data-src="~/assets/images/SlideShow/7.jpg" width="100%">
                         <div class="camera_caption fadeFromBottom">
                         </div>
                     </div>
 
-                    <div data-src="assets/images/SlideShow/8.jpg" width="100%">
+                    <div data-src="~/assets/images/SlideShow/8.jpg" width="100%">
                         <div class="camera_caption fadeFromBottom">
                         </div>
                     </div>
 
-                    <div data-src="assets/images/SlideShow/9.jpg" width="100%">
+                    <div data-src="~/assets/images/SlideShow/9.jpg" width="100%">
                         <div class="camera_caption fadeFromBottom">
                         </div>
-                    </div>
+                    </div>*@
                     <!--<div data-src="assets/images/headers/4.jpg">
                     </div>-->
 
                 </div>
             </div>
             <br class="clear" />
-        </div><!-- /slider -->
+        </div>
+        <!-- /slider -->
 
         <div class="shadow1box">
             <img src="assets/images/shadow1.png" class="shadow1" alt="shadow">
@@ -109,42 +154,65 @@
         <div class="content-padd">
 
             <hr class="ornamental" />
-            <h3 class="home-title">Welcome to The Uba Chef!</h3>
+            <h3 class="home-title">REQUEST PRIVATE TURTOR</h3>
+
             <hr class="ornamental" />
 
             <!-- navigation -->
             <ul data-role="listview" data-inset="true" id="listview" style="margin-bottom:0px">
-
-                <li><a onclick="myFunction1()" data-transition="flip" data-prefetch>CLASSIC BBQ</a></li>
-                <li><a onclick="myFunction2()" data-transition="flip" data-prefetch>PLATTERS</a></li>
-                <li><a onclick="myFunction3()" data-transition="flip" data-prefetch>EXECUTIVE STEAK</a></li>
-
+                <li><a onclick="myFunction1()" data-transition="flip" data-prefetch>CERTIFICATE</a></li>
+                <li><a onclick="myFunction2()" data-transition="flip" data-prefetch>DIPLOMA</a></li>
+                <li><a onclick="myFunction3()" data-transition="flip" data-prefetch>DEGREE</a></li>
             </ul>
-        </div><!-- /content -->
 
-
+            <div class="navbar">
+                <a onclick="myFunction4()" class="active">Turtors</a>
+                @*<a onclick="myFunction5()">SUPPLIERS</a>
+                <a href="">Contact</a>*@
+            </div>
     </div>
     <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
         function myFunction1() {
 
-  
-            window.location.href = "/MainMenu/GetEdit?Id=" + "cb";
+
+            window.location.href = "/MainMenu/GetEdit?Id=" + "CERTIFICATE";
 
         }
 
         function myFunction2() {
 
 
-            window.location.href = "/MainMenu/GetEdit?Id=" + "pl";
+            window.location.href = "/MainMenu/GetEdit?Id=" + "DIPLOMA";
 
         }
 
         function myFunction3() {
 
 
-            window.location.href = "/MainMenu/GetEdit?Id=" + "es";
+            window.location.href = "/MainMenu/GetEdit?Id=" + "DEGREE";
 
         }
+
+        function myFunction4() {
+
+
+            window.location.href = "/ChefMobileRegister/Index";
+
+        }
+
+        //function myFunction5() {
+
+
+        //    window.location.href = "/SupplierMobileRegister/Index";
+
+        //}
     </script>
 </div>
 

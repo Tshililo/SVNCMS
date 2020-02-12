@@ -1,0 +1,218 @@
+﻿
+@{ Layout = null; }
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>THETURTOR APP</title>
+    <link rel="apple-touch-icon" href="~/assets/images/apple-touch-icon.png" />
+    <script>
+        if (window.screen.height == 568) { // iPhone 4"
+            document.querySelector("meta[name=viewport]").content = "width=320.1";
+        }
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- css -->
+    <link rel="stylesheet" href="~/Content/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+    <link rel="stylesheet" href="~/assets/css/style2.css">
+
+    <!-- scripts -->
+    <script src="~/Content/jquery-1.8.2.min.js"></script>
+    <script src="~/Content/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+    <script src="~/assets/js/screen.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <div data-role="page">
+
+        <!-- main content -->
+        <div data-role="content">
+            <section>
+                <h2>Registration information</h2>
+                <p>
+                    <label for="Idno">
+                        <span>Id No:</span>
+
+                    </label>
+                    <input type="text" id="Idno" name="Idno">
+                </p>
+
+
+                @*<p>
+                    <label for="Names">
+                        <span>Name and Surname:</span>
+
+                    </label>
+                    <input type="text" id="Names" name="Names">
+                </p>*@
+
+
+                <p>
+                    <label for="Qualifications">
+                        <span>Qualification:</span>
+
+                    </label>
+                    <input type="file" id="Qualification" name="Qualification">
+                </p>
+
+                <p>
+                    <label for="BankingDetails">
+                        <span>Banking Details:</span>
+
+                    </label>
+                    <input type="file" id="BankingDetails" name="BankingDetails">
+                </p>
+
+                <p>
+                        <label for="Image">
+                            <span>Image:</span>
+
+                        </label>
+                        <input type="file" id="Image" name="Image">
+                    </p>
+
+                    <p>
+                        <label for="AddressId">
+                            <span>Residential Address:</span>
+
+                        </label>
+                        <input type="text" id="AddressId" name="AddressId">
+                    </p>
+
+
+                    <p>
+                        <label for="emailId">
+                            <span>Email:</span>
+                            <strong><abbr title="required">*</abbr></strong>
+                        </label>
+                        <input type="email" id="emailId" name="emailId">
+                    </p>
+
+                    <p>
+                        <label for="phoneNo">
+                            <span>Phone No:(start with country code e.g +27)</span>
+                            <strong><abbr title="required">*</abbr></strong>
+                        </label>
+                        <input type="tel" id="phoneNo" name="phoneNo">
+                    </p>
+
+                    <p>
+                        <label for="Remarks">
+                            <span>Remarks:</span>
+
+                        </label>
+                        <input type="text" id="Remarks" name="Remarks">
+                    </p>
+
+                <p>
+                    <input type="button" id="Register" value="Register" name="Register">
+                </p>
+            </section>
+
+        </div>
+        <!-- /content -->
+
+    </div><!-- /page -->
+
+    <script>
+        $(document).ready(function () {
+            $('#Register').click(function () {
+
+                // Checking whether FormData is available in browser
+                if (window.FormData !== undefined) {
+
+                    var Qualification = $("#Qualification").get(0);
+                    var BankingDetails = $("#BankingDetails").get(0);
+                    var Image = $("#Image").get(0);
+
+                    var Idno = document.getElementById("Idno").value;
+                  //  var Names = document.getElementById("Names").value;
+                    var AddressId = document.getElementById("AddressId").value;
+                    var emailId = document.getElementById("emailId").value;
+                    var phoneNo = document.getElementById("phoneNo").value;
+                    var Remarks = document.getElementById("Remarks").value;
+
+                    
+                    // Create FormData object
+                    var fileData = new FormData();
+
+
+                    ///////////////////////////////////////////////////////////////////
+                    var files = Qualification.files;
+                    // Looping over all files and add it to FormData object
+                    for (var i = 0; i < files.length; i++) {
+                        fileData.append(files[i].name, files[i]);
+                    }
+                    /////////////////////////////////////////////////////////////////////////
+
+                    ///////////////////////////////////////////////////////////////////
+                    var files2 = BankingDetails.files;
+                    // Looping over all files and add it to FormData object
+                    for (var i = 0; i < files2.length; i++) {
+                        fileData.append(files2[i].name, files2[i]);
+                    }
+                    /////////////////////////////////////////////////////////////////////////
+
+
+                    ///////////////////////////////////////////////////////////////////
+                    var files3 = Image.files;
+                    // Looping over all files and add it to FormData object
+                    for (var i = 0; i < files3.length; i++) {
+                        fileData.append(files3[i].name, files3[i]);
+                    }
+                    /////////////////////////////////////////////////////////////////////////
+
+
+                    // Adding one more key to FormData object
+                    fileData.append('Idno', Idno);
+
+                    // Adding one more key to FormData object
+                    fileData.append('AddressId', AddressId);
+
+                    // Adding one more key to FormData object
+                    fileData.append('emailId', emailId);
+
+                    // Adding one more key to FormData object
+                    fileData.append('phoneNo', phoneNo);
+
+                    // Adding one more key to FormData object
+                    fileData.append('Remarks', Remarks);
+
+ 
+                    if (Idno == "") {
+
+                        alert("Please enter Id No");
+                        return;
+                    }
+
+                    if (phoneNo == "") {
+
+                        alert("Please enter Phone No");
+                        return;
+                    }
+                   
+                    $.ajax({
+                        url: '/ChefMobileRegister/UploadFiles',
+                        type: "POST",
+                        contentType: false, // Not to set any content header
+                        processData: false, // Not to process data
+                        data: fileData,
+                        success: function (result) {
+                            alert(result);
+                        },
+                        error: function (err) {
+                            alert(err.statusText);
+                        }
+                    });
+                } else {
+                    alert("FormData is not supported.");
+                }
+            });
+        });
+    </script>
+</body>

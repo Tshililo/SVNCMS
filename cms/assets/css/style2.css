@@ -7,6 +7,35 @@
 *
 */
 
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+    .navbar a {
+        float: left;
+        display: block;
+        color:red;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+        .navbar a:hover {
+            background: #f1f1f1;
+            color: black;
+        }
+
+        .navbar a.active {
+            background-color: #b22222;
+            color: white;
+        }
+
+
 /* =============================================================================
    Load Fonts (delete import of fonts you don't use)
    ========================================================================== */
@@ -19,6 +48,7 @@
 @import url(http://fonts.googleapis.com/css?family=Cardo:400,700); /* font-family: 'Cardo', serif; */
 @import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700italic,700); /* font-family: 'Droid Serif', serif; */
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700); /* font-family: 'Droid Sans', sans-serif; */
+
 
    
 /* =============================================================================
@@ -42,6 +72,8 @@ h3.home-title {
 	padding: 20px 0
 }
 
+
+
 .gal-description {
 	font-size:11px; 
 	color: #eee
@@ -51,6 +83,8 @@ h3.home-title {
 	padding-left:15px;
 	margin-bottom:3px
 }
+
+
 
 hr.ornamental { 
 	background:url(../images/ornamental-sm.png) center no-repeat; 
@@ -111,7 +145,7 @@ hr.ornamental {
 }
 
 .ui-bar-c .ui-link-inherit {
-	color:  	#3E3E3E;
+	color:  	rgba(255, 255, 255, 0.3);
 }
 .ui-bar-c .ui-link {
 	color:  #7cc4e7;
