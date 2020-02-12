@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <title>THE TURTOR APP</title>
+    <title>SMART TUTOR</title>
     <link rel="apple-touch-icon" href="~/assets/images/apple-touch-icon.png" />
     <script>
         if (window.screen.height == 568) { // iPhone 4"
@@ -34,7 +34,7 @@
     <div data-role="page">
 
         <!-- main content -->
-        <div data-role="content">
+        <div data-role="content" id="MyEditPageId">
 
             @if (ViewBag.CuizineType == "CERTIFICATE")
             {
@@ -211,7 +211,7 @@
                 <p id="TotalPriceId"></p>
 
                 <p>
-                    <input type="button" id="Request" onclick="myFunction()" value="Request Turtor" name="Request">
+                    <input type="button" id="Request" onclick="myFunction()" value="Request Tutor" name="Request">
                 </p>
             </section>
 
@@ -230,6 +230,15 @@
     <!-- /slider -->
 
     <script>
+
+        function showHide() {
+            //create an object reference to the div containing images 
+            var oimageDiv = document.getElementById('searchingimageDiv')
+            //set display to inline if currently none, otherwise to none 
+            oimageDiv.style.display = (oimageDiv.style.display == 'none') ? 'inline' : 'none'
+        } 
+
+
         function myFunction() {
 
             var PeopleId = document.getElementById("People").value;
@@ -239,7 +248,9 @@
             var emailId = document.getElementById("emailId").value;
             var phoneNo = document.getElementById("phoneNo").value;
             var AddressId = document.getElementById("AddressId").value;
-            var TotalPriceId = document.getElementById("pricevalueId").value;
+
+            var TotalPriceId  = parseFloat(document.getElementById("pricevalueId").value).toFixed(2);
+
             var CuizineTypeId = document.getElementById("CuizineTypeId").value;
             var Description = document.getElementById("Description").value;
             var RequestDate = document.getElementById("RequestDate").value;
@@ -264,7 +275,9 @@
                 alert("Please enter Request Date");
                 return;
             }
-
+            
+            document.getElementById('MyEditPageId').style.display = 'none';
+  
             window.location.href = "/MainMenu/SavePayments?PeopleId=" + MyIdInfo;
 
         }

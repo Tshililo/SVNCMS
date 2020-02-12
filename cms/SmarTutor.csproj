@@ -233,6 +233,7 @@
   <ItemGroup>
     <Content Include="assets\contact\js\contact.js" />
     <Content Include="assets\css\style2.css" />
+    <Content Include="assets\images\Spinner.gif" />
     <Content Include="assets\images\apple-touch-icon.png" />
     <Content Include="assets\images\arrow.png" />
     <Content Include="assets\images\blank.gif" />
@@ -628,6 +629,7 @@
     <Content Include="MainMenu\assets\images\social\linkedin-r.png" />
     <Content Include="MainMenu\assets\images\social\twitter2-r.png" />
     <Content Include="MainMenu\assets\images\social\wordpress-r.png" />
+    <Content Include="MainMenu\assets\images\Spinner.gif" />
     <Content Include="MainMenu\assets\images\twitterBack.png" />
     <Content Include="Scripts\ace.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />

@@ -131,7 +131,7 @@ namespace cms.Controllers
 
 
             string to, msg;
-            msg = "Dear" + NamesId + " You have Booked a Turtor for "  + "Duration of: " + Duration + " Minutes. "+"RefNo: " + RefNo + ". Amount to pay " + TotalPriceId;
+            msg = "Dear " + NamesId + " You have Booked a Turtor for "  + "Duration of: " + Duration + " Minutes. "+"RefNo: " + RefNo + ". Amount to pay " + TotalPriceId;
             to = phoneNo;
             WebClient client = new WebClient();
             // Add a user agent header in case the requested URI contains a query.
@@ -150,24 +150,7 @@ namespace cms.Controllers
 
         }
 
-        private void SendEmail(string EmailAddress, string RefNo, string Occasionvalue = "", string EventsType = "", string CuisineType = "", string TotalPriceId = "")
-        {
-            MailMessage Msg = new MailMessage();
-            // Sender e-mail address.
-            Msg.From = new MailAddress("ubachefnoreply@gmail.com");
-            // Recipient e-mail address.
-            Msg.To.Add(EmailAddress);
-            Msg.Subject = "Uba Chef Booking Details";
-            Msg.Body = "Dear Customer. You have Booked a Chef for " + CuisineType + " " + "Occasion: " + Occasionvalue + " for " + EventsType + " Event. RefNo: " + RefNo + ". Amount to pay " + TotalPriceId;
-            Msg.IsBodyHtml = true;
-            // your remote SMTP server IP.
-            SmtpClient smtp = new SmtpClient();
-            smtp.Host = "smtp.gmail.com";
-            smtp.Port = 587;
-            smtp.Credentials = new System.Net.NetworkCredential("ubachefnoreply@gmail.com", "ubachefnoreply27");
-            smtp.EnableSsl = true;
-            smtp.Send(Msg);
-        }
+
 
         public static string ReplaceLastOccurrence(string Source, string Find, string Replace)
         {
